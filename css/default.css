@@ -11274,6 +11274,106 @@ footer.footer .level-end .field {
     border-radius: 0;
   }
 }
+figure.highlight {
+  padding: 0;
+  width: 100%;
+  position: relative;
+  margin: 1em 0 1em !important;
+  border-radius: 4px;
+}
+figure.highlight.folded .highlight-body {
+  height: 0;
+}
+figure.highlight .copy {
+  opacity: 0.7;
+}
+figure.highlight pre,
+figure.highlight table tr:hover {
+  color: inherit;
+  background: transparent;
+}
+figure.highlight table {
+  width: auto;
+}
+figure.highlight table tr td {
+  border: none;
+}
+figure.highlight table tr:not(:first-child) td {
+  padding-top: 0;
+}
+figure.highlight table tr:not(:last-child) td {
+  padding-bottom: 0;
+}
+figure.highlight pre {
+  padding: 0;
+  overflow: visible;
+}
+figure.highlight pre .line,
+figure.highlight pre code .hljs {
+  line-height: 1.5rem;
+}
+figure.highlight figcaption,
+figure.highlight .gutter {
+  background: rgba(200,200,200,0.15);
+}
+figure.highlight figcaption {
+  margin: 0 !important;
+  padding: 0.3em 0em 0.3em 0.75em;
+  font-style: normal;
+  font-size: 0.6em;
+}
+figure.highlight figcaption * {
+  color: inherit;
+}
+figure.highlight figcaption span {
+  font-weight: 500;
+  font-family: 'Source Code Pro', monospace, 'Microsoft YaHei';
+}
+figure.highlight figcaption .level-left *:not(:last-child) {
+  margin-right: 0.5em;
+}
+figure.highlight figcaption .level-right *:not(:first-child) {
+  margin-left: 0.5em;
+}
+figure.highlight figcaption .fold {
+  cursor: pointer;
+}
+figure.highlight figcaption.level {
+  overflow: auto;
+}
+figure.highlight figcaption.level .level-right a {
+  padding: 0em 0.75em;
+}
+figure.highlight .highlight-body {
+  overflow: auto;
+}
+figure.highlight .gutter {
+  text-align: right;
+}
+figure.highlight .tag,
+figure.highlight .title,
+figure.highlight .number,
+figure.highlight .section {
+  display: inherit;
+  font: inherit;
+  margin: inherit;
+  padding: inherit;
+  background: inherit;
+  height: inherit;
+  text-align: inherit;
+  vertical-align: inherit;
+  min-width: inherit;
+  border-radius: inherit;
+}
+.gist table tr:hover {
+  background: transparent;
+}
+.gist table td {
+  border: none;
+}
+.gist .file {
+  all: initial;
+}
 .widget .menu-list li ul {
   margin-right: 0;
 }
