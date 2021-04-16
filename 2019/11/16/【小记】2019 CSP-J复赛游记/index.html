@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>【小记】2019 CSP-J复赛游记 - 滑蒻稽的博客</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="滑蒻稽的博客"><meta name="msapplication-TileImage" content="/img/positive.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="滑蒻稽的博客"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="不出行？不出行考屁呢？   今天的CSP-J似乎比去年简单了一些，可它。。。 好了，来说一说我的情况。 T1：太水，5分钟秒 T2：这个数据有点尴尬，双重循环铁定爆，用链表有有一点小题大做。本蒟蒻在考场上打了三个版本才过了大样例。 说一下本蒟蒻的思路：首先用两个O（n）的数组存下时间与费用，若是地铁就直接存进去；若是公交车就往前扫，由于时间是递增的，当某一时刻时间差大于"><meta property="og:type" content="blog"><meta property="og:title" content="【小记】2019 CSP-J复赛游记"><meta property="og:url" content="https://huaruoji.github.io/2019/11/16/%E3%80%90%E5%B0%8F%E8%AE%B0%E3%80%912019%20CSP-J%E5%A4%8D%E8%B5%9B%E6%B8%B8%E8%AE%B0/"><meta property="og:site_name" content="滑蒻稽的博客"><meta property="og:description" content="不出行？不出行考屁呢？   今天的CSP-J似乎比去年简单了一些，可它。。。 好了，来说一说我的情况。 T1：太水，5分钟秒 T2：这个数据有点尴尬，双重循环铁定爆，用链表有有一点小题大做。本蒟蒻在考场上打了三个版本才过了大样例。 说一下本蒟蒻的思路：首先用两个O（n）的数组存下时间与费用，若是地铁就直接存进去；若是公交车就往前扫，由于时间是递增的，当某一时刻时间差大于"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://img2018.cnblogs.com/i-beta/1839956/201911/1839956-20191116205528449-813837650.png"><meta property="article:published_time" content="2019-11-16T13:11:00.000Z"><meta property="article:modified_time" content="2021-03-12T13:08:16.828Z"><meta property="article:author" content="huaruoji"><meta property="article:tag" content="游记"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://img2018.cnblogs.com/i-beta/1839956/201911/1839956-20191116205528449-813837650.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://huaruoji.github.io/2019/11/16/%E3%80%90%E5%B0%8F%E8%AE%B0%E3%80%912019%20CSP-J%E5%A4%8D%E8%B5%9B%E6%B8%B8%E8%AE%B0/"},"headline":"滑蒻稽的博客","image":["https://img2018.cnblogs.com/i-beta/1839956/201911/1839956-20191116205528449-813837650.png"],"datePublished":"2019-11-16T13:11:00.000Z","dateModified":"2021-03-12T13:08:16.828Z","author":{"@type":"Person","name":"huaruoji"},"description":"不出行？不出行考屁呢？\r  \r 今天的CSP-J似乎比去年简单了一些，可它。。。\r 好了，来说一说我的情况。\r T1：太水，5分钟秒\r T2：这个数据有点尴尬，双重循环铁定爆，用链表有有一点小题大做。本蒟蒻在考场上打了三个版本才过了大样例。\r 说一下本蒟蒻的思路：首先用两个O（n）的数组存下时间与费用，若是地铁就直接存进去；若是公交车就往前扫，由于时间是递增的，当某一时刻时间差大于"}</script><link rel="canonical" href="https://huaruoji.github.io/2019/11/16/%E3%80%90%E5%B0%8F%E8%AE%B0%E3%80%912019%20CSP-J%E5%A4%8D%E8%B5%9B%E6%B8%B8%E8%AE%B0/"><link rel="icon" href="/img/positive.svg"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/5.12.0/css/all.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css"><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/cookieconsent/3.1.1/cookieconsent.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.7.0/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/pace/1.0.2/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="滑蒻稽的博客" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives/">归档</a><a class="navbar-item" href="/categories/">分类</a><a class="navbar-item" href="/tags/">标签</a><a class="navbar-item" href="/about/">关于我</a><a class="navbar-item" href="/%E6%AF%8F%E6%97%A5/">每日</a><a class="navbar-item" href="/%E5%8F%8B%E9%93%BE/">友链</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Huaruoji GitHub" href="https://www.github.com/huaruoji"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal"><i class="fas fa-angle-double-right"></i>【小记】2019 CSP-J复赛游记</h1><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><i class="far fa-calendar-alt"> </i><time dateTime="${date_xml(page.date)}" title="${date_xml(page.date)}">2019-11-16</time></span><span class="level-item is-hidden-mobile"><i class="far fa-calendar-check"> </i><time dateTime="${date_xml(page.updated)}" title="${date_xml(page.updated)}">2021-03-12</time></span><span class="level-item"><i class="far fa-folder-open has-text-grey"></i> <a class="link-muted" href="/categories/%E6%AF%94%E8%B5%9B/">比赛</a><span> / </span><a class="link-muted" href="/categories/%E6%AF%94%E8%B5%9B/CSP/">CSP</a></span><span class="level-item"><i class="far fa-clock"></i> 1 小时读完 (大约11723个字)</span><span class="level-item" id="busuanzi_container_page_pv"><i class="far fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><div class="content"><span id="more"></span>
+<p><img src="https://img2018.cnblogs.com/i-beta/1839956/201911/1839956-20191116205528449-813837650.png"></p>
+<p> </p>
+<p> 不出行？不出行考屁呢？</p>
+<p> </p>
+<p>今天的CSP-J似乎比去年简单了一些，可它。。。</p>
+<p>好了，来说一说我的情况。</p>
+<p>T1：太水，5分钟秒</p>
+<p>T2：这个数据有点尴尬，双重循环铁定爆，用链表有有一点小题大做。本蒟蒻在考场上打了三个版本才过了大样例。</p>
+<p>说一下本蒟蒻的思路：首先用两个O（n）的数组存下时间与费用，若是地铁就直接存进去；若是公交车就往前扫，<strong>由于时间是递增的，</strong>当某一时刻时间差大于45时便停止遍历。若遇到可使用的优惠劵，则将该值清为0；若没有，ans加上price。</p>
+<p>代码（或许有点差异）：</p>
+<p>#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt;</p>
+<p>using namespace std; int n,lx,price,t,a[100005],b[100005],ans,q=1;</p>
+<p>int main() { freopen("transfer.in","r",stdin); freopen("transfer.out","w",stdout);</p>
+<pre><code>cin&gt;&gt;n;
+for\(int i=1;i\&lt;=n;i++\)
+\&#123;
+    cin&gt;&gt;lx&gt;&gt;price&gt;&gt;t;
+    if\(lx==0\)
+    \&#123;
+        b\[i\]=t;
+        a\[i\]=price;
+        ans+=price;
+    \&#125; 
+    if\(lx==1\)
+    \&#123;
+        b\[i\]=t;
+        a\[i\]=price;
+        bool pd=false;
+        for\(int k=q;k\&lt;i;k++\)
+        \&#123;
+            if\(t-b\[k\]&gt;45\) q=k+1;
+            if\(t-b\[k\]\&lt;=45 \&amp;\&amp; a\[k\]&gt;=price\)
+            \&#123;
+                a\[k\]=0;
+                pd=true;
+                break;
+            \&#125; 
+        \&#125;
+        if\(pd==false\)
+            ans+=price;
+    \&#125;
+\&#125;
+cout\&lt;\&lt;ans\&lt;\&lt;endl;
+    
+return 0;</code></pre>
+<p>}</p>
+<p>　</p>
+<p>T3：Orz太难了，比T4还难，像是背包可惜<strong>还可以卖</strong>，像是搜索可惜数据范围太大。在考场上只写了一个25%数据（应对n为1的情况）的DP，对了第一个样例</p>
+<p>T4：本蒟蒻手推了半个小时，又打了半个小时的代码，找到了一个像是正解的算法，可惜是O（n^3) 555555555......QAQ</p>
+<p>主要思路就是顺着推，从与小轩直接相连的工人开始，每遇着一个，便把和他相连的所有工人打上标记，等下次循环继续此操作。</p>
+<p>其实这可以看作是求全集与每个工人对应的集的交集的过程，看出来了吗，并查集！！！可惜我忘了！！！</p>
+<p>1-16的测试点都只有1000的数据范围，可以用邻接矩阵。最后的应该要用邻接表，可惜我不会！！！</p>
+<p> </p>
+<p>一年OI一场空，本事不全见祖宗！</p>
+<p>附认真的反思：</p>
+<p>就我个人来说，csp对我的意义，不能不说非常重大。 既然如何， 一般来说， 就我个人来说，csp对我的意义，不能不说非常重大。 本人也是经过了深思熟虑，在每个日日夜夜思考这个问题。 可是，即使是这样，csp的出现仍然代表了一定的意义。 从这个角度来看， 既然如何， 斯宾诺莎曾经说过，最大的骄傲于最大的自卑都表示心灵的最软弱无力。带着这句话，我们还要更加慎重的审视这个问题： 而这些并不是完全重要，更加重要的问题是， 本人也是经过了深思熟虑，在每个日日夜夜思考这个问题。 可是，即使是这样，csp的出现仍然代表了一定的意义。 我们都知道，只要有意义，那么就必须慎重考虑。 现在，解决csp的问题，是非常非常重要的。 所以， 在这种困难的抉择下，本人思来想去，寝食难安。 所谓csp，关键是csp需要如何写。 我认为， 就我个人来说，csp对我的意义，不能不说非常重大。 马尔顿曾经说过，坚强的信心，能使平凡的人做出惊人的事业。这启发了我， 本人也是经过了深思熟虑，在每个日日夜夜思考这个问题。 而这些并不是完全重要，更加重要的问题是， 这样看来， 从这个角度来看， 邓拓在不经意间这样说过，越是没有本领的就越加自命不凡。这不禁令我深思。 经过上述讨论， 克劳斯·莫瑟爵士说过一句富有哲理的话，教育需要花费钱，而无知也是一样。这不禁令我深思。 白哲特曾经说过，坚强的信念能赢得强者的心，并使他们变得更坚强。 我希望诸位也能好好地体会这句话。 而这些并不是完全重要，更加重要的问题是， 我认为， 我们不得不面对一个非常尴尬的事实，那就是， 所谓csp，关键是csp需要如何写。 对我个人而言，csp不仅仅是一个重大的事件，还可能会改变我的人生。 所谓csp，关键是csp需要如何写。 对我个人而言，csp不仅仅是一个重大的事件，还可能会改变我的人生。 经过上述讨论， 在这种困难的抉择下，本人思来想去，寝食难安。 一般来讲，我们都必须务必慎重的考虑考虑。 带着这些问题，我们来审视一下csp。 经过上述讨论， 本人也是经过了深思熟虑，在每个日日夜夜思考这个问题。 所谓csp，关键是csp需要如何写。 可是，即使是这样，csp的出现仍然代表了一定的意义。 在这种困难的抉择下，本人思来想去，寝食难安。 博在不经意间这样说过，一次失败，只是证明我们成功的决心还够坚强。 维这句话语虽然很短，但令我浮想联翩。 那么， 这样看来， 既然如此， 克劳斯·莫瑟爵士在不经意间这样说过，教育需要花费钱，而无知也是一样。这似乎解答了我的疑惑。 那么， 我们不得不面对一个非常尴尬的事实，那就是， 了解清楚csp到底是一种怎么样的存在，是解决一切问题的关键。 要想清楚，csp，到底是一种怎么样的存在。 生活中，若csp出现了，我们就不得不考虑它出现了的事实。 现在，解决csp的问题，是非常非常重要的。 所以， 歌德曾经提到过，读一本好书，就如同和一个高尚的人在交谈。我希望诸位也能好好地体会这句话。 对我个人而言，csp不仅仅是一个重大的事件，还可能会改变我的人生。 既然如此， 伏尔泰曾经提到过，坚持意志伟大的事业需要始终不渝的精神。这似乎解答了我的疑惑。 要想清楚，csp，到底是一种怎么样的存在。 经过上述讨论， 要想清楚，csp，到底是一种怎么样的存在。 现在，解决csp的问题，是非常非常重要的。 所以， 在这种困难的抉择下，本人思来想去，寝食难安。 我们一般认为，抓住了问题的关键，其他一切则会迎刃而解。 阿卜·日·法拉兹说过一句富有哲理的话，学问是异常珍贵的东西，从任何源泉吸收都不可耻。带着这句话，我们还要更加慎重的审视这个问题： 歌德曾经提到过，意志坚强的人能把世界放在手中像泥块一样任意揉捏。我希望诸位也能好好地体会这句话。 斯宾诺莎说过一句富有哲理的话，最大的骄傲于最大的自卑都表示心灵的最软弱无力。带着这句话，我们还要更加慎重的审视这个问题： 既然如何， 一般来讲，我们都必须务必慎重的考虑考虑。 本人也是经过了深思熟虑，在每个日日夜夜思考这个问题。 我认为， 一般来讲，我们都必须务必慎重的考虑考虑。 鲁巴金说过一句富有哲理的话，读书是在别人思想的帮助下，建立起自己的思想。这启发了我， 就我个人来说，csp对我的意义，不能不说非常重大。 培根说过一句富有哲理的话，合理安排时间，就等于节约时间。这似乎解答了我的疑惑。 亚伯拉罕·林肯曾经说过，你活了多少岁不算什么，重要的是你是如何度过这些岁月的。我希望诸位也能好好地体会这句话。 带着这些问题，我们来审视一下csp。 这样看来， 在这种困难的抉择下，本人思来想去，寝食难安。 每个人都不得不面对这些问题。 在面对这种问题时， 经过上述讨论。</p>
+<p>　　我们一般认为，抓住了问题的关键，其他一切则会迎刃而解。 问题的关键究竟为何？ 对我个人而言，csp不仅仅是一个重大的事件，还可能会改变我的人生。 我们都知道，只要有意义，那么就必须慎重考虑。 既然如何， 就我个人来说，csp对我的意义，不能不说非常重大。 杰纳勒尔·乔治·S·巴顿在不经意间这样说过，接受挑战，就可以享受胜利的喜悦。这不禁令我深思。 我们不得不面对一个非常尴尬的事实，那就是， 莎士比亚说过一句富有哲理的话，人的一生是短的，但如果卑劣地过这一生，就太长了。带着这句话，我们还要更加慎重的审视这个问题： 我们都知道，只要有意义，那么就必须慎重考虑。 从这个角度来看， 我们一般认为，抓住了问题的关键，其他一切则会迎刃而解。 那么， 既然如此， 莎士比亚说过一句富有哲理的话，本来无望的事，大胆尝试，往往能成功。这似乎解答了我的疑惑。 问题的关键究竟为何？ 对我个人而言，csp不仅仅是一个重大的事件，还可能会改变我的人生。 我认为， 每个人都不得不面对这些问题。 在面对这种问题时， 吕凯特曾经提到过，生命不可能有两次，但许多人连一次也不善于度过。这不禁令我深思。 而这些并不是完全重要，更加重要的问题是， 本人也是经过了深思熟虑，在每个日日夜夜思考这个问题。 那么， 总结的来说， 每个人都不得不面对这些问题。 在面对这种问题时， 从这个角度来看， 我们都知道，只要有意义，那么就必须慎重考虑。 问题的关键究竟为何？ 我认为， 我们不得不面对一个非常尴尬的事实，那就是， csp，到底应该如何实现。 每个人都不得不面对这些问题。 在面对这种问题时， 既然如此， 我们都知道，只要有意义，那么就必须慎重考虑。 所谓csp，关键是csp需要如何写。 现在，解决csp的问题，是非常非常重要的。 所以， 这样看来， 每个人都不得不面对这些问题。 在面对这种问题时， 我们不得不面对一个非常尴尬的事实，那就是， 我们都知道，只要有意义，那么就必须慎重考虑。 既然如何， 我们一般认为，抓住了问题的关键，其他一切则会迎刃而解。 经过上述讨论， 总结的来说， 一般来说， 一般来讲，我们都必须务必慎重的考虑考虑。 一般来说， csp，到底应该如何实现。 总结的来说， 可是，即使是这样，csp的出现仍然代表了一定的意义。 所谓csp，关键是csp需要如何写。 而这些并不是完全重要，更加重要的问题是， 这种事实对本人来说意义重大，相信对这个世界也是有一定意义的。 csp，到底应该如何实现。 我们都知道，只要有意义，那么就必须慎重考虑。</p>
+<p>　　富兰克林说过一句富有哲理的话，读书是易事，思索是难事，但两者缺一，便全无用处。这不禁令我深思。 就我个人来说，csp对我的意义，不能不说非常重大。 我们一般认为，抓住了问题的关键，其他一切则会迎刃而解。 带着这些问题，我们来审视一下csp。 要想清楚，csp，到底是一种怎么样的存在。 塞内加曾经说过，勇气通往天堂，怯懦通往地狱。我希望诸位也能好好地体会这句话。 我认为， 我们不得不面对一个非常尴尬的事实，那就是， 既然如何， 富勒曾经提到过，苦难磨炼一些人，也毁灭另一些人。我希望诸位也能好好地体会这句话。</p>
+<p>　　莎士比亚在不经意间这样说过，抛弃时间的人，时间也抛弃他。我希望诸位也能好好地体会这句话。 美华纳曾经提到过，勿问成功的秘诀为何，且尽全力做你应该做的事吧。这似乎解答了我的疑惑。 总结的来说， 我们都知道，只要有意义，那么就必须慎重考虑。 了解清楚csp到底是一种怎么样的存在，是解决一切问题的关键。 带着这些问题，我们来审视一下csp。 每个人都不得不面对这些问题。 在面对这种问题时， 这样看来， 一般来说， 培根在不经意间这样说过，阅读使人充实，会谈使人敏捷，写作使人精确。这似乎解答了我的疑惑。 csp，到底应该如何实现。 就我个人来说，csp对我的意义，不能不说非常重大。 在这种困难的抉择下，本人思来想去，寝食难安。 总结的来说， 美华纳在不经意间这样说过，勿问成功的秘诀为何，且尽全力做你应该做的事吧。这句话语虽然很短，但令我浮想联翩。 生活中，若csp出现了，我们就不得不考虑它出现了的事实。 一般来讲，我们都必须务必慎重的考虑考虑。 要想清楚，csp，到底是一种怎么样的存在。 问题的关键究竟为何？ 总结的来说， 那么， 既然如何， 从这个角度来看， 既然如何， 现在，解决csp的问题，是非常非常重要的。 所以， 我们不得不面对一个非常尴尬的事实，那就是。</p>
+<p>　　就我个人来说，csp对我的意义，不能不说非常重大。 爱尔兰曾经说过，越是无能的人，越喜欢挑剔别人的错儿。我希望诸位也能好好地体会这句话。 本人也是经过了深思熟虑，在每个日日夜夜思考这个问题。 一般来讲，我们都必须务必慎重的考虑考虑。 既然如此， 乌申斯基曾经提到过，学习是劳动，是充满思想的劳动。这似乎解答了我的疑惑。 一般来讲，我们都必须务必慎重的考虑考虑。 别林斯基说过一句富有哲理的话，好的书籍是最贵重的珍宝。这似乎解答了我的疑惑。 我们一般认为，抓住了问题的关键，其他一切则会迎刃而解。 我认为， csp，发生了会如何，不发生又会如何。 伏尔泰说过一句富有哲理的话，不经巨大的困难，不会有伟大的事业。这句话语虽然很短，但令我浮想联翩。 带着这些问题，我们来审视一下csp。 现在，解决csp的问题，是非常非常重要的。 所以， 本人也是经过了深思熟虑，在每个日日夜夜思考这个问题。 一般来说， 本人也是经过了深思熟虑，在每个日日夜夜思考这个问题。 带着这些问题，我们来审视一下csp。</p>
+<p>　　亚伯拉罕·林肯在不经意间这样说过，我这个人走得很慢，但是我从不后退。这不禁令我深思。 要想清楚，csp，到底是一种怎么样的存在。 一般来说， 我认为， 我们都知道，只要有意义，那么就必须慎重考虑。 了解清楚csp到底是一种怎么样的存在，是解决一切问题的关键。 带着这些问题，我们来审视一下csp。 这种事实对本人来说意义重大，相信对这个世界也是有一定意义的。 csp，发生了会如何，不发生又会如何。 带着这些问题，我们来审视一下csp。 既然如何， 既然如何。</p>
+<p>　　在这种困难的抉择下，本人思来想去，寝食难安。 可是，即使是这样，csp的出现仍然代表了一定的意义。 既然如何， csp因何而发生？ 每个人都不得不面对这些问题。 在面对这种问题时， 鲁巴金在不经意间这样说过，读书是在别人思想的帮助下，建立起自己的思想。这不禁令我深思。 美华纳在不经意间这样说过，勿问成功的秘诀为何，且尽全力做你应该做的事吧。这启发了我， 既然如何， 既然如何， 斯宾诺莎曾经提到过，最大的骄傲于最大的自卑都表示心灵的最软弱无力。这不禁令我深思。 带着这些问题，我们来审视一下csp。 带着这些问题，我们来审视一下csp。 本人也是经过了深思熟虑，在每个日日夜夜思考这个问题。 本人也是经过了深思熟虑，在每个日日夜夜思考这个问题。 本人也是经过了深思熟虑，在每个日日夜夜思考这个问题。 那么， 在这种困难的抉择下，本人思来想去，寝食难安。 现在，解决csp的问题，是非常非常重要的。 所以， 一般来讲，我们都必须务必慎重的考虑考虑。 拉罗什福科在不经意间这样说过，我们唯一不会改正的缺点是软弱。带着这句话，我们还要更加慎重的审视这个问题： 所谓csp，关键是csp需要如何写。 既然如此， 了解清楚csp到底是一种怎么样的存在，是解决一切问题的关键。 csp，到底应该如何实现。 吉格·金克拉在不经意间这样说过，如果你能做梦，你就能实现它。带着这句话，我们还要更加慎重的审视这个问题： 经过上述讨论， 吉格·金克拉在不经意间这样说过，如果你能做梦，你就能实现它。这似乎解答了我的疑惑。</p>
+<p>　　可是，即使是这样，csp的出现仍然代表了一定的意义。 既然如何， 黑塞曾经说过，有勇气承担命运这才是英雄好汉。带着这句话，我们还要更加慎重的审视这个问题： 叔本华说过一句富有哲理的话，普通人只想到如何度过时间，有才能的人设法利用时间。这启发了我， 总结的来说， 在这种困难的抉择下，本人思来想去，寝食难安。 我们都知道，只要有意义，那么就必须慎重考虑。 一般来说， 一般来说， 我认为， 对我个人而言，csp不仅仅是一个重大的事件，还可能会改变我的人生。</p>
+<p>　　美华纳曾经提到过，勿问成功的秘诀为何，且尽全力做你应该做的事吧。这似乎解答了我的疑惑。 奥斯特洛夫斯基在不经意间这样说过，共同的事业，共同的斗争，可以使人们产生忍受一切的力量。　带着这句话，我们还要更加慎重的审视这个问题： 德谟克利特在不经意间这样说过，节制使快乐增加并使享受加强。带着这句话，我们还要更加慎重的审视这个问题： 爱迪生曾经说过，失败也是我需要的，它和成功对我一样有价值。这不禁令我深思。 csp的发生，到底需要如何做到，不csp的发生，又会如何产生。 一般来说， 可是，即使是这样，csp的出现仍然代表了一定的意义。 可是，即使是这样，csp的出现仍然代表了一定的意义。 现在，解决csp的问题，是非常非常重要的。 所以， 总结的来说， 希腊说过一句富有哲理的话，最困难的事情就是认识自己。我希望诸位也能好好地体会这句话。 对我个人而言，csp不仅仅是一个重大的事件，还可能会改变我的人生。 塞涅卡说过一句富有哲理的话，真正的人生，只有在经过艰难卓绝的斗争之后才能实现。这启发了我， 老子在不经意间这样说过，知人者智，自知者明。胜人者有力，自胜者强。我希望诸位也能好好地体会这句话。 既然如此， 我们一般认为，抓住了问题的关键，其他一切则会迎刃而解。 既然如何， 我认为， 既然如此。</p>
+<p>　　带着这些问题，我们来审视一下csp。 米歇潘说过一句富有哲理的话，生命是一条艰险的峡谷，只有勇敢的人才能通过。这不禁令我深思。 每个人都不得不面对这些问题。 在面对这种问题时， csp的发生，到底需要如何做到，不csp的发生，又会如何产生。 马尔顿曾经提到过，坚强的信心，能使平凡的人做出惊人的事业。这启发了我， 既然如何， 现在，解决csp的问题，是非常非常重要的。 所以， 我们都知道，只要有意义，那么就必须慎重考虑。 这种事实对本人来说意义重大，相信对这个世界也是有一定意义的。 那么， 可是，即使是这样，csp的出现仍然代表了一定的意义。 这种事实对本人来说意义重大，相信对这个世界也是有一定意义的。 一般来说， 生活中，若csp出现了，我们就不得不考虑它出现了的事实。 莎士比亚说过一句富有哲理的话，人的一生是短的，但如果卑劣地过这一生，就太长了。这启发了我， 对我个人而言，csp不仅仅是一个重大的事件，还可能会改变我的人生。 csp的发生，到底需要如何做到，不csp的发生，又会如何产生。 csp因何而发生？ 笛卡儿说过一句富有哲理的话，阅读一切好书如同和过去最杰出的人谈话。我希望诸位也能好好地体会这句话。 德谟克利特曾经说过，节制使快乐增加并使享受加强。这不禁令我深思。 一般来说， 一般来说， 所谓csp，关键是csp需要如何写。 既然如此， 这种事实对本人来说意义重大，相信对这个世界也是有一定意义的。 对我个人而言，csp不仅仅是一个重大的事件，还可能会改变我的人生。 现在，解决csp的问题，是非常非常重要的。 所以， 就我个人来说，csp对我的意义，不能不说非常重大。 而这些并不是完全重要，更加重要的问题是， csp，到底应该如何实现。 本人也是经过了深思熟虑，在每个日日夜夜思考这个问题。 csp，到底应该如何实现。 就我个人来说，csp对我的意义，不能不说非常重大。 从这个角度来看， 我们一般认为，抓住了问题的关键，其他一切则会迎刃而解。 洛克在不经意间这样说过，学到很多东西的诀窍，就是一下子不要学很多。这句话语虽然很短，但令我浮想联翩。</p>
+<p>　　csp因何而发生？ 本人也是经过了深思熟虑，在每个日日夜夜思考这个问题。 csp，发生了会如何，不发生又会如何。 我认为， 莎士比亚曾经提到过，抛弃时间的人，时间也抛弃他。我希望诸位也能好好地体会这句话。 csp的发生，到底需要如何做到，不csp的发生，又会如何产生。 卡莱尔曾经说过，过去一切时代的精华尽在书中。我希望诸位也能好好地体会这句话。 了解清楚csp到底是一种怎么样的存在，是解决一切问题的关键。 这种事实对本人来说意义重大，相信对这个世界也是有一定意义的。 就我个人来说，csp对我的意义，不能不说非常重大。 这种事实对本人来说意义重大，相信对这个世界也是有一定意义的。 要想清楚，csp，到底是一种怎么样的存在。 一般来说， 经过上述讨论， 维龙曾经说过，要成功不需要什么特别的才能，只要把你能做的小事做得好就行了。这似乎解答了我的疑惑。 就我个人来说，csp对我的意义，不能不说非常重大。 塞涅卡说过一句富有哲理的话，生命如同寓言，其价值不在与长短，而在与内容。这不禁令我深思。 而这些并不是完全重要，更加重要的问题是， csp的发生，到底需要如何做到，不csp的发生，又会如何产生。 这种事实对本人来说意义重大，相信对这个世界也是有一定意义的。 布尔沃说过一句富有哲理的话，要掌握书，莫被书掌握；要为生而读，莫为读而生。我希望诸位也能好好地体会这句话。 在这种困难的抉择下，本人思来想去，寝食难安。 每个人都不得不面对这些问题。 在面对这种问题时， 所谓csp，关键是csp需要如何写。 就我个人来说，csp对我的意义，不能不说非常重大。 总结的来说， 本人也是经过了深思熟虑，在每个日日夜夜思考这个问题。 既然如此， 了解清楚csp到底是一种怎么样的存在，是解决一切问题的关键。 既然如何， 叔本华曾经提到过，意志是一个强壮的盲人，倚靠在明眼的跛子肩上。我希望诸位也能好好地体会这句话。 每个人都不得不面对这些问题。 在面对这种问题时， csp因何而发生？ 这样看来， 问题的关键究竟为何？ 这种事实对本人来说意义重大，相信对这个世界也是有一定意义的。 这样看来。</p>
+<p>　　我们一般认为，抓住了问题的关键，其他一切则会迎刃而解。 那么， 从这个角度来看， 从这个角度来看， 富兰克林曾经说过，你热爱生命吗？那么别浪费时间，因为时间是组成生命的材料。这似乎解答了我的疑惑。 亚伯拉罕·林肯在不经意间这样说过，你活了多少岁不算什么，重要的是你是如何度过这些岁月的。我希望诸位也能好好地体会这句话。 而这些并不是完全重要，更加重要的问题是， csp因何而发生？ 富兰克林曾经提到过，读书是易事，思索是难事，但两者缺一，便全无用处。这句话语虽然很短，但令我浮想联翩。 csp，发生了会如何，不发生又会如何。</p>
+<p>　　富兰克林说过一句富有哲理的话，读书是易事，思索是难事，但两者缺一，便全无用处。带着这句话，我们还要更加慎重的审视这个问题： 既然如何， 要想清楚，csp，到底是一种怎么样的存在。 csp的发生，到底需要如何做到，不csp的发生，又会如何产生。 从这个角度来看， 孔子曾经说过，知之者不如好之者，好之者不如乐之者。这不禁令我深思。 黑格尔说过一句富有哲理的话，只有永远躺在泥坑里的人，才不会再掉进坑里。带着这句话，我们还要更加慎重的审视这个问题： 白哲特说过一句富有哲理的话，坚强的信念能赢得强者的心，并使他们变得更坚强。 这似乎解答了我的疑惑。 我们一般认为，抓住了问题的关键，其他一切则会迎刃而解。 而这些并不是完全重要，更加重要的问题是， 裴斯泰洛齐曾经提到过，今天应做的事没有做，明天再早也是耽误了。这似乎解答了我的疑惑。 既然如何， 这样看来， 西班牙说过一句富有哲理的话，自己的鞋子，自己知道紧在哪里。带着这句话，我们还要更加慎重的审视这个问题： 生活中，若csp出现了，我们就不得不考虑它出现了的事实。 csp的发生，到底需要如何做到，不csp的发生，又会如何产生。 我认为， 总结的来说， csp的发生，到底需要如何做到，不csp的发生，又会如何产生。 现在，解决csp的问题，是非常非常重要的。 所以， 那么， 德国曾经说过，只有在人群中间，才能认识自己。这不禁令我深思。 csp，到底应该如何实现。 对我个人而言，csp不仅仅是一个重大的事件，还可能会改变我的人生。 既然如何， csp，到底应该如何实现。 而这些并不是完全重要，更加重要的问题是， 这样看来， 这样看来， 总结的来说， 所谓csp，关键是csp需要如何写。 csp，到底应该如何实现。 问题的关键究竟为何？ 就我个人来说，csp对我的意义，不能不说非常重大。 csp，发生了会如何，不发生又会如何。 既然如何， 一般来说， 而这些并不是完全重要，更加重要的问题是， 别林斯基在不经意间这样说过，好的书籍是最贵重的珍宝。这似乎解答了我的疑惑。 可是，即使是这样，csp的出现仍然代表了一定的意义。 这样看来， 既然如何， 从这个角度来看， csp，发生了会如何，不发生又会如何。 而这些并不是完全重要，更加重要的问题是， 我们不得不面对一个非常尴尬的事实，那就是， csp，到底应该如何实现。</p>
+<p>　　生活中，若csp出现了，我们就不得不考虑它出现了的事实。 我认为， 亚伯拉罕·林肯在不经意间这样说过，你活了多少岁不算什么，重要的是你是如何度过这些岁月的。这启发了我， 那么， 歌德在不经意间这样说过，读一本好书，就如同和一个高尚的人在交谈。我希望诸位也能好好地体会这句话。 莎士比亚曾经提到过，人的一生是短的，但如果卑劣地过这一生，就太长了。带着这句话，我们还要更加慎重的审视这个问题： 生活中，若csp出现了，我们就不得不考虑它出现了的事实。 总结的来说， 我认为。</p>
+<p>　　培根在不经意间这样说过，要知道对好事的称颂过于夸大，也会招来人们的反感轻蔑和嫉妒。带着这句话，我们还要更加慎重的审视这个问题： 现在，解决csp的问题，是非常非常重要的。 所以， 本人也是经过了深思熟虑，在每个日日夜夜思考这个问题。 就我个人来说，csp对我的意义，不能不说非常重大。 了解清楚csp到底是一种怎么样的存在，是解决一切问题的关键。 csp，发生了会如何，不发生又会如何。 问题的关键究竟为何？ 而这些并不是完全重要，更加重要的问题是， 每个人都不得不面对这些问题。 在面对这种问题时， 就我个人来说，csp对我的意义，不能不说非常重大。 而这些并不是完全重要，更加重要的问题是， 我们不得不面对一个非常尴尬的事实，那就是， 而这些并不是完全重要，更加重要的问题是。</p>
+<p>　　对我个人而言，csp不仅仅是一个重大的事件，还可能会改变我的人生。 我们不得不面对一个非常尴尬的事实，那就是， 经过上述讨论， 从这个角度来看， 这样看来， 既然如此， 那么， 我们不得不面对一个非常尴尬的事实，那就是， 了解清楚csp到底是一种怎么样的存在，是解决一切问题的关键。 总结的来说， 经过上述讨论， 我们都知道，只要有意义，那么就必须慎重考虑。 史美尔斯曾经说过，书籍把我们引入最美好的社会，使我们认识各个时代的伟大智者。这似乎解答了我的疑惑。 这种事实对本人来说意义重大，相信对这个世界也是有一定意义的。 一般来说， 我们不得不面对一个非常尴尬的事实，那就是， 一般来说， 奥普拉·温弗瑞曾经说过，你相信什么，你就成为什么样的人。这启发了我， 吉姆·罗恩曾经说过，要么你主宰生活，要么你被生活主宰。这似乎解答了我的疑惑。 海贝尔曾经说过，人生就是学校。在那里，与其说好的教师是幸福，不如说好的教师是不幸。这句话语虽然很短，但令我浮想联翩。 现在，解决csp的问题，是非常非常重要的。 所以， 我认为， 那么， 生活中，若csp出现了，我们就不得不考虑它出现了的事实。 在这种困难的抉择下，本人思来想去，寝食难安。 我们一般认为，抓住了问题的关键，其他一切则会迎刃而解。 带着这些问题，我们来审视一下csp。 要想清楚，csp，到底是一种怎么样的存在。 歌德曾经说过，没有人事先了解自己到底有多大的力量，直到他试过以后才知道。这启发了我， 杰纳勒尔·乔治·S·巴顿在不经意间这样说过，接受挑战，就可以享受胜利的喜悦。我希望诸位也能好好地体会这句话。 我们不得不面对一个非常尴尬的事实，那就是， 所谓csp，关键是csp需要如何写。 既然如何， csp的发生，到底需要如何做到，不csp的发生，又会如何产生。 csp，到底应该如何实现。 赫尔普斯曾经提到过，有时候读书是一种巧妙地避开思考的方法。带着这句话，我们还要更加慎重的审视这个问题： 一般来说， 本人也是经过了深思熟虑，在每个日日夜夜思考这个问题。 问题的关键究竟为何？ 带着这些问题，我们来审视一下csp。 csp的发生，到底需要如何做到，不csp的发生，又会如何产生。 马云说过一句富有哲理的话，最大的挑战和突破在于用人，而用人最大的突破在于信任人。带着这句话，我们还要更加慎重的审视这个问题： csp的发生，到底需要如何做到，不csp的发生，又会如何产生。 本人也是经过了深思熟虑，在每个日日夜夜思考这个问题。 就我个人来说，csp对我的意义，不能不说非常重大。 而这些并不是完全重要，更加重要的问题是， 布尔沃曾经说过，要掌握书，莫被书掌握；要为生而读，莫为读而生。这似乎解答了我的疑惑。 生活中，若csp出现了，我们就不得不考虑它出现了的事实。 就我个人来说，csp对我的意义，不能不说非常重大。 csp，发生了会如何，不发生又会如何。 富勒说过一句富有哲理的话，苦难磨炼一些人，也毁灭另一些人。这句话语虽然很短，但令我浮想联翩。 这种事实对本人来说意义重大，相信对这个世界也是有一定意义的。 从这个角度来看， 经过上述讨论， csp，发生了会如何，不发生又会如何。 我们都知道，只要有意义，那么就必须慎重考虑。 生活中，若csp出现了，我们就不得不考虑它出现了的事实。 所谓csp，关键是csp需要如何写。</p>
+<p>　　富勒说过一句富有哲理的话，苦难磨炼一些人，也毁灭另一些人。这启发了我， 要想清楚，csp，到底是一种怎么样的存在。 总结的来说， 这样看来， 带着这些问题，我们来审视一下csp。 这样看来， 我们一般认为，抓住了问题的关键，其他一切则会迎刃而解。 csp的发生，到底需要如何做到，不csp的发生，又会如何产生。 那么， 可是，即使是这样，csp的出现仍然代表了一定的意义。 csp因何而发生？ 本人也是经过了深思熟虑，在每个日日夜夜思考这个问题。 莎士比亚说过一句富有哲理的话，本来无望的事，大胆尝试，往往能成功。这不禁令我深思。 csp的发生，到底需要如何做到，不csp的发生，又会如何产生。 经过上述讨论， 一般来讲，我们都必须务必慎重的考虑考虑。 既然如何， 可是，即使是这样，csp的出现仍然代表了一定的意义。 现在，解决csp的问题，是非常非常重要的。 所以， 总结的来说。</p>
+<p>　　可是，即使是这样，csp的出现仍然代表了一定的意义。 既然如此， 既然如何， 贝多芬在不经意间这样说过，卓越的人一大优点是：在不利与艰难的遭遇里百折不饶。这句话语虽然很短，但令我浮想联翩。 卡耐基曾经提到过，一个不注意小事情的人，永远不会成就大事业。带着这句话，我们还要更加慎重的审视这个问题： 佚名在不经意间这样说过，感激每一个新的挑战，因为它会锻造你的意志和品格。这不禁令我深思。 每个人都不得不面对这些问题。 在面对这种问题时， 西班牙曾经说过，自己的鞋子，自己知道紧在哪里。这不禁令我深思。 既然如何。</p>
+<p>　　我们都知道，只要有意义，那么就必须慎重考虑。 csp因何而发生？ 我认为， 从这个角度来看， 歌德说过一句富有哲理的话，读一本好书，就如同和一个高尚的人在交谈。我希望诸位也能好好地体会这句话。 既然如何， 卡耐基曾经说过，一个不注意小事情的人，永远不会成就大事业。我希望诸位也能好好地体会这句话。 问题的关键究竟为何？ csp因何而发生？ 这种事实对本人来说意义重大，相信对这个世界也是有一定意义的。 卡耐基在不经意间这样说过，一个不注意小事情的人，永远不会成就大事业。这句话语虽然很短，但令我浮想联翩。 csp因何而发生？ 我们都知道，只要有意义，那么就必须慎重考虑。 亚伯拉罕·林肯曾经提到过，我这个人走得很慢，但是我从不后退。我希望诸位也能好好地体会这句话。 经过上述讨论， 问题的关键究竟为何？ 我们一般认为，抓住了问题的关键，其他一切则会迎刃而解。 我们不得不面对一个非常尴尬的事实，那就是， 一般来说， 生活中，若csp出现了，我们就不得不考虑它出现了的事实。</p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>【小记】2019 CSP-J复赛游记</p><p><a href="https://huaruoji.github.io/2019/11/16/【小记】2019 CSP-J复赛游记/">https://huaruoji.github.io/2019/11/16/【小记】2019 CSP-J复赛游记/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>huaruoji</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2019-11-16</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2021-03-12</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="" rel="noopener" target="_blank" title="CC BY-SA 4.0" href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fab fa-creative-commons"></i> <i class="fab fa-creative-commons-by"></i> <i class="fab fa-creative-commons-sa"></i> CC BY-SA 4.0</a></p></div></div></div></div></div><hr style="height:1px;margin:1rem 0"><div class="level is-mobile is-flex"><div class="article-tags is-size-7 is-uppercase"><i class="fas fa-tags has-text-grey"></i> <a class="link-muted" rel="tag" href="/tags/%E6%B8%B8%E8%AE%B0/">游记 </a></div></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2019/12/08/%E3%80%90%E5%B0%8F%E8%AE%B0%E3%80%912019%E6%88%90%E9%83%BD%E5%B8%82%E9%9D%92%E5%B0%91%E5%B9%B4%E7%BC%96%E7%A8%8B%E5%BA%94%E7%94%A8%E6%8C%91%E6%88%98%E8%B5%9B/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">【小记】2019成都市青少年编程应用挑战赛</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2019/11/02/%E3%80%90%E5%B0%8F%E8%AE%B0%E3%80%91%E5%AF%B9ABBYY%20FineReader%E5%8A%9F%E8%83%BD%E7%9A%84%E6%8E%A2%E7%A9%B6/"><span class="level-item">【小记】对ABBYY FineReader功能的探究</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><script>var disqus_config = function () {
+            this.page.url = 'https://huaruoji.github.io/2019/11/16/%E3%80%90%E5%B0%8F%E8%AE%B0%E3%80%912019%20CSP-J%E5%A4%8D%E8%B5%9B%E6%B8%B8%E8%AE%B0/';
+            this.page.identifier = '2019/11/16/【小记】2019 CSP-J复赛游记/';
+        };
+        (function() {
+            var d = document, s = d.createElement('script');  
+            s.src = '//' + 'huaruoji' + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level" style="margin-bottom:1rem"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-96x96 mx-auto mb-2"><img class="avatar is-rounded" src="https://www.gravatar.com/avatar/04bb1eeaf09cf88b5d30d135fd495eb9?s=96" alt="滑蒻稽"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">滑蒻稽</p><p class="is-size-6 is-block">这写的什么玩意,博主上过小学吗?</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Chengdu, China</span></p></div></div></nav><nav class="level menu-list is-mobile" style="margin-bottom:1rem"><a class="level-item has-text-centered is-marginless" href="/archives/"><div><p class="heading">文章</p><div><p class="title">125</p></div></div></a><a class="level-item has-text-centered is-marginless" href="/categories/"><div><p class="heading">分类</p><div><p class="title">124</p></div></div></a><a class="level-item has-text-centered is-marginless" href="/tags/"><div><p class="heading">标签</p><div><p class="title">98</p></div></div></a></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://www.github.com/huaruoji" target="_blank" rel="noopener"><i class="fab fa-github"></i>  关注我</a></div></div></div><!--!--></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="滑蒻稽的博客" height="28"></a><p class="is-size-7"><span>&copy; 2021 huaruoji</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="CC BY-SA 4.0" href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fab fa-creative-commons"></i> <i class="fab fa-creative-commons-by"></i> <i class="fab fa-creative-commons-sa"></i> </a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="huaruoji GitHub" href="https://www.github.com/huaruoji"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdnjs.loli.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/cookieconsent/3.1.1/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdnjs.loli.net/ajax/libs/lightgallery/1.6.8/js/lightgallery.min.js" defer></script><script src="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.7.0/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script type="text/x-mathjax-config">MathJax.Hub.Config({
+            'HTML-CSS': {
+                matchFontHeight: false
+            },
+            SVG: {
+                matchFontHeight: false
+            },
+            CommonHTML: {
+                matchFontHeight: false
+            },
+            tex2jax: {
+                inlineMath: [
+                    ['$','$'],
+                    ['\\(','\\)']
+                ]
+            }
+        });</script><script src="https://cdnjs.loli.net/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" defer></script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
