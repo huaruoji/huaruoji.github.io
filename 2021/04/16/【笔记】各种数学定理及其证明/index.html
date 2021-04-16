@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>【笔记】各种数学定理及其证明 - 滑蒻稽的博客</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="滑蒻稽的博客"><meta name="msapplication-TileImage" content="/img/positive.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="滑蒻稽的博客"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="主要记录各种在题目里遇到的，或关于算法的数学式子及其证明。不排除以后会因为内容过多分裂为几个文件的情况。 关于平方  若 \(a_1+a_2+\dots+a_n&amp;#x3D;m\) , 那么 \(a_1^2+a_2^2+\dots+a_n^2\le m^2\).（\(m,a_1,a_2,\dots\) 是非负数，当且仅当 \(m,a_1,a_2,\dots&amp;gt;0\) 时等号成立）来源 证明 设"><meta property="og:type" content="blog"><meta property="og:title" content="【笔记】各种数学定理及其证明"><meta property="og:url" content="https://huaruoji.github.io/2021/04/16/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E5%90%84%E7%A7%8D%E6%95%B0%E5%AD%A6%E5%AE%9A%E7%90%86%E5%8F%8A%E5%85%B6%E8%AF%81%E6%98%8E/"><meta property="og:site_name" content="滑蒻稽的博客"><meta property="og:description" content="主要记录各种在题目里遇到的，或关于算法的数学式子及其证明。不排除以后会因为内容过多分裂为几个文件的情况。 关于平方  若 \(a_1+a_2+\dots+a_n&amp;#x3D;m\) , 那么 \(a_1^2+a_2^2+\dots+a_n^2\le m^2\).（\(m,a_1,a_2,\dots\) 是非负数，当且仅当 \(m,a_1,a_2,\dots&amp;gt;0\) 时等号成立）来源 证明 设"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://gitee.com/huaruoji/images/raw/master/img/20210416203433.jpeg"><meta property="article:published_time" content="2021-04-16T12:14:21.962Z"><meta property="article:modified_time" content="2021-04-16T12:35:45.077Z"><meta property="article:author" content="huaruoji"><meta property="article:tag" content="数学"><meta property="article:tag" content="笔记"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://gitee.com/huaruoji/images/raw/master/img/20210416203433.jpeg"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://huaruoji.github.io/2021/04/16/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E5%90%84%E7%A7%8D%E6%95%B0%E5%AD%A6%E5%AE%9A%E7%90%86%E5%8F%8A%E5%85%B6%E8%AF%81%E6%98%8E/"},"headline":"滑蒻稽的博客","image":[],"datePublished":"2021-04-16T12:14:21.962Z","dateModified":"2021-04-16T12:35:45.077Z","author":{"@type":"Person","name":"huaruoji"},"description":"主要记录各种在题目里遇到的，或关于算法的数学式子及其证明。不排除以后会因为内容过多分裂为几个文件的情况。\r 关于平方\r \r 若 \\(a_1+a_2+\\dots+a_n&#x3D;m\\) , 那么 \\(a_1^2+a_2^2+\\dots+a_n^2\\le m^2\\).（\\(m,a_1,a_2,\\dots\\) 是非负数，当且仅当 \\(m,a_1,a_2,\\dots&gt;0\\) 时等号成立）来源\r 证明\r 设"}</script><link rel="canonical" href="https://huaruoji.github.io/2021/04/16/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E5%90%84%E7%A7%8D%E6%95%B0%E5%AD%A6%E5%AE%9A%E7%90%86%E5%8F%8A%E5%85%B6%E8%AF%81%E6%98%8E/"><link rel="icon" href="/img/positive.svg"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/5.12.0/css/all.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css"><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/cookieconsent/3.1.1/cookieconsent.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.7.0/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/pace/1.0.2/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="滑蒻稽的博客" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives/">归档</a><a class="navbar-item" href="/categories/">分类</a><a class="navbar-item" href="/tags/">标签</a><a class="navbar-item" href="/about/">关于我</a><a class="navbar-item" href="/%E6%AF%8F%E6%97%A5/">每日</a><a class="navbar-item" href="/%E5%8F%8B%E9%93%BE/">友链</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Huaruoji GitHub" href="https://www.github.com/huaruoji"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal"><i class="fas fa-angle-double-right"></i>【笔记】各种数学定理及其证明</h1><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><i class="far fa-calendar-alt"> </i><time dateTime="${date_xml(page.date)}" title="${date_xml(page.date)}">2021-04-16</time></span><span class="level-item is-hidden-mobile"><i class="far fa-calendar-check"> </i><time dateTime="${date_xml(page.updated)}" title="${date_xml(page.updated)}">2021-04-16</time></span><span class="level-item"><i class="far fa-folder-open has-text-grey"></i> <a class="link-muted" href="/categories/%E6%95%B0%E5%AD%A6/">数学</a></span><span class="level-item"><i class="far fa-clock"></i> 2 分钟读完 (大约353个字)</span><span class="level-item" id="busuanzi_container_page_pv"><i class="far fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><div class="content"><p>主要记录各种在题目里遇到的，或关于算法的数学式子及其证明。不排除以后会因为内容过多分裂为几个文件的情况。</p>
+<h1 id="关于平方">关于平方</h1>
+<ol type="1">
+<li><p>若 <span class="math inline">\(a_1+a_2+\dots+a_n=m\)</span> , 那么 <span class="math inline">\(a_1^2+a_2^2+\dots+a_n^2\le m^2\)</span>.（<span class="math inline">\(m,a_1,a_2,\dots\)</span> 是非负数，当且仅当 <span class="math inline">\(m,a_1,a_2,\dots&gt;0\)</span> 时等号成立）<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4995">来源</a></p>
+<p><strong>证明</strong></p>
+<p>设 <span class="math inline">\((a_1+a_2+\dots+a_n)^2=a_1^2+a_2^2+\dots+a_n^2+x\)</span>，必有 <span class="math inline">\(x\ge 0\)</span>.</p>
+<p><em>证毕</em></p></li>
+<li><p>若有数列 <span class="math inline">\(a_1,a_2,\dots,a_n\)</span> 和 <span class="math inline">\(b_1,b_2,\dots,b_n\)</span> 那么在两数列有序时 <span class="math inline">\(\sum(a_i-b_i)^2\)</span> 最小. <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1966">来源</a></p>
+<p><strong>证明</strong></p>
+<p>若任意 <span class="math inline">\(a_i\)</span> 不与 <span class="math inline">\(b_i\)</span> 匹配，而与 <span class="math inline">\(b_j\)</span> 匹配，那么有 <span class="math inline">\((a_i-b_j)^2+(a_j-b_i)^2\ge(a_i-b_i)^2+(a_j-b_j)^2\)</span>.</p>
+<p><em>证毕</em></p></li>
+<li><p><strong>基本不等式</strong>：<span class="math inline">\(a^2+b^2\ge2ab\)</span>，或 <span class="math inline">\(\cfrac {a+b} 2\ge \sqrt {ab}\)</span>.</p>
+<p>对于均值不等式中的<strong>代数平均值＞几何平均值</strong>，参见 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/58362884">均值不等式的四大证明</a>.</p>
+<p>基本不等式的代数证明较为简单，这里放一个几何证明：</p>
+<p><img src="https://gitee.com/huaruoji/images/raw/master/img/20210416203433.jpeg"></p>
+<p>如图，<span class="math inline">\(DB=\sqrt {ab},OD=\frac {a+b} 2\)</span>，又有 <span class="math inline">\(DB\ge OD\)</span>.</p></li>
+</ol>
+<h1 id="数论">数论</h1>
+<p>参见 <a href="https://huaruoji.github.io/2021/04/02/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E6%95%B0%E8%AE%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">数论学习笔记</a> 。</p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>【笔记】各种数学定理及其证明</p><p><a href="https://huaruoji.github.io/2021/04/16/【笔记】各种数学定理及其证明/">https://huaruoji.github.io/2021/04/16/【笔记】各种数学定理及其证明/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>huaruoji</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2021-04-16</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2021-04-16</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="" rel="noopener" target="_blank" title="CC BY-SA 4.0" href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fab fa-creative-commons"></i> <i class="fab fa-creative-commons-by"></i> <i class="fab fa-creative-commons-sa"></i> CC BY-SA 4.0</a></p></div></div></div></div></div><hr style="height:1px;margin:1rem 0"><div class="level is-mobile is-flex"><div class="article-tags is-size-7 is-uppercase"><i class="fas fa-tags has-text-grey"></i> <a class="link-muted" rel="tag" href="/tags/%E6%95%B0%E5%AD%A6/">数学, </a><a class="link-muted" rel="tag" href="/tags/%E7%AC%94%E8%AE%B0/">笔记 </a></div></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2021/04/16/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91P4995-%E8%B7%B3%E8%B7%B3%EF%BC%81/"><span class="level-item">【题解】P4995 跳跳！</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div id="comment-container"></div><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/gitalk/1.6.2/gitalk.css"><script src="https://cdnjs.loli.net/ajax/libs/gitalk/1.6.2/gitalk.min.js"></script><script>var gitalk = new Gitalk({
+            id: "6df660dbcbf448b2d64c5ff6edd7089b",
+            repo: "https://github.com/huaruoji/blog-comment",
+            owner: "huaruoji",
+            clientID: "d96d183010163ceb5bd9",
+            clientSecret: "c94983313de7ceec8946852779d230c387491466",
+            admin: ["huaruoji"],
+            createIssueManually: false,
+            distractionFreeMode: false,
+            perPage: 20,
+            pagerDirection: "last",
+            
+            
+            enableHotKey: true,
+            language: "zh-CN",
+        })
+        gitalk.render('comment-container')</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level" style="margin-bottom:1rem"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-96x96 mx-auto mb-2"><img class="avatar is-rounded" src="https://www.gravatar.com/avatar/04bb1eeaf09cf88b5d30d135fd495eb9?s=96" alt="滑蒻稽"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">滑蒻稽</p><p class="is-size-6 is-block">这写的什么玩意,博主上过小学吗?</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Chengdu, China</span></p></div></div></nav><nav class="level menu-list is-mobile" style="margin-bottom:1rem"><a class="level-item has-text-centered is-marginless" href="/archives/"><div><p class="heading">文章</p><div><p class="title">125</p></div></div></a><a class="level-item has-text-centered is-marginless" href="/categories/"><div><p class="heading">分类</p><div><p class="title">124</p></div></div></a><a class="level-item has-text-centered is-marginless" href="/tags/"><div><p class="heading">标签</p><div><p class="title">98</p></div></div></a></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://www.github.com/huaruoji" target="_blank" rel="noopener"><i class="fab fa-github"></i>  关注我</a></div></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#关于平方"><span class="level-left"><span class="level-item">1</span><span class="level-item">关于平方</span></span></a></li><li><a class="level is-mobile" href="#数论"><span class="level-left"><span class="level-item">2</span><span class="level-item">数论</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="滑蒻稽的博客" height="28"></a><p class="is-size-7"><span>&copy; 2021 huaruoji</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="CC BY-SA 4.0" href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fab fa-creative-commons"></i> <i class="fab fa-creative-commons-by"></i> <i class="fab fa-creative-commons-sa"></i> </a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="huaruoji GitHub" href="https://www.github.com/huaruoji"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdnjs.loli.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/cookieconsent/3.1.1/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdnjs.loli.net/ajax/libs/lightgallery/1.6.8/js/lightgallery.min.js" defer></script><script src="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.7.0/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script type="text/x-mathjax-config">MathJax.Hub.Config({
+            'HTML-CSS': {
+                matchFontHeight: false
+            },
+            SVG: {
+                matchFontHeight: false
+            },
+            CommonHTML: {
+                matchFontHeight: false
+            },
+            tex2jax: {
+                inlineMath: [
+                    ['$','$'],
+                    ['\\(','\\)']
+                ]
+            }
+        });</script><script src="https://cdnjs.loli.net/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" defer></script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
