@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>【专题】莫队算法 - 滑蒻稽的博客</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="滑蒻稽的博客"><meta name="msapplication-TileImage" content="/img/positive.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="滑蒻稽的博客"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="莫队 假设询问若干个区间的答案，但已知 \([L,R]\) 的答案，将计算左右端点增减 1 对答案更改的时间复杂度记为 \(O(1)\)，要想求出 \([L&amp;#39;,R&amp;#39;]\) 的答案则需要 \(O(|L-L&amp;#39;|+|R-R&amp;#39;|)\)。即将询问看作点后 2 点在二维平面上的曼哈顿距离。如果有多个询问，且询问间两两可以转移，想要得到走过所有点的最短路径（即哈密尔顿路径），则"><meta property="og:type" content="blog"><meta property="og:title" content="【专题】莫队算法"><meta property="og:url" content="https://huaruoji.github.io/2021/04/22/%E3%80%90%E4%B8%93%E9%A2%98%E3%80%91%E8%8E%AB%E9%98%9F%E7%AE%97%E6%B3%95/"><meta property="og:site_name" content="滑蒻稽的博客"><meta property="og:description" content="莫队 假设询问若干个区间的答案，但已知 \([L,R]\) 的答案，将计算左右端点增减 1 对答案更改的时间复杂度记为 \(O(1)\)，要想求出 \([L&amp;#39;,R&amp;#39;]\) 的答案则需要 \(O(|L-L&amp;#39;|+|R-R&amp;#39;|)\)。即将询问看作点后 2 点在二维平面上的曼哈顿距离。如果有多个询问，且询问间两两可以转移，想要得到走过所有点的最短路径（即哈密尔顿路径），则"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://gitee.com/huaruoji/images/raw/master/img/20210422101637.webp"><meta property="og:image" content="https://gitee.com/huaruoji/images/raw/master/img/20210422101637.webp"><meta property="article:published_time" content="2021-04-22T00:14:46.607Z"><meta property="article:modified_time" content="2021-04-22T08:47:06.127Z"><meta property="article:author" content="huaruoji"><meta property="article:tag" content="专题"><meta property="article:tag" content="莫队"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://gitee.com/huaruoji/images/raw/master/img/20210422101637.webp"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://huaruoji.github.io/2021/04/22/%E3%80%90%E4%B8%93%E9%A2%98%E3%80%91%E8%8E%AB%E9%98%9F%E7%AE%97%E6%B3%95/"},"headline":"滑蒻稽的博客","image":[],"datePublished":"2021-04-22T00:14:46.607Z","dateModified":"2021-04-22T08:47:06.127Z","author":{"@type":"Person","name":"huaruoji"},"description":"莫队\r 假设询问若干个区间的答案，但已知 \\([L,R]\\) 的答案，将计算左右端点增减 1 对答案更改的时间复杂度记为 \\(O(1)\\)，要想求出 \\([L&#39;,R&#39;]\\) 的答案则需要 \\(O(|L-L&#39;|+|R-R&#39;|)\\)。即将询问看作点后 2 点在二维平面上的曼哈顿距离。如果有多个询问，且询问间两两可以转移，想要得到走过所有点的最短路径（即哈密尔顿路径），则"}</script><link rel="canonical" href="https://huaruoji.github.io/2021/04/22/%E3%80%90%E4%B8%93%E9%A2%98%E3%80%91%E8%8E%AB%E9%98%9F%E7%AE%97%E6%B3%95/"><link rel="icon" href="/img/positive.svg"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/5.12.0/css/all.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css"><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/cookieconsent/3.1.1/cookieconsent.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.7.0/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/pace/1.0.2/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="滑蒻稽的博客" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives/">归档</a><a class="navbar-item" href="/categories/">分类</a><a class="navbar-item" href="/tags/">标签</a><a class="navbar-item" href="/about/">关于</a><a class="navbar-item" href="/%E5%8F%8B%E9%93%BE/">友链</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Huaruoji GitHub" href="https://www.github.com/huaruoji"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal"><i class="fas fa-angle-double-right"></i>【专题】莫队算法</h1><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><i class="far fa-calendar-alt"> </i><time dateTime="${date_xml(page.date)}" title="${date_xml(page.date)}">2021-04-22</time></span><span class="level-item is-hidden-mobile"><i class="far fa-calendar-check"> </i><time dateTime="${date_xml(page.updated)}" title="${date_xml(page.updated)}">2021-04-22</time></span><span class="level-item"><i class="far fa-folder-open has-text-grey"></i> <a class="link-muted" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a><span> / </span><a class="link-muted" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BA%BF%E6%80%A7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">线性数据结构</a><span> / </span><a class="link-muted" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BA%BF%E6%80%A7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E8%8E%AB%E9%98%9F/">莫队</a></span><span class="level-item"><i class="far fa-clock"></i> 12 分钟读完 (大约1856个字)</span><span class="level-item" id="busuanzi_container_page_pv"><i class="far fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><div class="content"><h1 id="莫队">莫队</h1>
+<p>假设询问若干个区间的答案，但已知 <span class="math inline">\([L,R]\)</span> 的答案，将计算左右端点增减 1 对答案更改的时间复杂度记为 <span class="math inline">\(O(1)\)</span>，要想求出 <span class="math inline">\([L&#39;,R&#39;]\)</span> 的答案则需要 <span class="math inline">\(O(|L-L&#39;|+|R-R&#39;|)\)</span>。即将询问看作点后 2 点在二维平面上的曼哈顿距离。如果有多个询问，且询问间两两可以转移，想要得到走过所有点的最短路径（即哈密尔顿路径），则可跑一次曼哈顿最小生成树。但曼哈顿最小生成树的求解较为复杂，用莫队算法可以得到一个较好的询问处理顺序。</p>
+<p>莫队算法将询问按左端点分块，每个块内的询问再按右端点排序。这样，右端点的移动是依次递增的，每个块内右端点的移动复杂度为 <span class="math inline">\(\Omega(n)\)</span>，设块长为 t，则左端点移动一次复杂度为 <span class="math inline">\(\Omega (t)\)</span>。左右端点移动的总复杂度为 <span class="math inline">\(\Omega(\frac {n^2}t +nt)\)</span>，根据均值不等式算出来块长为 <span class="math inline">\(t=\sqrt n\)</span> 最合适，当然，块长会根据题目变化。</p>
+<h2 id="例题">例题</h2>
+<p><a target="_blank" rel="noopener" href="https://huaruoji.gitee.io/2021/04/21/%5B题解%5DP2709-小B的询问/">小B的询问</a></p>
+<span id="more"></span>
+<h1 id="带修莫队">带修莫队</h1>
+<p>在普通的莫队算法中，有一个很重要的概念是指向左右端点的左、右指针。指针位置的变化就代表了复杂度的增加。一般的题目中，一次修改带来的操作应是 <span class="math inline">\(O(1)\)</span> 的，或者至少在可接受范围内。那么我们就可以引入一个“时间轴”的概念，设置一个时间指针来代表进行了多少修改。需要注意，因为这个时间指针需要前移或后移，那么修改操作就必须是可逆的。设一个操作为 <span class="math inline">\((l,r,t)\)</span> ，那么新操作 <span class="math inline">\((l&#39;,r&#39;,t&#39;)\)</span> 到原操作的距离则可看作三维空间中的曼哈顿距离。但是，我们仍然可以分块计算操作。</p>
+<p>在之前的莫队算法中，我们注意到有 2 个关键字都需要排序。但显然不可能都保持有序，于是把左端点的位置降级为左端点所在块的位置。就算左端点在块内无序，移动的距离也相对较少。也就是说，我们实际上是找到了一种简单的方式将左右端点的移动都控制在 <span class="math inline">\(O(n\sqrt n)\)</span>。在下面的分析中，这种感觉会更强烈。</p>
+<p>将左端点和右端点<strong>所在的块</strong>作为一二关键字排序，时间作为第三关键字排序（也可以交换一下顺序，甚至根据题目特点确定更好的排序方式，不再赘述）。将左右端点所在块的组合称之为<strong>新块</strong>，总块数设为 c，块长设为 t。那么可以列出下面的复杂度表格：</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>时间指针</th>
+<th>左端点</th>
+<th>右端点</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>跨块</td>
+<td><span class="math inline">\(\Omega(nc^2)\)</span></td>
+<td>\</td>
+<td><span class="math inline">\(\Omega(nc)\)</span></td>
+</tr>
+<tr class="even">
+<td>块内</td>
+<td><span class="math inline">\(\Omega(nc^2)\)</span></td>
+<td><span class="math inline">\(\Omega(tn)\)</span></td>
+<td><span class="math inline">\(\Omega(tn)\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>整理一下，再乱用记号，得到 <span class="math inline">\(O(\cfrac {n^3} {t^2}+tn)\)</span>，那么，块长为 <span class="math inline">\(n^{\cfrac 23}\)</span> 最合适（终于推对了）！总块数为 <span class="math inline">\(n^{\cfrac 13}\)</span>。</p>
+<p>当然，带修莫队的复杂度并不优秀，它主要运用在分块不能解决的树上莫队的问题中。</p>
+<h1 id="树上莫队">树上莫队</h1>
+<h2 id="利用欧拉序">利用欧拉序</h2>
+<h4 id="例题-1">例题</h4>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4074">P4074 [WC2013] 糖果公园 - 洛谷 | 计算机科学教育新生态 (luogu.com.cn)</a></p>
+<h4 id="树的欧拉序">树的欧拉序</h4>
+<p>欧拉序有 2 种，一种只记录节点出入栈，一种每次访问节点都记录。这里讲的是第一种</p>
+<p>对树进行深度有限遍历，当一个节点入栈（递归栈）时，将它加入序列，当一个节点出栈时，也将它加入序列。得到的序列就是树的欧拉序。</p>
+<p>假设有一颗树：</p>
+<p><img src="https://gitee.com/huaruoji/images/raw/master/img/20210422101637.webp"></p>
+<p>这棵树的欧拉序即为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 2 3 3 4 4 5 5 2 6 7 7 8 8 6 1</span><br></pre></td></tr></table></figure>
+<p>不难看出，设有一节点 u 在欧拉序中的位置分别为 <span class="math inline">\(p_1,p_2\)</span>，那么 <span class="math inline">\((p_1,p_2)\)</span> 代表的节点为 u 的子树所代表的节点组成的集合。</p>
+<p>那么，假设 u 和 v 是兄弟关系，在 v 的欧拉序前，一定已经遍历完了 u 及其子树。</p>
+<p>利用上面 2 点，我们可以得到欧拉序的几种应用：</p>
+<ul>
+<li>求节点到任意父亲的权值和：从父亲访问欧拉序，若第一次遇见某节点，加上它的权值，若第二次遇见，减去它的权值。</li>
+<li>求某个子树的权值和：累加欧拉序中 <span class="math inline">\((u,u&#39;)\)</span> 内所有节点的权值和，再除以 2.</li>
+<li>求任意 2 点路径上的权值和：设任意节点到根节点的权值和为 <span class="math inline">\(root(u)\)</span>，那么 <span class="math inline">\((u,v)=root(u)+root(v)-\mathrm {val}(\mathrm {LCA}(u,v))\)</span>.</li>
+</ul>
+<h4 id="对欧拉序执行带修莫队">对欧拉序执行带修莫队</h4>
+<p>在上面讨论欧拉序时，求 2 点路径权值和是用到了 LCA 的，但每移动一次指针都要用到 LCA 显然不好操作，于是我们将与 LCA 有关的操作转移到询问上去。用 <span class="math inline">\((l,r,t)\)</span> 直接记录区间的答案，表示 <span class="math inline">\(root(r)-root(l)\)</span>，显然，这样做可能会漏掉 LCA，但直接特判就好了。</p>
+<p>这里可以用另一种欧拉序将 LCA 转换为 RMQ 问题实现 <span class="math inline">\(O(1)\)</span> 查询 LCA。并且，由于 2 种欧拉序的代码差不了多少，可以写在一个 DFS 里。</p>
+<p>还是这棵树：</p>
+<p><img src="https://gitee.com/huaruoji/images/raw/master/img/20210422101637.webp"></p>
+<p>在 DFS 时每遇到一个栈中节点，就将它推入欧拉序：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 2 3 2 4 2 5 2 1 6 7 6 8 6 1</span><br></pre></td></tr></table></figure>
+<p>假设有节点 u，v. u 在欧拉序中最后一次出现的位置是 <span class="math inline">\(p_1\)</span>，v 在欧拉序中第一次出现的节点是 <span class="math inline">\(p_2\)</span> ，那么 <span class="math inline">\([p_1,p_2]\)</span> 中深度最小的节点即为 LCA(u,v). 这是因为：假设 u 在欧拉序中第一次出现的位置是 <span class="math inline">\(q_1\)</span>，那么 <span class="math inline">\([q_1,p_1]\)</span> 包含了 u 的子树。LCA(u,v) 第一次出现的位置和最后一次出现的位置间也是它的子树。其实，就算是记录每个节点第一次出现的位置，照样能求出 LCA，因为子树的深度必定小于 LCA 的深度。</p>
+<p>另外，由于每个节点自己会记录一次，也会让自己的父亲被记录一次，所以这种欧拉序的长度不超过 <span class="math inline">\(2n\)</span>。</p>
+<h4 id="莫队操作的细节">莫队操作的细节</h4>
+<h4 id="代码">代码</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">我真是最傻逼的傻逼，以后再说吧！</span><br></pre></td></tr></table></figure>
+<h4 id="分析">分析</h4>
+<p><del>分块中对整块答案的预处理及其重要。若用分块解决此题，必然要记录整块区间某种糖果的数量，但这个区间根本无法加减。也就是说，无法用前缀和存储，甚至无法处理出整块区间</del> 未完待续</p>
+<h2 id="将节点分块">将节点分块</h2>
+</div><div class="article-licensing box"><div class="licensing-title"><p>【专题】莫队算法</p><p><a href="https://huaruoji.github.io/2021/04/22/【专题】莫队算法/">https://huaruoji.github.io/2021/04/22/【专题】莫队算法/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>huaruoji</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2021-04-22</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2021-04-22</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="" rel="noopener" target="_blank" title="CC BY-SA 4.0" href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fab fa-creative-commons"></i> <i class="fab fa-creative-commons-by"></i> <i class="fab fa-creative-commons-sa"></i> CC BY-SA 4.0</a></p></div></div></div></div></div><hr style="height:1px;margin:1rem 0"><div class="level is-mobile is-flex"><div class="article-tags is-size-7 is-uppercase"><i class="fas fa-tags has-text-grey"></i> <a class="link-muted" rel="tag" href="/tags/%E4%B8%93%E9%A2%98/">专题, </a><a class="link-muted" rel="tag" href="/tags/%E8%8E%AB%E9%98%9F/">莫队 </a></div></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2021/04/22/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E7%AE%80%E5%8D%95%E5%A4%8D%E6%9D%82%E5%BA%A6%E7%90%86%E8%AE%BA%EF%BC%88P,NP,NP-hardness,NP-completeness%EF%BC%89/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">【笔记】简单复杂度理论（P,NP,NP-hardness,NP-completeness）</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2021/04/21/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91P2709-%E5%B0%8FB%E7%9A%84%E8%AF%A2%E9%97%AE/"><span class="level-item">【题解】P2709 小B的询问</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><script>var disqus_config = function () {
+            this.page.url = 'https://huaruoji.github.io/2021/04/22/%E3%80%90%E4%B8%93%E9%A2%98%E3%80%91%E8%8E%AB%E9%98%9F%E7%AE%97%E6%B3%95/';
+            this.page.identifier = 'zt-mdsf';
+        };
+        (function() {
+            var d = document, s = d.createElement('script');  
+            s.src = '//' + 'huaruoji' + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level" style="margin-bottom:1rem"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-96x96 mx-auto mb-2"><img class="avatar is-rounded" src="https://www.gravatar.com/avatar/04bb1eeaf09cf88b5d30d135fd495eb9?s=96" alt="滑蒻稽"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">滑蒻稽</p><p class="is-size-6 is-block">这写的什么玩意,博主上过小学吗?</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Chengdu, China</span></p></div></div></nav><nav class="level menu-list is-mobile" style="margin-bottom:1rem"><a class="level-item has-text-centered is-marginless" href="/archives/"><div><p class="heading">文章</p><div><p class="title">133</p></div></div></a><a class="level-item has-text-centered is-marginless" href="/categories/"><div><p class="heading">分类</p><div><p class="title">129</p></div></div></a><a class="level-item has-text-centered is-marginless" href="/tags/"><div><p class="heading">标签</p><div><p class="title">104</p></div></div></a></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://www.github.com/huaruoji" target="_blank" rel="noopener"><i class="fab fa-github"></i>  关注我</a></div></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#莫队"><span class="level-left"><span class="level-item">1</span><span class="level-item">莫队</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#例题"><span class="level-left"><span class="level-item">1.1</span><span class="level-item">例题</span></span></a></li></ul></li><li><a class="level is-mobile" href="#带修莫队"><span class="level-left"><span class="level-item">2</span><span class="level-item">带修莫队</span></span></a></li><li><a class="level is-mobile" href="#树上莫队"><span class="level-left"><span class="level-item">3</span><span class="level-item">树上莫队</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#利用欧拉序"><span class="level-left"><span class="level-item">3.1</span><span class="level-item">利用欧拉序</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#分析"><span class="level-left"><span class="level-item">3.1.1</span><span class="level-item">分析</span></span></a></li></ul></li><li><a class="level is-mobile" href="#将节点分块"><span class="level-left"><span class="level-item">3.2</span><span class="level-item">将节点分块</span></span></a></li></ul></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="滑蒻稽的博客" height="28"></a><p class="is-size-7"><span>&copy; 2021 huaruoji</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="CC BY-SA 4.0" href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fab fa-creative-commons"></i> <i class="fab fa-creative-commons-by"></i> <i class="fab fa-creative-commons-sa"></i> </a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="huaruoji GitHub" href="https://www.github.com/huaruoji"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdnjs.loli.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/cookieconsent/3.1.1/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdnjs.loli.net/ajax/libs/lightgallery/1.6.8/js/lightgallery.min.js" defer></script><script src="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.7.0/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script type="text/x-mathjax-config">MathJax.Hub.Config({
+            'HTML-CSS': {
+                matchFontHeight: false
+            },
+            SVG: {
+                matchFontHeight: false
+            },
+            CommonHTML: {
+                matchFontHeight: false
+            },
+            tex2jax: {
+                inlineMath: [
+                    ['$','$'],
+                    ['\\(','\\)']
+                ]
+            }
+        });</script><script src="https://cdnjs.loli.net/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" defer></script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
