@@ -53,7 +53,8 @@
     function createFoldButton(fold) {
         return '<span class="fold">' + (fold === 'unfolded' ? '<i class="fas fa-angle-down"></i>' : '<i class="fas fa-angle-right"></i>') + '</span>';
     }
-
+	
+	
     $('figure.highlight table').wrap('<div class="highlight-body">');
     if (typeof config !== 'undefined'
         && typeof config.article !== 'undefined'
