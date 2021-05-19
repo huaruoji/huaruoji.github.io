@@ -1,208 +1,158 @@
 <!doctype html>
-<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>【专题】递推 - 滑蒻稽的博客</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="滑蒻稽的博客"><meta name="msapplication-TileImage" content="/img/positive.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="滑蒻稽的博客"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="** 水水水水水**  问题 A: 铺瓷砖 题目描述 用红色的 1×1 和黑色的 2×2 两种规格的瓷砖不重叠地铺满 n×3 的路面，求出有多少种不同的铺设方案。 输入 一行一个整数 n，0&amp;lt;n&amp;lt;1000。 输出 一行一个整数，为铺设方案的数量模12345的结果。  1:1 2:3 4:5 5:11 也就是2n+1,2n-1滴规律 #include &amp;lt;iostream&amp;gt;"><meta property="og:type" content="blog"><meta property="og:title" content="【专题】递推"><meta property="og:url" content="https://huaruoji.github.io/2020/03/28/%E3%80%90%E4%B8%93%E9%A2%98%E3%80%91%E9%80%92%E6%8E%A8/"><meta property="og:site_name" content="滑蒻稽的博客"><meta property="og:description" content="** 水水水水水**  问题 A: 铺瓷砖 题目描述 用红色的 1×1 和黑色的 2×2 两种规格的瓷砖不重叠地铺满 n×3 的路面，求出有多少种不同的铺设方案。 输入 一行一个整数 n，0&amp;lt;n&amp;lt;1000。 输出 一行一个整数，为铺设方案的数量模12345的结果。  1:1 2:3 4:5 5:11 也就是2n+1,2n-1滴规律 #include &amp;lt;iostream&amp;gt;"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://47.102.112.238/upload/image/20200217/20200217134759_59376.png"><meta property="og:image" content="http://47.102.112.238/upload/image/20200218/20200218160444_38976.png"><meta property="article:published_time" content="2020-03-28T12:22:00.000Z"><meta property="article:modified_time" content="2021-03-12T13:08:16.803Z"><meta property="article:author" content="huaruoji"><meta property="article:tag" content="递推"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="http://47.102.112.238/upload/image/20200217/20200217134759_59376.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://huaruoji.github.io/2020/03/28/%E3%80%90%E4%B8%93%E9%A2%98%E3%80%91%E9%80%92%E6%8E%A8/"},"headline":"滑蒻稽的博客","image":["http://47.102.112.238/upload/image/20200217/20200217134759_59376.png","http://47.102.112.238/upload/image/20200218/20200218160444_38976.png"],"datePublished":"2020-03-28T12:22:00.000Z","dateModified":"2021-03-12T13:08:16.803Z","author":{"@type":"Person","name":"huaruoji"},"description":"** 水水水水水**  问题 A: 铺瓷砖 题目描述 用红色的 1×1 和黑色的 2×2 两种规格的瓷砖不重叠地铺满 n×3 的路面，求出有多少种不同的铺设方案。 输入 一行一个整数 n，0&lt;n&lt;1000。 输出 一行一个整数，为铺设方案的数量模12345的结果。  1:1 2:3 4:5 5:11 也就是2n+1,2n-1滴规律 #include &lt;iostream&gt;"}</script><link rel="canonical" href="https://huaruoji.github.io/2020/03/28/%E3%80%90%E4%B8%93%E9%A2%98%E3%80%91%E9%80%92%E6%8E%A8/"><link rel="icon" href="/img/positive.svg"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/5.12.0/css/all.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css"><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.7.0/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/pace/1.0.2/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start -->
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>【专题】递推 - 滑蒻稽的博客</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="滑蒻稽的博客"><meta name="msapplication-TileImage" content="/img/positive.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="滑蒻稽的博客"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="水水水水水   问题 A: 铺瓷砖 题目描述 用红色的 1×1 和黑色的 2×2 两种规格的瓷砖不重叠地铺满 n×3 的路面，求出有多少种不同的铺设方案。 输入 一行一个整数 n，0&amp;lt;n&amp;lt;1000。 输出 一行一个整数，为铺设方案的数量模12345的结果。   1:1 2:3 4:5 5:11 也就是2n+1,2n-1滴规律 #include &amp;amp;lt"><meta property="og:type" content="blog"><meta property="og:title" content="【专题】递推"><meta property="og:url" content="https://huaruoji.github.io/2020/03/28/%E3%80%90%E4%B8%93%E9%A2%98%E3%80%91%E9%80%92%E6%8E%A8/"><meta property="og:site_name" content="滑蒻稽的博客"><meta property="og:description" content="水水水水水   问题 A: 铺瓷砖 题目描述 用红色的 1×1 和黑色的 2×2 两种规格的瓷砖不重叠地铺满 n×3 的路面，求出有多少种不同的铺设方案。 输入 一行一个整数 n，0&amp;lt;n&amp;lt;1000。 输出 一行一个整数，为铺设方案的数量模12345的结果。   1:1 2:3 4:5 5:11 也就是2n+1,2n-1滴规律 #include &amp;amp;lt"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://47.102.112.238/upload/image/20200217/20200217134759_59376.png"><meta property="og:image" content="http://47.102.112.238/upload/image/20200218/20200218160444_38976.png"><meta property="article:published_time" content="2020-03-28T12:22:00.000Z"><meta property="article:modified_time" content="2021-03-12T13:08:16.803Z"><meta property="article:author" content="huaruoji"><meta property="article:tag" content="递推"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="http://47.102.112.238/upload/image/20200217/20200217134759_59376.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://huaruoji.github.io/2020/03/28/%E3%80%90%E4%B8%93%E9%A2%98%E3%80%91%E9%80%92%E6%8E%A8/"},"headline":"滑蒻稽的博客","image":["http://47.102.112.238/upload/image/20200217/20200217134759_59376.png","http://47.102.112.238/upload/image/20200218/20200218160444_38976.png"],"datePublished":"2020-03-28T12:22:00.000Z","dateModified":"2021-03-12T13:08:16.803Z","author":{"@type":"Person","name":"huaruoji"},"description":"水水水水水\r  \r 问题 A: 铺瓷砖\r 题目描述\r 用红色的 1×1 和黑色的 2×2 两种规格的瓷砖不重叠地铺满 n×3 的路面，求出有多少种不同的铺设方案。\r 输入\r 一行一个整数 n，0&lt;n&lt;1000。\r 输出\r 一行一个整数，为铺设方案的数量模12345的结果。\r  \r 1:1\r 2:3\r 4:5\r 5:11\r 也就是2n+1,2n-1滴规律\r #include &amp;lt"}</script><link rel="canonical" href="https://huaruoji.github.io/2020/03/28/%E3%80%90%E4%B8%93%E9%A2%98%E3%80%91%E9%80%92%E6%8E%A8/"><link rel="icon" href="/img/positive.svg"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/5.12.0/css/all.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css"><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.7.0/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/pace/1.0.2/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
 <!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="滑蒻稽的博客" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives/">归档</a><a class="navbar-item" href="/categories/">分类</a><a class="navbar-item" href="/tags/">标签</a><a class="navbar-item" href="/about/">关于</a><a class="navbar-item" href="/%E5%8F%8B%E9%93%BE/">友链</a><a class="navbar-item" href="/other/">怪玩意</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Huaruoji GitHub" href="https://www.github.com/huaruoji"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal"><i class="fas fa-angle-double-right"></i>【专题】递推</h1><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><i class="far fa-calendar-alt"> </i><time dateTime="${date_xml(page.date)}" title="${date_xml(page.date)}">2020-03-28</time></span><span class="level-item is-hidden-mobile"><i class="far fa-calendar-check"> </i><time dateTime="${date_xml(page.updated)}" title="${date_xml(page.updated)}">2021-03-12</time></span><span class="level-item"><i class="far fa-folder-open has-text-grey"></i> <a class="link-muted" href="/categories/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/">基础算法</a><span> / </span><a class="link-muted" href="/categories/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E9%80%92%E6%8E%A8/">递推</a></span><span class="level-item"><i class="far fa-clock"></i> 2 分钟读完 (大约260个字)</span><span class="level-item" id="busuanzi_container_page_pv"><i class="far fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><div class="content"><span id="more"></span>
-<p>** 水水水水水**</p>
-<p></p>
-<h3 id="问题-A-铺瓷砖">问题 A: 铺瓷砖</h3>
+<p><strong> 水水水水水</strong></p>
+<p> </p>
+<h3 id="问题-a-铺瓷砖">问题 A: 铺瓷砖</h3>
 <h4 id="题目描述">题目描述</h4>
 <p>用红色的 1×1 和黑色的 2×2 两种规格的瓷砖不重叠地铺满 n×3 的路面，求出有多少种不同的铺设方案。</p>
 <h4 id="输入">输入</h4>
 <p>一行一个整数 n，0&lt;n&lt;1000。</p>
 <h4 id="输出">输出</h4>
 <p>一行一个整数，为铺设方案的数量模12345的结果。</p>
-<p></p>
+<p> </p>
 <p>1:1</p>
 <p>2:3</p>
 <p>4:5</p>
 <p>5:11</p>
 <p>也就是2n+1,2n-1滴规律</p>
-<p>#include &lt;iostream&gt;<br>
-#include &lt;cstring&gt;<br>
-#include &lt;cstdio&gt;<br>
-#include &lt;algorithm&gt;</p>
-<p>using namespace std;<br>
-int n,ans=1;</p>
-<p>int main()<br>
-{<br>
-ios::sync_with_stdio(false);</p>
+<p>#include &lt;iostream&gt; #include &lt;cstring&gt; #include &lt;cstdio&gt; #include &lt;algorithm&gt;</p>
+<p>using namespace std; int n,ans=1;</p>
+<p>int main() { ios::sync_with_stdio(false);</p>
 <pre><code>cin&gt;&gt;n;
 if\(n==1\) cout\&lt;\&lt;ans;
 else
 \&#123;
-	for\(int j=2;j\&lt;=n;j++\)
-	\&#123;
-		if\(j\%2==0\)
-		\&#123;
-			ans=ans\*2+1;
-		\&#125;
-		else
-		\&#123;
-			ans=ans\*2-1;
-		\&#125;
-		ans\%=12345;
-	\&#125;
+    for\(int j=2;j\&lt;=n;j++\)
+    \&#123;
+        if\(j\%2==0\)
+        \&#123;
+            ans=ans\*2+1;
+        \&#125;
+        else
+        \&#123;
+            ans=ans\*2-1;
+        \&#125;
+        ans\%=12345;
+    \&#125;
 \&#125;
 cout\&lt;\&lt;ans;
 
-return 0;
-</code></pre>
+return 0;</code></pre>
 <p>}</p>
-<h3 id="问题-B-彩带">问题 B: 彩带</h3>
-<h4 id="题目描述-2">题目描述</h4>
-<p>一中 90 周年校庆，小林准备用一些白色、蓝色和红色的彩带来装饰学校超市的橱窗，他希望满足以下两个条件：</p>
+<h3 id="问题-b-彩带">问题 B: 彩带</h3>
+<h4 id="题目描述-1">题目描述</h4>
+<p> 一中 90 周年校庆，小林准备用一些白色、蓝色和红色的彩带来装饰学校超市的橱窗，他希望满足以下两个条件：</p>
 <p>(1) 相同颜色的彩带不能放在相邻的位置；</p>
 <p>(2) 一条蓝色的彩带必须放在一条白色的彩带和一条红色的彩带中间。</p>
-<p>现在，他想知道满足要求的放置彩带的方案数有多少种。例如，如图 所示为橱窗宽度n=3 的所有放置方案，共 4 种。</p>
-<p><img src="http://47.102.112.238/upload/image/20200217/20200217134759_59376.png" alt></p>
-<h4 id="输入-2">输入</h4>
+<p>    现在，他想知道满足要求的放置彩带的方案数有多少种。例如，如图 所示为橱窗宽度n=3 的所有放置方案，共 4 种。</p>
+<p><img src="http://47.102.112.238/upload/image/20200217/20200217134759_59376.png"></p>
+<h4 id="输入-1">输入</h4>
 <p>一行一个整数 n，表示橱窗宽度(或者说彩带数目)。</p>
-<h4 id="输出-2">输出</h4>
+<h4 id="输出-1">输出</h4>
 <p>一行一个整数，表示装饰橱窗的彩带放置方案数。</p>
-<h4 id="样例输入-Copy">样例输入 <a href="null">Copy</a></h4>
+<h4 id="样例输入-copy">样例输入 <a href="null">Copy</a></h4>
 <p>3</p>
-<h4 id="样例输出-Copy">样例输出 <a href="null">Copy</a></h4>
+<h4 id="样例输出-copy">样例输出 <a href="null">Copy</a></h4>
 <p>4</p>
 <h4 id="提示">提示</h4>
 <p>对 30% 的数据满足：1≤n≤15。</p>
 <p>对 100% 的数据满足：1≤n≤45。</p>
 <p>斐波那契数列,<strong>但前两项都是2</strong></p>
-<p>#include &lt;iostream&gt;<br>
-#include &lt;cstring&gt;<br>
-#include &lt;cstdio&gt;<br>
-#include &lt;algorithm&gt;</p>
-<p>using namespace std;<br>
-int n,f[50];</p>
-<p>int main()<br>
-{<br>
-ios::sync_with_stdio(false);</p>
+<p>#include &lt;iostream&gt; #include &lt;cstring&gt; #include &lt;cstdio&gt; #include &lt;algorithm&gt;</p>
+<p>using namespace std; int n,f[50];</p>
+<p>int main() { ios::sync_with_stdio(false);</p>
 <pre><code>f\[1\]=f\[2\]=2;
 cin&gt;&gt;n;
 for\(int j=3;j\&lt;=n;j++\)
 \&#123;
-	f\[j\]=f\[j-1\]+f\[j-2\];
+    f\[j\]=f\[j-1\]+f\[j-2\];
 \&#125;
 cout\&lt;\&lt;f\[n\];
 
-return 0;
-</code></pre>
+return 0;</code></pre>
 <p>}</p>
-<h3 id="1389-城市路径">1389: 城市路径</h3>
-<h4 id="题目描述-3">题目描述</h4>
+<h3 id="城市路径">1389: 城市路径</h3>
+<h4 id="题目描述-2">题目描述</h4>
 <p>地图上有 n 个城市，一只奶牛要从 1 号城市开始依次经过这些城市，最终到达 n 号城市。但是这只奶牛觉得这样太无聊了，所以它决定跳过其中的一个城市(但是不能跳过 1 号和 n 号城市)，使得它从 1 号城市开始，到达 n 号城市所经过的总距离最小。假设每一个城市 i 都有一个坐标(x i ，y i )，从 (x 1 ，y 1 ) 的城市 1 到 (x 2 ，y 2 ) 的城市 2 之间的距离为 | x 1 -x 2 | + | y 1 -y 2 | 。</p>
-<h4 id="输入-3">输入</h4>
+<h4 id="输入-2">输入</h4>
 <p>第 1 行 1 个正整数 n，表示城市个数。</p>
 <p>接下来的 n 行，每行 2 个数 x i 和 y i ，表示城市 i 的坐标。</p>
-<h4 id="输出-3">输出</h4>
+<h4 id="输出-2">输出</h4>
 <p>一行一个数，使得它从1号城市开始，跳过某一个城市，到达n号城市所经过的最小总距离。</p>
-<h4 id="样例输入-Copy-2">样例输入 <a href="null">Copy</a></h4>
-<p>4<br>
-0 0<br>
-8 3<br>
-11 -1<br>
-10 0</p>
-<h4 id="样例输出-Copy-2">样例输出 <a href="null">Copy</a></h4>
+<h4 id="样例输入-copy-1">样例输入 <a href="null">Copy</a></h4>
+<p>4 0 0 8 3 11 -1 10 0</p>
+<h4 id="样例输出-copy-1">样例输出 <a href="null">Copy</a></h4>
 <p>14</p>
-<h4 id="提示-2">提示</h4>
+<h4 id="提示-1">提示</h4>
 <p>【样例说明】</p>
 <p>跳过 2 号城市。</p>
 <p>【数据规模】</p>
 <p>对于 40% 的数据满足：n≤1000。</p>
 <p>对于 100% 的数据满足：3≤n≤100000，-1000≤x i ，y i ≤1000。</p>
-<p></p>
+<p> </p>
 <p>pz:这不是枚举吗?</p>
-<p>#include &lt;iostream&gt;<br>
-#include &lt;cstring&gt;<br>
-#include &lt;cstdio&gt;<br>
-#include &lt;algorithm&gt;<br>
-#include &lt;cmath&gt;</p>
-<p>using namespace std;<br>
-int n,x[100005],y[100005],maxx,tot;</p>
-<p>int main()<br>
-{<br>
-ios::sync_with_stdio(false);<br>
-cin&gt;&gt;n;<br>
-for(int i=1;i&lt;=n;i++) cin&gt;&gt;x[i]&gt;&gt;y[i];<br>
-for(int i=2;i&lt;=n;i++)<br>
-{<br>
-tot+=abs(x[i-1]-x[i])+abs(y[i-1]-y[i]);<br>
-}<br>
-for(int i=2;i&lt;n;i++)<br>
-{<br>
-int save=(abs(x[i-1]-x[i])+abs(y[i-1]-y[i])+abs(x[i+1]-x[i])+abs(y[i+1]-y[i]))-(abs(x[i-1]-x[i+1])+abs(y[i-1]-y[i+1]));<br>
-if(save&gt;0&amp;&amp;save&gt;maxx) maxx=save;<br>
-}<br>
-cout&lt;&lt;tot-maxx;</p>
-<pre><code>return 0;
-</code></pre>
+<p>#include &lt;iostream&gt; #include &lt;cstring&gt; #include &lt;cstdio&gt; #include &lt;algorithm&gt; #include &lt;cmath&gt;</p>
+<p>using namespace std; int n,x[100005],y[100005],maxx,tot;</p>
+<p>int main() { ios::sync_with_stdio(false); cin&gt;&gt;n; for(int i=1;i&lt;=n;i++) cin&gt;&gt;x[i]&gt;&gt;y[i]; for(int i=2;i&lt;=n;i++) { tot+=abs(x[i-1]-x[i])+abs(y[i-1]-y[i]); } for(int i=2;i&lt;n;i++) { int save=(abs(x[i-1]-x[i])+abs(y[i-1]-y[i])+abs(x[i+1]-x[i])+abs(y[i+1]-y[i]))-(abs(x[i-1]-x[i+1])+abs(y[i-1]-y[i+1])); if(save&gt;0&amp;&amp;save&gt;maxx) maxx=save; } cout&lt;&lt;tot-maxx;</p>
+<pre><code>return 0;</code></pre>
 <p>}</p>
-<p>2020/3/28 20:21 歇息一下</p>
-<h3 id="问题-D-偶数个3">问题 D: 偶数个3</h3>
-<h4 id="题目描述-4">题目描述</h4>
+<p>　　2020/3/28 20:21 歇息一下</p>
+<h3 id="问题-d-偶数个3">问题 D: 偶数个3</h3>
+<h4 id="题目描述-3">题目描述</h4>
 <p>编程求出所有的 n 位数中，有多少个数中有偶数个数字 3。</p>
-<h4 id="输入-4">输入</h4>
+<h4 id="输入-3">输入</h4>
 <p>一行一个正整数 n，0&lt;n&lt;1000。</p>
-<h4 id="输出-4">输出</h4>
+<h4 id="输出-3">输出</h4>
 <p>一行一个正整数，表示 n 位数中有多少个数有偶数个 3，这个数可能会很大，请输出它%12345的值。</p>
-<h4 id="样例输入-Copy-3">样例输入 <a href="null">Copy</a></h4>
+<h4 id="样例输入-copy-2">样例输入 <a href="null">Copy</a></h4>
 <p>2</p>
-<h4 id="样例输出-Copy-3">样例输出 <a href="null">Copy</a></h4>
+<h4 id="样例输出-copy-2">样例输出 <a href="null">Copy</a></h4>
 <p>73</p>
 <p>2020/3/28 22:10</p>
-<h3 id="1408-数塔问题">1408: 数塔问题</h3>
-<h4 id="题目描述-5">题目描述</h4>
+<h3 id="数塔问题">1408: 数塔问题</h3>
+<h4 id="题目描述-4">题目描述</h4>
 <p>设有一个三角形的数塔，顶点为根结点，每个结点有一个整数值。从顶点出发，可以向左走或向右走，如图所示：<br>
-<img src="http://47.102.112.238/upload/image/20200218/20200218160444_38976.png" alt></p>
+<img src="http://47.102.112.238/upload/image/20200218/20200218160444_38976.png"></p>
 <p>若要求从根结点开始，请找出一条路径，使路径之和最大，只要输出路径的和。</p>
-<h4 id="输入-5">输入</h4>
+<h4 id="输入-4">输入</h4>
 <p>第一行为n(n&lt;10)，表示数塔的层数 从第2行至n+1行，每行有若干个数据，表示数塔中的数值。</p>
-<h4 id="输出-5">输出</h4>
+<h4 id="输出-4">输出</h4>
 <p>输出路径和最大的路径值。</p>
-<h4 id="样例输入-Copy-4">样例输入 <a href="null">Copy</a></h4>
-<p>5<br>
-13<br>
-11 8<br>
-12 7 26<br>
-6 14 15 8<br>
-12 7 13 24 11</p>
-<h4 id="样例输出-Copy-4">样例输出 <a href="null">Copy</a></h4>
+<h4 id="样例输入-copy-3">样例输入 <a href="null">Copy</a></h4>
+<p>5 13 11 8 12 7 26 6 14 15 8 12 7 13 24 11</p>
+<h4 id="样例输出-copy-3">样例输出 <a href="null">Copy</a></h4>
 <p>86</p>
 <p>pz:dpdpdp</p>
-<p>#include &lt;iostream&gt;<br>
-#include &lt;cstring&gt;<br>
-#include &lt;cstdio&gt;<br>
-#include &lt;algorithm&gt;</p>
-<p>using namespace std;<br>
-int n,f[15][15],a[15][15],ans;</p>
-<p>int main()<br>
-{<br>
-ios::sync_with_stdio(false);</p>
+<p>#include &lt;iostream&gt; #include &lt;cstring&gt; #include &lt;cstdio&gt; #include &lt;algorithm&gt;</p>
+<p>using namespace std; int n,f[15][15],a[15][15],ans;</p>
+<p>int main() { ios::sync_with_stdio(false);</p>
 <pre><code>cin&gt;&gt;n;
 for\(int i=1;i\&lt;=n;i++\)
 \&#123;
-	for\(int j=1;j\&lt;=i;j++\)
-	\&#123;
-		cin&gt;&gt;a\[i\]\[j\];
-	\&#125;
+    for\(int j=1;j\&lt;=i;j++\)
+    \&#123;
+        cin&gt;&gt;a\[i\]\[j\];
+    \&#125;
 \&#125;
 f\[1\]\[1\]=a\[1\]\[1\];
 for\(int i=2;i\&lt;=n;i++\)
 \&#123;
-	for\(int j=1;j\&lt;=i;j++\)
-	\&#123;
-		f\[i\]\[j\]=max\(f\[i-1\]\[j-1\],f\[i-1\]\[j\]\)+a\[i\]\[j\];
-	\&#125;
+    for\(int j=1;j\&lt;=i;j++\)
+    \&#123;
+        f\[i\]\[j\]=max\(f\[i-1\]\[j-1\],f\[i-1\]\[j\]\)+a\[i\]\[j\];
+    \&#125;
 \&#125;
 for\(int i=1;i\&lt;=n;i++\)
 \&#123;
-	if\(f\[n\]\[i\]&gt;ans\) ans=f\[n\]\[i\];
+    if\(f\[n\]\[i\]&gt;ans\) ans=f\[n\]\[i\];
 \&#125;
 cout\&lt;\&lt;ans;
 
-return 0; 
-</code></pre>
+return 0; </code></pre>
 <p>}</p>
 </div><div class="article-licensing box"><div class="licensing-title"><p>【专题】递推</p><p><a href="https://huaruoji.github.io/2020/03/28/【专题】递推/">https://huaruoji.github.io/2020/03/28/【专题】递推/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>huaruoji</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2020-03-28</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2021-03-12</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="" rel="noopener" target="_blank" title="CC BY-SA 4.0" href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fab fa-creative-commons"></i> <i class="fab fa-creative-commons-by"></i> <i class="fab fa-creative-commons-sa"></i> CC BY-SA 4.0</a></p></div></div></div></div></div><hr style="height:1px;margin:1rem 0"><div class="level is-mobile is-flex"><div class="article-tags is-size-7 is-uppercase"><i class="fas fa-tags has-text-grey"></i> <a class="link-muted" rel="tag" href="/tags/%E9%80%92%E6%8E%A8/">递推 </a></div></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2020/03/28/%E3%80%90%E4%B8%93%E9%A2%98%E3%80%91Trie%E6%A0%91/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">【专题】Trie树（基本无用）</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2019/12/21/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91P4305%20%E3%80%90%5BJLOI2011%5D%E4%B8%8D%E9%87%8D%E5%A4%8D%E6%95%B0%E5%AD%97%E3%80%91/"><span class="level-item">【题解】P4305 【[JLOI2011]不重复数字】</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><script>var disqus_config = function () {
             this.page.url = 'https://huaruoji.github.io/2020/03/28/%E3%80%90%E4%B8%93%E9%A2%98%E3%80%91%E9%80%92%E6%8E%A8/';
@@ -213,7 +163,7 @@ return 0;
             s.src = '//' + 'huaruoji' + '.disqus.com/embed.js';
             s.setAttribute('data-timestamp', +new Date());
             (d.head || d.body).appendChild(s);
-        })();</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level" style="margin-bottom:1rem"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-96x96 mx-auto mb-2"><img class="avatar is-rounded" src="https://www.gravatar.com/avatar/04bb1eeaf09cf88b5d30d135fd495eb9?s=96" alt="滑蒻稽"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">滑蒻稽</p><p class="is-size-6 is-block">这写的什么玩意,博主上过小学吗?</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Chengdu, China</span></p></div></div></nav><nav class="level menu-list is-mobile" style="margin-bottom:1rem"><a class="level-item has-text-centered is-marginless" href="/archives/"><div><p class="heading">文章</p><div><p class="title">164</p></div></div></a><a class="level-item has-text-centered is-marginless" href="/categories/"><div><p class="heading">分类</p><div><p class="title">147</p></div></div></a><a class="level-item has-text-centered is-marginless" href="/tags/"><div><p class="heading">标签</p><div><p class="title">114</p></div></div></a></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://www.github.com/huaruoji" target="_blank" rel="noopener"><i class="fab fa-github"></i>  关注我</a></div></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#问题-A-铺瓷砖"><span class="level-left"><span class="level-item">1</span><span class="level-item">问题 A: 铺瓷砖</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#题目描述"><span class="level-left"><span class="level-item">1.1</span><span class="level-item">题目描述</span></span></a></li><li><a class="level is-mobile" href="#输入"><span class="level-left"><span class="level-item">1.2</span><span class="level-item">输入</span></span></a></li><li><a class="level is-mobile" href="#输出"><span class="level-left"><span class="level-item">1.3</span><span class="level-item">输出</span></span></a></li></ul></li><li><a class="level is-mobile" href="#问题-B-彩带"><span class="level-left"><span class="level-item">2</span><span class="level-item">问题 B: 彩带</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#题目描述-2"><span class="level-left"><span class="level-item">2.1</span><span class="level-item">题目描述</span></span></a></li><li><a class="level is-mobile" href="#输入-2"><span class="level-left"><span class="level-item">2.2</span><span class="level-item">输入</span></span></a></li><li><a class="level is-mobile" href="#输出-2"><span class="level-left"><span class="level-item">2.3</span><span class="level-item">输出</span></span></a></li><li><a class="level is-mobile" href="#样例输入-Copy"><span class="level-left"><span class="level-item">2.4</span><span class="level-item">样例输入 Copy</span></span></a></li><li><a class="level is-mobile" href="#样例输出-Copy"><span class="level-left"><span class="level-item">2.5</span><span class="level-item">样例输出 Copy</span></span></a></li><li><a class="level is-mobile" href="#提示"><span class="level-left"><span class="level-item">2.6</span><span class="level-item">提示</span></span></a></li></ul></li><li><a class="level is-mobile" href="#1389-城市路径"><span class="level-left"><span class="level-item">3</span><span class="level-item">1389: 城市路径</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#题目描述-3"><span class="level-left"><span class="level-item">3.1</span><span class="level-item">题目描述</span></span></a></li><li><a class="level is-mobile" href="#输入-3"><span class="level-left"><span class="level-item">3.2</span><span class="level-item">输入</span></span></a></li><li><a class="level is-mobile" href="#输出-3"><span class="level-left"><span class="level-item">3.3</span><span class="level-item">输出</span></span></a></li><li><a class="level is-mobile" href="#样例输入-Copy-2"><span class="level-left"><span class="level-item">3.4</span><span class="level-item">样例输入 Copy</span></span></a></li><li><a class="level is-mobile" href="#样例输出-Copy-2"><span class="level-left"><span class="level-item">3.5</span><span class="level-item">样例输出 Copy</span></span></a></li><li><a class="level is-mobile" href="#提示-2"><span class="level-left"><span class="level-item">3.6</span><span class="level-item">提示</span></span></a></li></ul></li><li><a class="level is-mobile" href="#问题-D-偶数个3"><span class="level-left"><span class="level-item">4</span><span class="level-item">问题 D: 偶数个3</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#题目描述-4"><span class="level-left"><span class="level-item">4.1</span><span class="level-item">题目描述</span></span></a></li><li><a class="level is-mobile" href="#输入-4"><span class="level-left"><span class="level-item">4.2</span><span class="level-item">输入</span></span></a></li><li><a class="level is-mobile" href="#输出-4"><span class="level-left"><span class="level-item">4.3</span><span class="level-item">输出</span></span></a></li><li><a class="level is-mobile" href="#样例输入-Copy-3"><span class="level-left"><span class="level-item">4.4</span><span class="level-item">样例输入 Copy</span></span></a></li><li><a class="level is-mobile" href="#样例输出-Copy-3"><span class="level-left"><span class="level-item">4.5</span><span class="level-item">样例输出 Copy</span></span></a></li></ul></li><li><a class="level is-mobile" href="#1408-数塔问题"><span class="level-left"><span class="level-item">5</span><span class="level-item">1408: 数塔问题</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#题目描述-5"><span class="level-left"><span class="level-item">5.1</span><span class="level-item">题目描述</span></span></a></li><li><a class="level is-mobile" href="#输入-5"><span class="level-left"><span class="level-item">5.2</span><span class="level-item">输入</span></span></a></li><li><a class="level is-mobile" href="#输出-5"><span class="level-left"><span class="level-item">5.3</span><span class="level-item">输出</span></span></a></li><li><a class="level is-mobile" href="#样例输入-Copy-4"><span class="level-left"><span class="level-item">5.4</span><span class="level-item">样例输入 Copy</span></span></a></li><li><a class="level is-mobile" href="#样例输出-Copy-4"><span class="level-left"><span class="level-item">5.5</span><span class="level-item">样例输出 Copy</span></span></a></li></ul></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="滑蒻稽的博客" height="28"></a><p class="is-size-7"><span>&copy; 2021 huaruoji</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="CC BY-SA 4.0" href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fab fa-creative-commons"></i> <i class="fab fa-creative-commons-by"></i> <i class="fab fa-creative-commons-sa"></i> </a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="huaruoji GitHub" href="https://www.github.com/huaruoji"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdnjs.loli.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+        })();</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level" style="margin-bottom:1rem"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-96x96 mx-auto mb-2"><img class="avatar is-rounded" src="https://www.gravatar.com/avatar/04bb1eeaf09cf88b5d30d135fd495eb9?s=96" alt="滑蒻稽"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">滑蒻稽</p><p class="is-size-6 is-block">这写的什么玩意,博主上过小学吗?</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Chengdu, China</span></p></div></div></nav><nav class="level menu-list is-mobile" style="margin-bottom:1rem"><a class="level-item has-text-centered is-marginless" href="/archives/"><div><p class="heading">文章</p><div><p class="title">167</p></div></div></a><a class="level-item has-text-centered is-marginless" href="/categories/"><div><p class="heading">分类</p><div><p class="title">146</p></div></div></a><a class="level-item has-text-centered is-marginless" href="/tags/"><div><p class="heading">标签</p><div><p class="title">117</p></div></div></a></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://www.github.com/huaruoji" target="_blank" rel="noopener"><i class="fab fa-github"></i>  关注我</a></div></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#问题-a-铺瓷砖"><span class="level-left"><span class="level-item">1</span><span class="level-item">问题 A: 铺瓷砖</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#题目描述"><span class="level-left"><span class="level-item">1.1</span><span class="level-item">题目描述</span></span></a></li><li><a class="level is-mobile" href="#输入"><span class="level-left"><span class="level-item">1.2</span><span class="level-item">输入</span></span></a></li><li><a class="level is-mobile" href="#输出"><span class="level-left"><span class="level-item">1.3</span><span class="level-item">输出</span></span></a></li></ul></li><li><a class="level is-mobile" href="#问题-b-彩带"><span class="level-left"><span class="level-item">2</span><span class="level-item">问题 B: 彩带</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#题目描述-1"><span class="level-left"><span class="level-item">2.1</span><span class="level-item">题目描述</span></span></a></li><li><a class="level is-mobile" href="#输入-1"><span class="level-left"><span class="level-item">2.2</span><span class="level-item">输入</span></span></a></li><li><a class="level is-mobile" href="#输出-1"><span class="level-left"><span class="level-item">2.3</span><span class="level-item">输出</span></span></a></li><li><a class="level is-mobile" href="#样例输入-copy"><span class="level-left"><span class="level-item">2.4</span><span class="level-item">样例输入 Copy</span></span></a></li><li><a class="level is-mobile" href="#样例输出-copy"><span class="level-left"><span class="level-item">2.5</span><span class="level-item">样例输出 Copy</span></span></a></li><li><a class="level is-mobile" href="#提示"><span class="level-left"><span class="level-item">2.6</span><span class="level-item">提示</span></span></a></li></ul></li><li><a class="level is-mobile" href="#城市路径"><span class="level-left"><span class="level-item">3</span><span class="level-item">1389: 城市路径</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#题目描述-2"><span class="level-left"><span class="level-item">3.1</span><span class="level-item">题目描述</span></span></a></li><li><a class="level is-mobile" href="#输入-2"><span class="level-left"><span class="level-item">3.2</span><span class="level-item">输入</span></span></a></li><li><a class="level is-mobile" href="#输出-2"><span class="level-left"><span class="level-item">3.3</span><span class="level-item">输出</span></span></a></li><li><a class="level is-mobile" href="#样例输入-copy-1"><span class="level-left"><span class="level-item">3.4</span><span class="level-item">样例输入 Copy</span></span></a></li><li><a class="level is-mobile" href="#样例输出-copy-1"><span class="level-left"><span class="level-item">3.5</span><span class="level-item">样例输出 Copy</span></span></a></li><li><a class="level is-mobile" href="#提示-1"><span class="level-left"><span class="level-item">3.6</span><span class="level-item">提示</span></span></a></li></ul></li><li><a class="level is-mobile" href="#问题-d-偶数个3"><span class="level-left"><span class="level-item">4</span><span class="level-item">问题 D: 偶数个3</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#题目描述-3"><span class="level-left"><span class="level-item">4.1</span><span class="level-item">题目描述</span></span></a></li><li><a class="level is-mobile" href="#输入-3"><span class="level-left"><span class="level-item">4.2</span><span class="level-item">输入</span></span></a></li><li><a class="level is-mobile" href="#输出-3"><span class="level-left"><span class="level-item">4.3</span><span class="level-item">输出</span></span></a></li><li><a class="level is-mobile" href="#样例输入-copy-2"><span class="level-left"><span class="level-item">4.4</span><span class="level-item">样例输入 Copy</span></span></a></li><li><a class="level is-mobile" href="#样例输出-copy-2"><span class="level-left"><span class="level-item">4.5</span><span class="level-item">样例输出 Copy</span></span></a></li></ul></li><li><a class="level is-mobile" href="#数塔问题"><span class="level-left"><span class="level-item">5</span><span class="level-item">1408: 数塔问题</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#题目描述-4"><span class="level-left"><span class="level-item">5.1</span><span class="level-item">题目描述</span></span></a></li><li><a class="level is-mobile" href="#输入-4"><span class="level-left"><span class="level-item">5.2</span><span class="level-item">输入</span></span></a></li><li><a class="level is-mobile" href="#输出-4"><span class="level-left"><span class="level-item">5.3</span><span class="level-item">输出</span></span></a></li><li><a class="level is-mobile" href="#样例输入-copy-3"><span class="level-left"><span class="level-item">5.4</span><span class="level-item">样例输入 Copy</span></span></a></li><li><a class="level is-mobile" href="#样例输出-copy-3"><span class="level-left"><span class="level-item">5.5</span><span class="level-item">样例输出 Copy</span></span></a></li></ul></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="滑蒻稽的博客" height="28"></a><p class="is-size-7"><span>&copy; 2021 huaruoji</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="CC BY-SA 4.0" href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fab fa-creative-commons"></i> <i class="fab fa-creative-commons-by"></i> <i class="fab fa-creative-commons-sa"></i> </a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="huaruoji GitHub" href="https://www.github.com/huaruoji"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdnjs.loli.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
             article: {
                 highlight: {
                     clipboard: true,

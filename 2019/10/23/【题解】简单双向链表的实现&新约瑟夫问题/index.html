@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>【题解】简单双向链表的实现&amp;新约瑟夫问题 - 滑蒻稽的博客</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="滑蒻稽的博客"><meta name="msapplication-TileImage" content="/img/positive.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="滑蒻稽的博客"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="题目描述： 给定m个人，从s开始报数，数字顺加，报到n的人出列，然后数字顺减报到k的人出列，求出列顺序 样例输入： 8 1 3 2 样例输出： 3 6 1 5 2 8 4 7  分析： 约瑟夫问题主要就是处理边界，因此选用链表，第一个指向最后一个，最后一个指向第一个。 注意，这里链表不用指针！不用指针！为什么？因为m&amp;lt;&amp;#x3D;100,链表节点数量小，可直接用数组+结构体！   q为前驱，h为后继"><meta property="og:type" content="blog"><meta property="og:title" content="【题解】简单双向链表的实现&amp;新约瑟夫问题"><meta property="og:url" content="https://huaruoji.github.io/2019/10/23/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%E7%AE%80%E5%8D%95%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8%E7%9A%84%E5%AE%9E%E7%8E%B0&amp;%E6%96%B0%E7%BA%A6%E7%91%9F%E5%A4%AB%E9%97%AE%E9%A2%98/"><meta property="og:site_name" content="滑蒻稽的博客"><meta property="og:description" content="题目描述： 给定m个人，从s开始报数，数字顺加，报到n的人出列，然后数字顺减报到k的人出列，求出列顺序 样例输入： 8 1 3 2 样例输出： 3 6 1 5 2 8 4 7  分析： 约瑟夫问题主要就是处理边界，因此选用链表，第一个指向最后一个，最后一个指向第一个。 注意，这里链表不用指针！不用指针！为什么？因为m&amp;lt;&amp;#x3D;100,链表节点数量小，可直接用数组+结构体！   q为前驱，h为后继"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://img2018.cnblogs.com/blog/1839956/201910/1839956-20191023221641103-294453522.png"><meta property="article:published_time" content="2019-10-23T14:18:00.000Z"><meta property="article:modified_time" content="2021-03-12T13:08:17.977Z"><meta property="article:author" content="huaruoji"><meta property="article:tag" content="链表"><meta property="article:tag" content="约瑟夫问题"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://img2018.cnblogs.com/blog/1839956/201910/1839956-20191023221641103-294453522.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://huaruoji.github.io/2019/10/23/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%E7%AE%80%E5%8D%95%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8%E7%9A%84%E5%AE%9E%E7%8E%B0&%E6%96%B0%E7%BA%A6%E7%91%9F%E5%A4%AB%E9%97%AE%E9%A2%98/"},"headline":"滑蒻稽的博客","image":["https://img2018.cnblogs.com/blog/1839956/201910/1839956-20191023221641103-294453522.png"],"datePublished":"2019-10-23T14:18:00.000Z","dateModified":"2021-03-12T13:08:17.977Z","author":{"@type":"Person","name":"huaruoji"},"description":"题目描述： 给定m个人，从s开始报数，数字顺加，报到n的人出列，然后数字顺减报到k的人出列，求出列顺序 样例输入： 8 1 3 2 样例输出： 3 6 1 5 2 8 4 7  分析： 约瑟夫问题主要就是处理边界，因此选用链表，第一个指向最后一个，最后一个指向第一个。 注意，这里链表不用指针！不用指针！为什么？因为m&lt;&#x3D;100,链表节点数量小，可直接用数组+结构体！   q为前驱，h为后继"}</script><link rel="canonical" href="https://huaruoji.github.io/2019/10/23/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%E7%AE%80%E5%8D%95%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8%E7%9A%84%E5%AE%9E%E7%8E%B0&amp;%E6%96%B0%E7%BA%A6%E7%91%9F%E5%A4%AB%E9%97%AE%E9%A2%98/"><link rel="icon" href="/img/positive.svg"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/5.12.0/css/all.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css"><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.7.0/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/pace/1.0.2/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start -->
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>【题解】简单双向链表的实现&amp;新约瑟夫问题 - 滑蒻稽的博客</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="滑蒻稽的博客"><meta name="msapplication-TileImage" content="/img/positive.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="滑蒻稽的博客"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="题目描述： 给定m个人，从s开始报数，数字顺加，报到n的人出列，然后数字顺减报到k的人出列，求出列顺序 样例输入： 8 1 3 2 样例输出： 3 6 1 5 2 8 4 7   分析： 约瑟夫问题主要就是处理边界，因此选用链表，第一个指向最后一个，最后一个指向第一个。 注意，这里链表不用指针！不用指针！为什么？因为m&amp;lt;&amp;#x3D;100,链表节点数量小，可直接用数组+结构体！"><meta property="og:type" content="blog"><meta property="og:title" content="【题解】简单双向链表的实现&amp;新约瑟夫问题"><meta property="og:url" content="https://huaruoji.github.io/2019/10/23/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%E7%AE%80%E5%8D%95%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8%E7%9A%84%E5%AE%9E%E7%8E%B0&amp;%E6%96%B0%E7%BA%A6%E7%91%9F%E5%A4%AB%E9%97%AE%E9%A2%98/"><meta property="og:site_name" content="滑蒻稽的博客"><meta property="og:description" content="题目描述： 给定m个人，从s开始报数，数字顺加，报到n的人出列，然后数字顺减报到k的人出列，求出列顺序 样例输入： 8 1 3 2 样例输出： 3 6 1 5 2 8 4 7   分析： 约瑟夫问题主要就是处理边界，因此选用链表，第一个指向最后一个，最后一个指向第一个。 注意，这里链表不用指针！不用指针！为什么？因为m&amp;lt;&amp;#x3D;100,链表节点数量小，可直接用数组+结构体！"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://img2018.cnblogs.com/blog/1839956/201910/1839956-20191023221641103-294453522.png"><meta property="article:published_time" content="2019-10-23T14:18:00.000Z"><meta property="article:modified_time" content="2021-03-12T13:08:17.977Z"><meta property="article:author" content="huaruoji"><meta property="article:tag" content="链表"><meta property="article:tag" content="约瑟夫问题"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://img2018.cnblogs.com/blog/1839956/201910/1839956-20191023221641103-294453522.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://huaruoji.github.io/2019/10/23/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%E7%AE%80%E5%8D%95%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8%E7%9A%84%E5%AE%9E%E7%8E%B0&%E6%96%B0%E7%BA%A6%E7%91%9F%E5%A4%AB%E9%97%AE%E9%A2%98/"},"headline":"滑蒻稽的博客","image":["https://img2018.cnblogs.com/blog/1839956/201910/1839956-20191023221641103-294453522.png"],"datePublished":"2019-10-23T14:18:00.000Z","dateModified":"2021-03-12T13:08:17.977Z","author":{"@type":"Person","name":"huaruoji"},"description":"题目描述：\r 给定m个人，从s开始报数，数字顺加，报到n的人出列，然后数字顺减报到k的人出列，求出列顺序\r 样例输入：\r 8 1 3 2\r 样例输出：\r 3 6 1 5 2 8 4 7\r  \r 分析：\r 约瑟夫问题主要就是处理边界，因此选用链表，第一个指向最后一个，最后一个指向第一个。\r 注意，这里链表不用指针！不用指针！为什么？因为m&lt;&#x3D;100,链表节点数量小，可直接用数组+结构体！"}</script><link rel="canonical" href="https://huaruoji.github.io/2019/10/23/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%E7%AE%80%E5%8D%95%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8%E7%9A%84%E5%AE%9E%E7%8E%B0&amp;%E6%96%B0%E7%BA%A6%E7%91%9F%E5%A4%AB%E9%97%AE%E9%A2%98/"><link rel="icon" href="/img/positive.svg"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/5.12.0/css/all.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css"><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.7.0/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/pace/1.0.2/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
@@ -10,61 +10,46 @@
 <p>8 1 3 2</p>
 <p><strong>样例输出：</strong></p>
 <p>3 6 1 5 2 8 4 7</p>
-<p></p>
+<p> </p>
 <p><strong>分析：</strong></p>
 <p>约瑟夫问题主要就是处理边界，因此选用链表，第一个指向最后一个，最后一个指向第一个。</p>
 <p>注意，这里链表不用指针！不用指针！为什么？因为m&lt;=100,链表节点数量小，可直接用数组+结构体！</p>
-<p><img src="https://img2018.cnblogs.com/blog/1839956/201910/1839956-20191023221641103-294453522.png" alt></p>
-<p></p>
-<p>q为前驱，h为后继。</p>
+<p><img src="https://img2018.cnblogs.com/blog/1839956/201910/1839956-20191023221641103-294453522.png"></p>
+<p> </p>
+<p> q为前驱，h为后继。</p>
 <p>完整代码如下：</p>
-<p>#include &lt;iostream&gt;<br>
-#include &lt;map&gt;<br>
-#include &lt;cstdio&gt;</p>
-<p>using namespace std;<br>
-int m,s,n,k,cnt,pd=true,pd2=true;<br>
-struct lb<br>
-{<br>
-int q,h;<br>
-}a[105];</p>
-<p>void del(int x)//删除节点<br>
-{<br>
-a[a[x].q].h=a[x].h;<br>
-a[a[x].h].q=a[x].q;<br>
-}</p>
-<p>int main()<br>
-{<br>
-//	freopen(“<a target="_blank" rel="noopener" href="http://newjsf.in">newjsf.in</a>”,“r”,stdin); //打开输入文件<br>
-//	freopen(“newjsf.out”,“w”,stdout); //打开输出文件</p>
+<p>#include &lt;iostream&gt; #include &lt;map&gt; #include &lt;cstdio&gt;</p>
+<p>using namespace std; int m,s,n,k,cnt,pd=true,pd2=true; struct lb { int q,h; }a[105];</p>
+<p>void del(int x)//删除节点 { a[a[x].q].h=a[x].h; a[a[x].h].q=a[x].q; }</p>
+<p>int main() { // freopen("newjsf.in","r",stdin); //打开输入文件 // freopen("newjsf.out","w",stdout); //打开输出文件</p>
 <pre><code>cin&gt;&gt;m&gt;&gt;s&gt;&gt;n&gt;&gt;k;
 a\[1\].q=m,a\[1\].h=2,a\[m\].q=m-1,a\[m\].h=1;
 cnt=m;
 for\(int i=2;i\&lt;=m-1;i++\)
 \&#123;
-	a\[i\].q=i-1,a\[i\].h=i+1;
+    a\[i\].q=i-1,a\[i\].h=i+1;
 \&#125;
 while\(cnt&gt;0\)
 \&#123;
-	if\(pd\)
-		for\(int i=1;i\&lt;=n;i++\)
-		\&#123;
-			if\(pd2\)//判断是否第一个人
-			\&#123;
-				pd2=false;
-				continue;
-			\&#125;
-			s=a\[s\].h;
-		\&#125;
-	else
-		for\(int i=1;i\&lt;=k;i++\) s=a\[s\].q;
-	cout\&lt;\&lt;s\&lt;\&lt;&quot; &quot;;
-	cnt--;
-	del\(s\);
+    if\(pd\)
+        for\(int i=1;i\&lt;=n;i++\)
+        \&#123;
+            if\(pd2\)//判断是否第一个人
+            \&#123;
+                pd2=false;
+                continue;
+            \&#125;
+            s=a\[s\].h;
+        \&#125;
+    else
+        for\(int i=1;i\&lt;=k;i++\) s=a\[s\].q;
+    cout\&lt;\&lt;s\&lt;\&lt;&quot; &quot;;
+    cnt--;
+    del\(s\);
 \&#125; 
-	
+    
 fclose\(stdin\);//关闭输入文件
-fclose\(stdout\);//关闭输出文件
-</code></pre>
+fclose\(stdout\);//关闭输出文件</code></pre>
 <p>}</p>
 </div><div class="article-licensing box"><div class="licensing-title"><p>【题解】简单双向链表的实现&amp;新约瑟夫问题</p><p><a href="https://huaruoji.github.io/2019/10/23/【题解】简单双向链表的实现&amp;新约瑟夫问题/">https://huaruoji.github.io/2019/10/23/【题解】简单双向链表的实现&amp;新约瑟夫问题/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>huaruoji</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2019-10-23</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2021-03-12</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="" rel="noopener" target="_blank" title="CC BY-SA 4.0" href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fab fa-creative-commons"></i> <i class="fab fa-creative-commons-by"></i> <i class="fab fa-creative-commons-sa"></i> CC BY-SA 4.0</a></p></div></div></div></div></div><hr style="height:1px;margin:1rem 0"><div class="level is-mobile is-flex"><div class="article-tags is-size-7 is-uppercase"><i class="fas fa-tags has-text-grey"></i> <a class="link-muted" rel="tag" href="/tags/%E9%93%BE%E8%A1%A8/">链表, </a><a class="link-muted" rel="tag" href="/tags/%E7%BA%A6%E7%91%9F%E5%A4%AB%E9%97%AE%E9%A2%98/">约瑟夫问题 </a></div></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2019/10/23/%E3%80%90%E6%9D%82%E9%A1%B9%E3%80%91c++%20map%E7%9A%84%E4%BD%BF%E7%94%A8/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">【杂项】c++ map的使用</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2019/10/21/%E3%80%90%E5%B0%8F%E8%AE%B0%E3%80%91%E6%88%91%E7%9A%84%E9%A6%96%E6%AC%A1AK%E8%AE%B0/"><span class="level-item">【小记】我的首次AK记</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><script>var disqus_config = function () {
             this.page.url = 'https://huaruoji.github.io/2019/10/23/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91%E7%AE%80%E5%8D%95%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8%E7%9A%84%E5%AE%9E%E7%8E%B0&%E6%96%B0%E7%BA%A6%E7%91%9F%E5%A4%AB%E9%97%AE%E9%A2%98/';
@@ -75,7 +60,7 @@ fclose\(stdout\);//关闭输出文件
             s.src = '//' + 'huaruoji' + '.disqus.com/embed.js';
             s.setAttribute('data-timestamp', +new Date());
             (d.head || d.body).appendChild(s);
-        })();</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level" style="margin-bottom:1rem"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-96x96 mx-auto mb-2"><img class="avatar is-rounded" src="https://www.gravatar.com/avatar/04bb1eeaf09cf88b5d30d135fd495eb9?s=96" alt="滑蒻稽"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">滑蒻稽</p><p class="is-size-6 is-block">这写的什么玩意,博主上过小学吗?</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Chengdu, China</span></p></div></div></nav><nav class="level menu-list is-mobile" style="margin-bottom:1rem"><a class="level-item has-text-centered is-marginless" href="/archives/"><div><p class="heading">文章</p><div><p class="title">164</p></div></div></a><a class="level-item has-text-centered is-marginless" href="/categories/"><div><p class="heading">分类</p><div><p class="title">147</p></div></div></a><a class="level-item has-text-centered is-marginless" href="/tags/"><div><p class="heading">标签</p><div><p class="title">114</p></div></div></a></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://www.github.com/huaruoji" target="_blank" rel="noopener"><i class="fab fa-github"></i>  关注我</a></div></div></div><!--!--></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="滑蒻稽的博客" height="28"></a><p class="is-size-7"><span>&copy; 2021 huaruoji</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="CC BY-SA 4.0" href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fab fa-creative-commons"></i> <i class="fab fa-creative-commons-by"></i> <i class="fab fa-creative-commons-sa"></i> </a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="huaruoji GitHub" href="https://www.github.com/huaruoji"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdnjs.loli.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+        })();</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level" style="margin-bottom:1rem"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-96x96 mx-auto mb-2"><img class="avatar is-rounded" src="https://www.gravatar.com/avatar/04bb1eeaf09cf88b5d30d135fd495eb9?s=96" alt="滑蒻稽"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">滑蒻稽</p><p class="is-size-6 is-block">这写的什么玩意,博主上过小学吗?</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Chengdu, China</span></p></div></div></nav><nav class="level menu-list is-mobile" style="margin-bottom:1rem"><a class="level-item has-text-centered is-marginless" href="/archives/"><div><p class="heading">文章</p><div><p class="title">167</p></div></div></a><a class="level-item has-text-centered is-marginless" href="/categories/"><div><p class="heading">分类</p><div><p class="title">146</p></div></div></a><a class="level-item has-text-centered is-marginless" href="/tags/"><div><p class="heading">标签</p><div><p class="title">117</p></div></div></a></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://www.github.com/huaruoji" target="_blank" rel="noopener"><i class="fab fa-github"></i>  关注我</a></div></div></div><!--!--></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="滑蒻稽的博客" height="28"></a><p class="is-size-7"><span>&copy; 2021 huaruoji</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="CC BY-SA 4.0" href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fab fa-creative-commons"></i> <i class="fab fa-creative-commons-by"></i> <i class="fab fa-creative-commons-sa"></i> </a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="huaruoji GitHub" href="https://www.github.com/huaruoji"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdnjs.loli.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
             article: {
                 highlight: {
                     clipboard: true,

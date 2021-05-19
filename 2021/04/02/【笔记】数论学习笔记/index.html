@@ -1,342 +1,279 @@
 <!doctype html>
-<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>【笔记】数论学习笔记 - 滑蒻稽的博客</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="滑蒻稽的博客"><meta name="msapplication-TileImage" content="/img/positive.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="滑蒻稽的博客"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="前言 本文抄自基于《数论讲义》(柯召 孙琦 编著）。 第一章 整数的唯一分解定理 整数的唯一分解定理，又叫算数基本定理． §1 整除性 定义	任给两个整数 a,b，其中 $b\neq0$，如果存在一个整数 q 使得等式 $$ a&amp;#x3D;bq\tag1 $$ 成立，我们就说 b 整除 a，记作 b|a，此时 b 叫做 a 的因数，a 是 b 的倍数．如果整数 q 不存在，则 b 不整除 a，记作 $b\n"><meta property="og:type" content="blog"><meta property="og:title" content="【笔记】数论学习笔记"><meta property="og:url" content="https://huaruoji.github.io/2021/04/02/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E6%95%B0%E8%AE%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><meta property="og:site_name" content="滑蒻稽的博客"><meta property="og:description" content="前言 本文抄自基于《数论讲义》(柯召 孙琦 编著）。 第一章 整数的唯一分解定理 整数的唯一分解定理，又叫算数基本定理． §1 整除性 定义	任给两个整数 a,b，其中 $b\neq0$，如果存在一个整数 q 使得等式 $$ a&amp;#x3D;bq\tag1 $$ 成立，我们就说 b 整除 a，记作 b|a，此时 b 叫做 a 的因数，a 是 b 的倍数．如果整数 q 不存在，则 b 不整除 a，记作 $b\n"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://huaruoji.github.io/img/og_image.png"><meta property="article:published_time" content="2021-04-02T01:58:51.770Z"><meta property="article:modified_time" content="2021-05-14T02:32:11.773Z"><meta property="article:author" content="huaruoji"><meta property="article:tag" content="数学"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://huaruoji.github.io/2021/04/02/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E6%95%B0%E8%AE%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"},"headline":"滑蒻稽的博客","image":["https://huaruoji.github.io/img/og_image.png"],"datePublished":"2021-04-02T01:58:51.770Z","dateModified":"2021-05-14T02:32:11.773Z","author":{"@type":"Person","name":"huaruoji"},"description":"前言 本文抄自基于《数论讲义》(柯召 孙琦 编著）。 第一章 整数的唯一分解定理 整数的唯一分解定理，又叫算数基本定理． §1 整除性 定义\t任给两个整数 a,b，其中 $b\\neq0$，如果存在一个整数 q 使得等式 $$ a&#x3D;bq\\tag1 $$ 成立，我们就说 b 整除 a，记作 b|a，此时 b 叫做 a 的因数，a 是 b 的倍数．如果整数 q 不存在，则 b 不整除 a，记作 $b\\n"}</script><link rel="canonical" href="https://huaruoji.github.io/2021/04/02/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E6%95%B0%E8%AE%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><link rel="icon" href="/img/positive.svg"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/5.12.0/css/all.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css"><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.7.0/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/pace/1.0.2/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start -->
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>【笔记】数论学习笔记 - 滑蒻稽的博客</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="滑蒻稽的博客"><meta name="msapplication-TileImage" content="/img/positive.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="滑蒻稽的博客"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="前言 本文抄自基于《数论讲义》(柯召 孙琦 编著）。 第一章 整数的唯一分解定理 整数的唯一分解定理，又叫算数基本定理． §1 整除性 定义 任给两个整数 a,b，其中 \(b\neq0\)，如果存在一个整数 q 使得等式 \[ a&amp;#x3D;bq\tag1 \] 成立，我们就说 b 整除 a，记作 b|a，此时 b 叫做 a 的因数，a 是 b 的倍数．如果整数 q 不存在，则 b 不整除"><meta property="og:type" content="blog"><meta property="og:title" content="【笔记】数论学习笔记"><meta property="og:url" content="https://huaruoji.github.io/2021/04/02/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E6%95%B0%E8%AE%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><meta property="og:site_name" content="滑蒻稽的博客"><meta property="og:description" content="前言 本文抄自基于《数论讲义》(柯召 孙琦 编著）。 第一章 整数的唯一分解定理 整数的唯一分解定理，又叫算数基本定理． §1 整除性 定义 任给两个整数 a,b，其中 \(b\neq0\)，如果存在一个整数 q 使得等式 \[ a&amp;#x3D;bq\tag1 \] 成立，我们就说 b 整除 a，记作 b|a，此时 b 叫做 a 的因数，a 是 b 的倍数．如果整数 q 不存在，则 b 不整除"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://huaruoji.github.io/img/og_image.png"><meta property="article:published_time" content="2021-04-02T01:58:51.770Z"><meta property="article:modified_time" content="2021-05-19T07:05:49.911Z"><meta property="article:author" content="huaruoji"><meta property="article:tag" content="数学"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://huaruoji.github.io/2021/04/02/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E6%95%B0%E8%AE%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"},"headline":"滑蒻稽的博客","image":["https://huaruoji.github.io/img/og_image.png"],"datePublished":"2021-04-02T01:58:51.770Z","dateModified":"2021-05-19T07:05:49.911Z","author":{"@type":"Person","name":"huaruoji"},"description":"前言\r 本文抄自基于《数论讲义》(柯召 孙琦 编著）。\r 第一章 整数的唯一分解定理\r 整数的唯一分解定理，又叫算数基本定理．\r §1 整除性\r 定义 任给两个整数 a,b，其中 \\(b\\neq0\\)，如果存在一个整数 q 使得等式 \\[\r a&#x3D;bq\\tag1\r \\] 成立，我们就说 b 整除 a，记作 b|a，此时 b 叫做 a 的因数，a 是 b 的倍数．如果整数 q 不存在，则 b 不整除"}</script><link rel="canonical" href="https://huaruoji.github.io/2021/04/02/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E6%95%B0%E8%AE%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><link rel="icon" href="/img/positive.svg"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/5.12.0/css/all.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css"><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.7.0/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/pace/1.0.2/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="滑蒻稽的博客" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives/">归档</a><a class="navbar-item" href="/categories/">分类</a><a class="navbar-item" href="/tags/">标签</a><a class="navbar-item" href="/about/">关于</a><a class="navbar-item" href="/%E5%8F%8B%E9%93%BE/">友链</a><a class="navbar-item" href="/other/">怪玩意</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Huaruoji GitHub" href="https://www.github.com/huaruoji"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal"><i class="fas fa-angle-double-right"></i>【笔记】数论学习笔记</h1><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><i class="far fa-calendar-alt"> </i><time dateTime="${date_xml(page.date)}" title="${date_xml(page.date)}">2021-04-02</time></span><span class="level-item is-hidden-mobile"><i class="far fa-calendar-check"> </i><time dateTime="${date_xml(page.updated)}" title="${date_xml(page.updated)}">2021-05-14</time></span><span class="level-item"><i class="far fa-folder-open has-text-grey"></i> <a class="link-muted" href="/categories/%E6%95%B0%E5%AD%A6/">数学</a><span> / </span><a class="link-muted" href="/categories/%E6%95%B0%E5%AD%A6/%E6%95%B0%E8%AE%BA/">数论</a></span><span class="level-item"><i class="far fa-clock"></i> 24 分钟读完 (大约3546个字)</span><span class="level-item" id="busuanzi_container_page_pv"><i class="far fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><div class="content"><h1>前言</h1>
-<p>本文<s>抄自</s>基于《数论讲义》(柯召 孙琦 编著）。</p>
-<h1>第一章 整数的唯一分解定理</h1>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="滑蒻稽的博客" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives/">归档</a><a class="navbar-item" href="/categories/">分类</a><a class="navbar-item" href="/tags/">标签</a><a class="navbar-item" href="/about/">关于</a><a class="navbar-item" href="/%E5%8F%8B%E9%93%BE/">友链</a><a class="navbar-item" href="/other/">怪玩意</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Huaruoji GitHub" href="https://www.github.com/huaruoji"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal"><i class="fas fa-angle-double-right"></i>【笔记】数论学习笔记</h1><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><i class="far fa-calendar-alt"> </i><time dateTime="${date_xml(page.date)}" title="${date_xml(page.date)}">2021-04-02</time></span><span class="level-item is-hidden-mobile"><i class="far fa-calendar-check"> </i><time dateTime="${date_xml(page.updated)}" title="${date_xml(page.updated)}">2021-05-19</time></span><span class="level-item"><i class="far fa-folder-open has-text-grey"></i> <a class="link-muted" href="/categories/%E6%95%B0%E8%AE%BA/">数论</a></span><span class="level-item"><i class="far fa-clock"></i> 24 分钟读完 (大约3546个字)</span><span class="level-item" id="busuanzi_container_page_pv"><i class="far fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><div class="content"><h1 id="前言">前言</h1>
+<p>本文<del>抄自</del>基于《数论讲义》(柯召 孙琦 编著）。</p>
+<h1 id="第一章-整数的唯一分解定理">第一章 整数的唯一分解定理</h1>
 <p>整数的唯一分解定理，又叫算数基本定理．</p>
-<h2 id="§1-整除性">§1 整除性</h2>
-<p><strong>定义</strong>	任给两个整数 a,b，其中 $b\neq0$，如果存在一个整数 q 使得等式<br>
-$$<br>
-a=bq\tag1<br>
-$$<br>
-成立，我们就说 b 整除 a，记作 b|a，此时 b 叫做 a 的<strong>因数</strong>，a 是 b 的<strong>倍数</strong>．如果整数 q 不存在，则 b 不整除 a，记作 $b\nmid a$．比如 $3|6$，$3\nmid7$．</p>
-<p>这里要注意,因为 $b\neq0$, 所以 $a\neq0$,即0没有因数.</p>
+<h2 id="整除性">§1 整除性</h2>
+<p><strong>定义</strong> 任给两个整数 a,b，其中 <span class="math inline">\(b\neq0\)</span>，如果存在一个整数 q 使得等式 <span class="math display">\[
+a=bq\tag1
+\]</span> 成立，我们就说 b 整除 a，记作 b|a，此时 b 叫做 a 的<strong>因数</strong>，a 是 b 的<strong>倍数</strong>．如果整数 q 不存在，则 b 不整除 a，记作 <span class="math inline">\(b\nmid a\)</span>．比如 <span class="math inline">\(3|6\)</span>，<span class="math inline">\(3\nmid7\)</span>．</p>
+<p>这里要注意,因为 <span class="math inline">\(b\neq0\)</span>, 所以 <span class="math inline">\(a\neq0\)</span>,即0没有因数.</p>
 <p>可以得到下面的 一些性质：</p>
 <p>设a，b，c是整数．</p>
-<ol>
-<li>如果 $a\mid b$，$n$ 是整数，那么 $na\mid nb$．</li>
-<li>如果 $a\mid b,a\mid c$，$n,m$是整数，那么 $a\mid bn+cm$ .</li>
-<li>如果 $a\mid b$, 那么 ${b\over a}\mid b$.</li>
-<li>如果 $b\mid a$,且 $a\neq0$,那么 $|a|\le|b|$.</li>
+<ol type="1">
+<li>如果 <span class="math inline">\(a\mid b\)</span>，<span class="math inline">\(n\)</span> 是整数，那么 <span class="math inline">\(na\mid nb\)</span>．</li>
+<li>如果 <span class="math inline">\(a\mid b,a\mid c\)</span>，<span class="math inline">\(n,m\)</span>是整数，那么 <span class="math inline">\(a\mid bn+cm\)</span> .</li>
+<li>如果 <span class="math inline">\(a\mid b\)</span>, 那么 <span class="math inline">\({b\over a}\mid b\)</span>.</li>
+<li>如果 <span class="math inline">\(b\mid a\)</span>,且 <span class="math inline">\(a\neq0\)</span>,那么 <span class="math inline">\(|a|\le|b|\)</span>.</li>
 </ol>
-<p><strong>定理 1</strong>	设 a,b 是两个整数,其中 $b&gt;0$ ,则存在两个<strong>唯一</strong>的整数 q 和 r. 使得<br>
-$$<br>
-a=qb+r(0\le r&lt;b)\tag2<br>
-$$<br>
-<strong>定义</strong>	把(2)中的 q 称作 a 除以 b 的<strong>不完全商</strong>, r 称作 a 除以 b 的<strong>非负最小剩余</strong>,用 $\langle a\rangle_b$ 表示,不引起歧义的情况下可以省去 b.</p>
-<p>也就是说 $a=qb+\langle a\rangle$.</p>
-<p><strong>定理 2</strong>	对于整数 $a_1,a_2,b$  ,其中 $b&gt;0$.有<br>
-$$<br>
-\langle a_1+a_2\rangle=\langle\langle a_1\rangle+\langle a_2\rangle\rangle \tag3<br>
-$$</p>
-<p>$$<br>
-\langle a_1-a_2\rangle=\langle\langle a_1\rangle-\langle a_2\rangle\rangle \tag4<br>
-$$</p>
-<p>$$<br>
-\langle a_1a_2\rangle=\langle\langle a_1\rangle\langle a_2\rangle\rangle \tag5<br>
-$$</p>
+<p><strong>定理 1</strong> 设 a,b 是两个整数,其中 <span class="math inline">\(b&gt;0\)</span> ,则存在两个<strong>唯一</strong>的整数 q 和 r. 使得 <span class="math display">\[
+a=qb+r(0\le r&lt;b)\tag2
+\]</span> <strong>定义</strong> 把(2)中的 q 称作 a 除以 b 的<strong>不完全商</strong>, r 称作 a 除以 b 的<strong>非负最小剩余</strong>,用 <span class="math inline">\(\langle a\rangle_b\)</span> 表示,不引起歧义的情况下可以省去 b.</p>
+<p>也就是说 <span class="math inline">\(a=qb+\langle a\rangle\)</span>.</p>
+<p><strong>定理 2</strong> 对于整数 <span class="math inline">\(a_1,a_2,b\)</span> ,其中 <span class="math inline">\(b&gt;0\)</span>.有 <span class="math display">\[
+\langle a_1+a_2\rangle=\langle\langle a_1\rangle+\langle a_2\rangle\rangle \tag3
+\]</span></p>
+<p><span class="math display">\[
+\langle a_1-a_2\rangle=\langle\langle a_1\rangle-\langle a_2\rangle\rangle \tag4
+\]</span></p>
+<p><span class="math display">\[
+\langle a_1a_2\rangle=\langle\langle a_1\rangle\langle a_2\rangle\rangle \tag5
+\]</span></p>
 <p>其实这个定理在各种取模的地方都在用,但从来都没证过.</p>
-<p>(4) 的证明和 (3) 没有太大差别, (3) 的证明书上有.这里证一下 (5).</p>
+<ol start="4" type="1">
+<li>的证明和 (3) 没有太大差别, (3) 的证明书上有.这里证一下 (5).</li>
+</ol>
 <span id="more"></span>
 <p><strong>证明</strong></p>
-<p>要证明 $\langle n\rangle=\langle m\rangle$, 其实就等于找出一个整数 q 使得 $n=bq+\langle m\rangle$.</p>
-<p>那么对于式(5),要证的就是 $a_1a_2=bq+\langle\langle a_1\rangle\langle a_2\rangle\rangle$.</p>
-<p>设 $a_1=bq_1+\langle a_1\rangle$,$a_2=bq_1+\langle a_2\rangle$,</p>
-<p>那么<br>
-$$<br>
-\begin{align}<br>
-a_1a_2<br>
-&amp;=b(q_1+q_2+q_1\langle a_2\rangle+q_2\langle a_1\rangle)+\langle a1\rangle\langle a2\rangle\<br>
-&amp;=b(q_1+q_2+q_3+q_1\langle a_2\rangle+q_2\langle a_1\rangle)+\langle\langle a1\rangle\langle a2\rangle\rangle<br>
-\end{align}<br>
-$$</p>
+<p>要证明 <span class="math inline">\(\langle n\rangle=\langle m\rangle\)</span>, 其实就等于找出一个整数 q 使得 <span class="math inline">\(n=bq+\langle m\rangle\)</span>.</p>
+<p>那么对于式(5),要证的就是 <span class="math inline">\(a_1a_2=bq+\langle\langle a_1\rangle\langle a_2\rangle\rangle\)</span>.</p>
+<p>设 <span class="math inline">\(a_1=bq_1+\langle a_1\rangle\)</span>,<span class="math inline">\(a_2=bq_1+\langle a_2\rangle\)</span>,</p>
+<p>那么 <span class="math display">\[
+\begin{align}
+a_1a_2
+&amp;=b(q_1+q_2+q_1\langle a_2\rangle+q_2\langle a_1\rangle)+\langle a1\rangle\langle a2\rangle\\
+&amp;=b(q_1+q_2+q_3+q_1\langle a_2\rangle+q_2\langle a_1\rangle)+\langle\langle a1\rangle\langle a2\rangle\rangle
+\end{align}
+\]</span></p>
 <p><em>证毕</em></p>
 <h3 id="小结">小结</h3>
-<p><strong>定理 1</strong>	设 a,b 是两个整数,其中 $b&gt;0$ ,则存在两个<strong>唯一</strong>的整数 q 和 r. 使得<br>
-$$<br>
-a=qb+r(0\le r&lt;b)\tag2<br>
-$$<br>
-<strong>定理 2</strong>	对于整数 $a_1,a_2,b$  ,其中 $b&gt;0$.有<br>
-$$<br>
-\langle a_1+a_2\rangle=\langle\langle a_1\rangle+\langle a_2\rangle\rangle \tag3<br>
-$$</p>
-<p>$$<br>
-\langle a_1-a_2\rangle=\langle\langle a_1\rangle-\langle a_2\rangle\rangle \tag4<br>
-$$</p>
-<p>$$<br>
-\langle a_1a_2\rangle=\langle\langle a_1\rangle\langle a_2\rangle\rangle \tag5<br>
-$$</p>
+<p><strong>定理 1</strong> 设 a,b 是两个整数,其中 <span class="math inline">\(b&gt;0\)</span> ,则存在两个<strong>唯一</strong>的整数 q 和 r. 使得 <span class="math display">\[
+a=qb+r(0\le r&lt;b)\tag2
+\]</span> <strong>定理 2</strong> 对于整数 <span class="math inline">\(a_1,a_2,b\)</span> ,其中 <span class="math inline">\(b&gt;0\)</span>.有 <span class="math display">\[
+\langle a_1+a_2\rangle=\langle\langle a_1\rangle+\langle a_2\rangle\rangle \tag3
+\]</span></p>
+<p><span class="math display">\[
+\langle a_1-a_2\rangle=\langle\langle a_1\rangle-\langle a_2\rangle\rangle \tag4
+\]</span></p>
+<p><span class="math display">\[
+\langle a_1a_2\rangle=\langle\langle a_1\rangle\langle a_2\rangle\rangle \tag5
+\]</span></p>
 <p>我愿称定理 1 为带余除法定律,定理 2 实质上则是模意义下加法与乘法的结合律.</p>
-<h2 id="§2-最大公因数与辗转相除法">§2 最大公因数与辗转相除法</h2>
-<p><strong>定义</strong>	设 $a_1,a_2,\dots,a_n$是 $n$ 个不全为零的整数,若整数 $d$ 是它们每一个的因数,那么 d 就是 $a_1,a_2,\dots,a_n$ 的一个<strong>公因数</strong>. $a_1,a_2,\dots,a_n$ 的公因数中最大的一个就是它们的<strong>最大公因数</strong>,记作 $(a_1,\dots,a_n)$,若 $(a_1,\dots,a_n)=1$ ,就说 $a_1,\dots,a_n$ 互素.</p>
+<h2 id="最大公因数与辗转相除法">§2 最大公因数与辗转相除法</h2>
+<p><strong>定义</strong> 设 <span class="math inline">\(a_1,a_2,\dots,a_n\)</span>是 <span class="math inline">\(n\)</span> 个不全为零的整数,若整数 <span class="math inline">\(d\)</span> 是它们每一个的因数,那么 d 就是 <span class="math inline">\(a_1,a_2,\dots,a_n\)</span> 的一个<strong>公因数</strong>. <span class="math inline">\(a_1,a_2,\dots,a_n\)</span> 的公因数中最大的一个就是它们的<strong>最大公因数</strong>,记作 <span class="math inline">\((a_1,\dots,a_n)\)</span>,若 <span class="math inline">\((a_1,\dots,a_n)=1\)</span> ,就说 <span class="math inline">\(a_1,\dots,a_n\)</span> 互素.</p>
 <p>可以得到一点有用的结论:</p>
-<ol>
-<li>由整除的性质得到 $(a_1,a_2,\dots,a_n)\le {\rm min}(a_1,a_2,\dots,a_n)$.</li>
-<li>$(a_1,\dots,a_n)\mid a_1,(a_1,\dots,a_n)\mid a_2,\dots,(a_1,\dots,a_n)\mid a_n$.</li>
+<ol type="1">
+<li>由整除的性质得到 <span class="math inline">\((a_1,a_2,\dots\,a_n)\le {\rm min}(a_1,a_2,\dots,a_n)\)</span>.</li>
+<li><span class="math inline">\((a_1,\dots,a_n)\mid a_1,(a_1,\dots,a_n)\mid a_2,\dots,(a_1,\dots,a_n)\mid a_n\)</span>.</li>
 </ol>
-<p><strong>定理 1</strong>	设 a,b,c 是3个不全为零的整数,且 $a=bq+c$ ,其中 $q$ 是整数,那么有 $(a,b)=(b,c)$.</p>
+<p><strong>定理 1</strong> 设 a,b,c 是3个不全为零的整数,且 <span class="math inline">\(a=bq+c\)</span> ,其中 <span class="math inline">\(q\)</span> 是整数,那么有 <span class="math inline">\((a,b)=(b,c)\)</span>.</p>
 <p><strong>证明</strong></p>
-<p>因为 $(a,b)\mid a,(a,b)\mid b,c=a-bq$, 所以 $(a,b)\mid c$.</p>
-<p>由于 2 个数的公因数肯定小于等于最大公因数,所以得到 $(a,b)\le(b,c)$.</p>
-<p>同理,因为 $(b,c)\le b,(b,c)\le c,a=bq+c$, 所以 $(b,c)\mid a$, 可得 $(b,c)\le(a,b)$, 于是得到 $(a,b)=(b,c)$.</p>
+<p>因为 <span class="math inline">\((a,b)\mid a,(a,b)\mid b,c=a-bq\)</span>, 所以 <span class="math inline">\((a,b)\mid c\)</span>.</p>
+<p>由于 2 个数的公因数肯定小于等于最大公因数,所以得到 <span class="math inline">\((a,b)\le(b,c)\)</span>.</p>
+<p>同理,因为 <span class="math inline">\((b,c)\le b,(b,c)\le c,a=bq+c\)</span>, 所以 <span class="math inline">\((b,c)\mid a\)</span>, 可得 <span class="math inline">\((b,c)\le(a,b)\)</span>, 于是得到 <span class="math inline">\((a,b)=(b,c)\)</span>.</p>
 <p><em>证毕</em></p>
-<p>点评: 本证明方法利用了证明 $a=b$ 的常用方法,即证明 $a\le b,b \le a$. 并且抓住了式子 $a=bq+c$  可以得到 $c=bq-a$ 的本质.</p>
-<p>因为有 $(a_1,a_2,\dots,a_n)=(|a_1|,|a_2|,\dots,|a_n|)$, 所以不妨设 $a_i&gt;0$. 然后就可以讨论求两个正整数的最大公因数的方法,进而推出最大公因数的性质.</p>
-<p>任给整数 $a&gt;0,b&gt;0$,有<br>
-$$<br>
-a=bq_1+r_1(0&lt;r_1&lt;b),\<br>
-b=r_1q_2+r_2(0&lt;r_2&lt;r_1),\<br>
-\cdots\cdots\<br>
-r_{n-2}=r_{n-1}q_{n}+r_{n}(0&lt;r_{n}&lt;r_n),<br>
-$$</p>
-<p>$$<br>
-r_{n-1}=r_{n}q_{n+1}+r_{n+1},r_{n+1}=0.\tag1<br>
-$$</p>
-<p>因为 $b&gt;r_1&gt;r_2&gt;\cdots$, 所以经过有限次带余除法后,总可以得到 $r_{n+2}=0$.</p>
-<p>利用这个性质,我们可以写出求最大公约数的算法. 设有两个整数 $a,b$,且$a&gt;b$,那么<br>
-$$<br>
-{\rm gcd}(a,b)=<br>
-\begin{cases}<br>
-\gcd(b,a \bmod b) &amp; \text{if b $\neq$ 0}\<br>
-a &amp; \text{if b = 0}<br>
-\end{cases}<br>
-$$<br>
-<strong>定理 2</strong>	任给整数 $a&gt;0,b&gt;0$ ,$(a,b)$ 就等于 (1) 中最后一个不等于零的余数,即 $r_n$.</p>
+<p>点评: 本证明方法利用了证明 <span class="math inline">\(a=b\)</span> 的常用方法,即证明 <span class="math inline">\(a\le b,b \le a\)</span>. 并且抓住了式子 <span class="math inline">\(a=bq+c\)</span> 可以得到 <span class="math inline">\(c=bq-a\)</span> 的本质.</p>
+<p>因为有 <span class="math inline">\((a_1,a_2,\dots,a_n)=(|a_1|,|a_2|,\dots,|a_n|)\)</span>, 所以不妨设 <span class="math inline">\(a_i&gt;0\)</span>. 然后就可以讨论求两个正整数的最大公因数的方法,进而推出最大公因数的性质.</p>
+<p>任给整数 <span class="math inline">\(a&gt;0,b&gt;0\)</span>,有 <span class="math display">\[
+a=bq_1+r_1(0&lt;r_1&lt;b),\\
+b=r_1q_2+r_2(0&lt;r_2&lt;r_1),\\
+\cdots\cdots\\
+r_{n-2}=r_{n-1}q_{n}+r_{n}(0&lt;r_{n}&lt;r_n),
+\]</span></p>
+<p><span class="math display">\[
+r_{n-1}=r_{n}q_{n+1}+r_{n+1},r_{n+1}=0.\tag1
+\]</span></p>
+<p>因为 <span class="math inline">\(b&gt;r_1&gt;r_2&gt;\cdots\)</span>, 所以经过有限次带余除法后,总可以得到 <span class="math inline">\(r_{n+2}=0\)</span>.</p>
+<p>利用这个性质,我们可以写出求最大公约数的算法. 设有两个整数 <span class="math inline">\(a,b\)</span>,且<span class="math inline">\(a&gt;b\)</span>,那么 <span class="math display">\[
+{\rm gcd}(a,b)=
+    \begin{cases}
+        \gcd(b,a \bmod b) &amp; \text{if b $\neq$ 0}\\
+        a &amp; \text{if b = 0}
+    \end{cases}
+\]</span> <strong>定理 2</strong> 任给整数 <span class="math inline">\(a&gt;0,b&gt;0\)</span> ,<span class="math inline">\((a,b)\)</span> 就等于 (1) 中最后一个不等于零的余数,即 <span class="math inline">\(r_n\)</span>.</p>
 <p><strong>证明</strong></p>
-<p>由定理1得 $(a,b)=(b,r_1)=(r_1,r_2)=\dots=(r_{n-1},r_n)=r_n$.</p>
+<p>由定理1得 <span class="math inline">\((a,b)=(b,r_1)=(r_1,r_2)=\dots=(r_{n-1},r_n)=r_n\)</span>.</p>
 <p><em>证毕</em></p>
 <p>由 (1) 得</p>
-<p>$$<br>
-r_n=r_{n-2}-r_{n-1}q_n\tag*①<br>
-$$</p>
-<p>$$<br>
-r_{n-1}=r_{n-3}-r_{n-2}q_{n-1}\tag*②<br>
-$$</p>
-<p>将 ② 代入 ① 得<br>
-$$<br>
-r_n=r_{n-2}(1+q_nq_{n-1})-r_{n-3}q_n<br>
-$$<br>
-同理,将 $r_{n-2},r_{n-3},\dots,r_1,b,a$ 代入上式,可 得到 $r_n=sa+tb$, 其中 $s,t$ 都是整数.</p>
+<p><span class="math display">\[
+r_n=r_{n-2}-r_{n-1}q_n\tag*①
+\]</span></p>
+<p><span class="math display">\[
+r_{n-1}=r_{n-3}-r_{n-2}q_{n-1}\tag*②
+\]</span></p>
+<p>将 ② 代入 ① 得 <span class="math display">\[
+r_n=r_{n-2}(1+q_nq_{n-1})-r_{n-3}q_n
+\]</span> 同理,将 <span class="math inline">\(r_{n-2},r_{n-3},\dots,r_1,b,a\)</span> 代入上式,可 得到 <span class="math inline">\(r_n=sa+tb\)</span>, 其中 <span class="math inline">\(s,t\)</span> 都是整数.</p>
 <p>于是有</p>
-<p><strong>定理 3</strong>	若任给整数 $a&gt;0,b&gt;0$ ,则有两个整数 $m,n$ 使得<br>
-$$<br>
-(a,b)=ma+nb.<br>
-$$<br>
-假设 $c$ 是 a,b 的公因数,有 $c\mid ma+nb$,于是有</p>
-<p><strong>推论</strong>	a和b 的公因数是 (a,b) 的因数,即 $c\mid (a,b)$.</p>
-<p>对于 §1 (2) 中的余数,如果不要求它是正的,那么对于数 a 和 b&gt;0, 则存在整数 s,t, 使得 a=bt+s 成立,其中 $|s|&lt;=\cfrac b 2$.因为当 $r&lt;\cfrac b 2$时,取 $s=r$; 当 $r\ge \cfrac b2$时,取 $s=r-b$.</p>
-<p>数 $s$ 称作 a 除以 b 所得到的<strong>绝对最小剩余</strong>.在(1)的计算过程中,设最后一个不小于0的余数为 $|s_m|$由定理1,仍有 $|s_m|=(a,b)$.</p>
+<p><strong>定理 3</strong> 若任给整数 <span class="math inline">\(a&gt;0,b&gt;0\)</span> ,则有两个整数 <span class="math inline">\(m,n\)</span> 使得 <span class="math display">\[
+(a,b)=ma+nb.
+\]</span> 假设 <span class="math inline">\(c\)</span> 是 a,b 的公因数,有 <span class="math inline">\(c\mid ma+nb\)</span>,于是有</p>
+<p><strong>推论</strong> a和b 的公因数是 (a,b) 的因数,即 <span class="math inline">\(c\mid (a,b)\)</span>.</p>
+<p>对于 §1 (2) 中的余数,如果不要求它是正的,那么对于数 a 和 b&gt;0, 则存在整数 s,t, 使得 a=bt+s 成立,其中 <span class="math inline">\(|s|&lt;=\cfrac b 2\)</span>.因为当 <span class="math inline">\(r&lt;\cfrac b 2\)</span>时,取 <span class="math inline">\(s=r\)</span>; 当 <span class="math inline">\(r\ge \cfrac b2\)</span>时,取 <span class="math inline">\(s=r-b\)</span>.</p>
+<p>数 <span class="math inline">\(s\)</span> 称作 a 除以 b 所得到的<strong>绝对最小剩余</strong>.在(1)的计算过程中,设最后一个不小于0的余数为 <span class="math inline">\(|s_m|\)</span>由定理1,仍有 <span class="math inline">\(|s_m|=(a,b)\)</span>.</p>
 <p>定理3就是扩展欧几里得算法的理论依据,使用绝对最小剩余可以减少<strong>辗转相除法</strong>求解最大公因数的步骤.下面展示扩展欧几里得算法求解定理3中 m 和 n 的过程.</p>
-<p>首先,进行正常的辗转相除法(递归实现)<br>
-$$<br>
-\begin{align}<br>
-&amp; 288=158\cdot 2-28,\<br>
-&amp; 158=28\cdot 6-10,\<br>
-&amp; 28=10\cdot 3-2,\<br>
-&amp; 10=2\cdot 5+0.<br>
-\end{align}<br>
-$$<br>
-然后运用定理3迭代回去求解最初的 m 和 n<br>
-$$<br>
-\begin{align}<br>
-2&amp;=10<em>0+2</em>1\<br>
-&amp;=10<em>0+(10</em>3-28)<em>1\<br>
-&amp;=10</em>3-28\<br>
-&amp;=(28<em>6-158)<em>3-28\<br>
-&amp;=17</em>28-3</em>158\<br>
-&amp;=(158<em>2-288)<em>17-3</em>158\<br>
-&amp;=31</em>158-17*288<br>
-\end{align}<br>
-$$<br>
-所以 $m=-17,n=31$.</p>
+<p>首先,进行正常的辗转相除法(递归实现) <span class="math display">\[
+\begin{align}
+    &amp; 288=158\cdot 2-28,\\
+    &amp; 158=28\cdot 6-10,\\
+    &amp; 28=10\cdot 3-2,\\
+    &amp; 10=2\cdot 5+0.
+\end{align}
+\]</span> 然后运用定理3迭代回去求解最初的 m 和 n <span class="math display">\[
+\begin{align}
+    2&amp;=10*0+2*1\\
+     &amp;=10*0+(10*3-28)*1\\
+     &amp;=10*3-28\\
+     &amp;=(28*6-158)*3-28\\
+     &amp;=17*28-3*158\\
+     &amp;=(158*2-288)*17-3*158\\
+     &amp;=31*158-17*288
+\end{align}
+\]</span> 所以 <span class="math inline">\(m=-17,n=31\)</span>.</p>
 <p>由于在程序设计中计算绝对最小剩余较为复杂,且效率较低,所以用非负最小剩余(取模得到的结果)即可.</p>
 <p>但是,这样的计算过程显然不是形式化的计算机语言,我们来看看如何写出代码.在递归求解的每一步中, a 和 b 的值分别是:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">288 158</span><br><span class="line">158 130</span><br><span class="line">130 28</span><br><span class="line">28 18 </span><br><span class="line">18 10</span><br><span class="line">10 8</span><br><span class="line">8 2 </span><br><span class="line">2 0</span><br></pre></td></tr></table></figure>
-<p>设递归下一层得到的 $m=x,n=y,a’=b,b’=c$. 那么<br>
-$$<br>
-am+bn=bx+cy,<br>
-$$<br>
-由于 $c=a+bk$, 有,<br>
-$$<br>
-am+bn=ay+b(x-ky)<br>
-$$<br>
-这里的 $k$ 实际上就是 $\left\lfloor \cfrac ab\right\rfloor$.</p>
+<p>设递归下一层得到的 <span class="math inline">\(m=x,n=y,a&#39;=b,b&#39;=c\)</span>. 那么 <span class="math display">\[
+am+bn=bx+cy,
+\]</span> 由于 <span class="math inline">\(c=a+bk\)</span>, 有, <span class="math display">\[
+am+bn=ay+b(x-ky)
+\]</span> 这里的 <span class="math inline">\(k\)</span> 实际上就是 <span class="math inline">\(\left\lfloor \cfrac ab\right\rfloor\)</span>.</p>
 <p>于是就可以写出代码了,congratulation!</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b,<span class="keyword">int</span> &amp;m,<span class="keyword">int</span> &amp;n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(b==<span class="number">0</span>) &#123;m=<span class="number">1</span>,n=<span class="number">0</span>;<span class="keyword">return</span>;&#125;</span><br><span class="line">    gcd(b,a%b,m,n);</span><br><span class="line">    <span class="keyword">int</span> t=n;</span><br><span class="line">    n=m-(a/b)*n,m=t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>定理 4</strong>	若 $a\mid bc$, 且 $(a,b)=1$ ,那么 $a\mid c$.</p>
-<p><strong>证明</strong><br>
-$$<br>
-ma+nb=1\<br>
-mac+nbc=c<br>
-$$<br>
-设 $bc=ka$, 有<br>
-$$<br>
-a(cm+kn)=c<br>
-$$<br>
-<em>证毕</em></p>
-<p>现在来研究 2 个数以上的最大公因数. 设 $n&gt;2,a_1&gt;0,a_2&gt;0\dots a_n&gt;0,(a1,a2)=d_2,(d_2,a_3)=d_3,\dots,(d_{n-1},a_n)=d_n$.</p>
+<p><strong>定理 4</strong> 若 <span class="math inline">\(a\mid bc\)</span>, 且 <span class="math inline">\((a,b)=1\)</span> ,那么 <span class="math inline">\(a\mid c\)</span>.</p>
+<p><strong>证明</strong> <span class="math display">\[
+ma+nb=1\\
+mac+nbc=c
+\]</span> 设 <span class="math inline">\(bc=ka\)</span>, 有 <span class="math display">\[
+a(cm+kn)=c
+\]</span> <em>证毕</em></p>
+<p>现在来研究 2 个数以上的最大公因数. 设 <span class="math inline">\(n&gt;2,a_1&gt;0,a_2&gt;0\dots a_n&gt;0,(a1,a2)=d_2,(d_2,a_3)=d_3,\dots,(d_{n-1},a_n)=d_n\)</span>.</p>
 <p>有</p>
-<p><strong>定理 5</strong>	$(a_1,a_2,\dots,a_n)=d_n$.</p>
+<p><strong>定理 5</strong> <span class="math inline">\((a_1,a_2,\dots,a_n)=d_n\)</span>.</p>
 <p><strong>证明</strong></p>
-<p>有 $d_n\mid d_{n-1},d_{n-1}\mid d_{n-2},\dots d_3\mid d_2$,</p>
-<p>则 $d_n\mid d_{n-1},d_n\mid d_{n-2},\dots,d_n\mid d_2$.</p>
-<p>又 $d_2\mid a_1,d_2\mid a_2,d_3\mid a_3,d_4\mid a_4,\dots,d_n\mid a_n$.</p>
-<p>有 $d_n\mid a_n,d_n\mid a_{n-1},\dots,d_n\mid a_1$.</p>
-<p>另一方面,设 $(a_1,a_2,\dots,a_n)=d$ ,由定理 3 的推论可得</p>
-<p>$d\mid d_2,d\mid d_3,\dots,d\mid d_n$, 所以 $d\le d_n$, 于是得到 $(a_1,a_2,\dots,a_n)=d_n$.</p>
+<p>有 <span class="math inline">\(d_n\mid d_{n-1},d_{n-1}\mid d_{n-2},\dots d_3\mid d_2\)</span>,</p>
+<p>则 <span class="math inline">\(d_n\mid d_{n-1},d_n\mid d_{n-2},\dots,d_n\mid d_2\)</span>.</p>
+<p>又 <span class="math inline">\(d_2\mid a_1,d_2\mid a_2,d_3\mid a_3,d_4\mid a_4,\dots,d_n\mid a_n\)</span>.</p>
+<p>有 <span class="math inline">\(d_n\mid a_n,d_n\mid a_{n-1},\dots,d_n\mid a_1\)</span>.</p>
+<p>另一方面,设 <span class="math inline">\((a_1,a_2,\dots,a_n)=d\)</span> ,由定理 3 的推论可得</p>
+<p><span class="math inline">\(d\mid d_2,d\mid d_3,\dots,d\mid d_n\)</span>, 所以 <span class="math inline">\(d\le d_n\)</span>, 于是得到 <span class="math inline">\((a_1,a_2,\dots,a_n)=d_n\)</span>.</p>
 <p><em>证毕</em></p>
-<p><strong>定理 6</strong>	设 $a_1,a_2,\dots,a_n$ 是正整数,且 $n&gt;2$ ,那么存在整数 $x_1,x_2,\dots,x_n$.那么 $(a_1,a_2,\dots,a_n)=a_1x_1+a_2x_2+\dots+a_nx_n$.</p>
-<h3 id="小结-2"><strong>小结</strong></h3>
-<p><strong>定理 1</strong>	设 a,b,c 是3个不全为零的整数,且 $a=bq+c$ ,其中 $q$ 是整数,那么有 $(a,b)=(b,c)$.<br>
-<strong>定理 2</strong>	任给整数 $a&gt;0,b&gt;0$ ,$(a,b)$ 就等于 (1) 中最后一个不等于零的余数,即 $r_n$.<br>
-<strong>定理 3</strong>	若任给整数 $a&gt;0,b&gt;0$ ,则有两个整数 $m,n$ 使得<br>
-$$<br>
-(a,b)=ma+nb.<br>
-$$<br>
-假设 $c$ 是 a,b 的公因数,有 $c\mid ma+nb$,于是有</p>
-<p>​	<strong>推论</strong>	a和b 的公因数是 (a,b) 的因数,即 $c\mid (a,b)$.<br>
-<strong>定理 4</strong>	若 $a\mid bc$, 且 $(a,b)=1$ ,那么 $a\mid c$.<br>
-<strong>定理 5</strong>	$(a_1,a_2,\dots,a_n)=d_n$.<br>
-<strong>定理 6</strong>	设 $a_1,a_2,\dots,a_n$ 是正整数,且 $n&gt;2$ ,那么存在整数 $x_1,x_2,\dots,x_n$.那么 $(a_1,a_2,\dots,a_n)=a_1x_1+a_2x_2+\dots+a_nx_n$.</p>
+<p><strong>定理 6</strong> 设 <span class="math inline">\(a_1,a_2,\dots,a_n\)</span> 是正整数,且 <span class="math inline">\(n&gt;2\)</span> ,那么存在整数 <span class="math inline">\(x_1,x_2,\dots,x_n\)</span>.那么 <span class="math inline">\((a_1,a_2,\dots,a_n)=a_1x_1+a_2x_2+\dots+a_nx_n\)</span>.</p>
+<h3 id="小结-1"><strong>小结</strong></h3>
+<p><strong>定理 1</strong> 设 a,b,c 是3个不全为零的整数,且 <span class="math inline">\(a=bq+c\)</span> ,其中 <span class="math inline">\(q\)</span> 是整数,那么有 <span class="math inline">\((a,b)=(b,c)\)</span>. <strong>定理 2</strong> 任给整数 <span class="math inline">\(a&gt;0,b&gt;0\)</span> ,<span class="math inline">\((a,b)\)</span> 就等于 (1) 中最后一个不等于零的余数,即 <span class="math inline">\(r_n\)</span>. <strong>定理 3</strong> 若任给整数 <span class="math inline">\(a&gt;0,b&gt;0\)</span> ,则有两个整数 <span class="math inline">\(m,n\)</span> 使得 <span class="math display">\[
+(a,b)=ma+nb.
+\]</span> 假设 <span class="math inline">\(c\)</span> 是 a,b 的公因数,有 <span class="math inline">\(c\mid ma+nb\)</span>,于是有</p>
+<p>​ <strong>推论</strong> a和b 的公因数是 (a,b) 的因数,即 <span class="math inline">\(c\mid (a,b)\)</span>. <strong>定理 4</strong> 若 <span class="math inline">\(a\mid bc\)</span>, 且 <span class="math inline">\((a,b)=1\)</span> ,那么 <span class="math inline">\(a\mid c\)</span>. <strong>定理 5</strong> <span class="math inline">\((a_1,a_2,\dots,a_n)=d_n\)</span>. <strong>定理 6</strong> 设 <span class="math inline">\(a_1,a_2,\dots,a_n\)</span> 是正整数,且 <span class="math inline">\(n&gt;2\)</span> ,那么存在整数 <span class="math inline">\(x_1,x_2,\dots,x_n\)</span>.那么 <span class="math inline">\((a_1,a_2,\dots,a_n)=a_1x_1+a_2x_2+\dots+a_nx_n\)</span>.</p>
 <p>定理 1 是定理 2 的基础,定理 2 证明了辗转相除法的正确性.定理 3 则适用于扩展欧几里得求解不定方程.定理 5 和定理 6 是多个数最大公因数的相关内容.</p>
 <p>我愿称定理 2 为辗转相除法定理(gcd 等于辗转相除法中最后一个不为 0 的数),定理 3 为不定方程定理(gcd 使得不定方程有解).</p>
 <p>另外一些个人认为比较重要的定理:</p>
-<p><strong>定理 S1</strong>	若 $a_1,a_2,\dots,a_n$ 为不等于 0 的整数,那么 $(a_1,a_2,\dots,a_n)=(|a_1|,|a_2|,\dots,|a_n|)$</p>
+<p><strong>定理 S1</strong> 若 <span class="math inline">\(a_1,a_2,\dots,a_n\)</span> 为不等于 0 的整数,那么 <span class="math inline">\((a_1,a_2,\dots,a_n)=(|a_1|,|a_2|,\dots,|a_n|)\)</span></p>
 <p>这个定理说明在讨论若干个数的最大公因数时,假设它们大于 0 不会失去一般性.</p>
-<p><strong>定理 S2</strong>	若整数 $a,b\neq0$,且 $ma+nb=n$. 那么有 $(a,b)\mid n$.</p>
-<h2 id="§4-素数、整数的唯一分解定理">§4 素数、整数的唯一分解定理</h2>
+<p><strong>定理 S2</strong> 若整数 <span class="math inline">\(a,b\neq0\)</span>,且 <span class="math inline">\(ma+nb=n\)</span>. 那么有 <span class="math inline">\((a,b)\mid n\)</span>.</p>
+<h2 id="素数整数的唯一分解定理">§4 素数、整数的唯一分解定理</h2>
 <p>在正整数里(注意没有0,0没有因数),1 的因数只有它本身.大于 1 的正整数都至少有 2 个因数,即 1 和它本身.</p>
-<p><strong>定义</strong>	如果一个大于 1 的正整数的因数只有 1 和它本身,那么把它叫做<strong>质数</strong>或者<strong>素数</strong>,否则叫做<strong>合数</strong>(因数的数量大于2).</p>
+<p><strong>定义</strong> 如果一个大于 1 的正整数的因数只有 1 和它本身,那么把它叫做<strong>质数</strong>或者<strong>素数</strong>,否则叫做<strong>合数</strong>(因数的数量大于2).</p>
 <p>在证明整数的唯一分解定理前,先证明几个引理.</p>
-<p><strong>引理 1</strong>	设 a 是任意大于 1 的正整数,那么 a 的除 1 外的最小正因数是素数.设该素数为 q ,如果 a 是合数还有<br>
-$$<br>
-q\le \sqrt a<br>
-$$<br>
-<strong>证明</strong></p>
-<p>若 q 不是质数,则有不为 1 的正整数 b 使得 $b\mid q,b&lt;q$,由于 $q\mid a$,那么 $b\mid a$,即 b 也是 a 的因数,与 q 为 a 的最小正因数矛盾.</p>
-<p>若 a 是合数,设 $a=a_1q$, 其中 $a_1$ 为正整数,且 $q\le a_1$ ,那么 $q\le \sqrt a$.</p>
+<p><strong>引理 1</strong> 设 a 是任意大于 1 的正整数,那么 a 的除 1 外的最小正因数是素数.设该素数为 q ,如果 a 是合数还有 <span class="math display">\[
+q\le \sqrt a
+\]</span> <strong>证明</strong></p>
+<p>若 q 不是质数,则有不为 1 的正整数 b 使得 <span class="math inline">\(b\mid q,b&lt;q\)</span>,由于 <span class="math inline">\(q\mid a\)</span>,那么 <span class="math inline">\(b\mid a\)</span>,即 b 也是 a 的因数,与 q 为 a 的最小正因数矛盾.</p>
+<p>若 a 是合数,设 <span class="math inline">\(a=a_1q\)</span>, 其中 <span class="math inline">\(a_1\)</span> 为正整数,且 <span class="math inline">\(q\le a_1\)</span> ,那么 <span class="math inline">\(q\le \sqrt a\)</span>.</p>
 <p><em>证毕</em></p>
-<p>由这个定理,我们可以得知,如果知道了所有小于等于 $\sqrt n$ 的质数,那么便可判断 $2$ 到 $n$ 范围的所有整数是不是质数.</p>
-<p><strong>引理 2</strong>	若 p 为质数, a 为任意正整数,则 $p\mid a$,或 $(p,a)=1$.</p>
+<p>由这个定理,我们可以得知,如果知道了所有小于等于 <span class="math inline">\(\sqrt n\)</span> 的质数,那么便可判断 <span class="math inline">\(2\)</span> 到 <span class="math inline">\(n\)</span> 范围的所有整数是不是质数.</p>
+<p><strong>引理 2</strong> 若 p 为质数, a 为任意正整数,则 <span class="math inline">\(p\mid a\)</span>,或 <span class="math inline">\((p,a)=1\)</span>.</p>
 <p><strong>证明</strong></p>
-<p>因为 $(p,a)\mid p$,故 $(p,a)=1$ 或 $(p,a)=p$, 后者即 $p\mid a$.</p>
+<p>因为 <span class="math inline">\((p,a)\mid p\)</span>,故 <span class="math inline">\((p,a)=1\)</span> 或 <span class="math inline">\((p,a)=p\)</span>, 后者即 <span class="math inline">\(p\mid a\)</span>.</p>
 <p><em>证毕</em></p>
-<p><strong>引理 3</strong>	若 p 是质数,$p\mid ab$, 则 $p\mid a$ 或 $p\mid b$.</p>
+<p><strong>引理 3</strong> 若 p 是质数,<span class="math inline">\(p\mid ab\)</span>, 则 <span class="math inline">\(p\mid a\)</span> 或 <span class="math inline">\(p\mid b\)</span>.</p>
 <p><strong>证明</strong></p>
-<p>若 $p\nmid a$, 由引理 2 知 $(p,a)=1$ .由 §2 的定理 2 知 $p\mid b$.</p>
+<p>若 <span class="math inline">\(p\nmid a\)</span>, 由引理 2 知 <span class="math inline">\((p,a)=1\)</span> .由 §2 的定理 2 知 <span class="math inline">\(p\mid b\)</span>.</p>
 <p><em>证毕</em></p>
-<p><strong>定理</strong>(整数的唯一分解定理)	任一大于 1 的整数能表成质数的乘积,若质数从小到大排列,则表示方法是唯一的.即对于任一整数 $a&gt;1$ ,有<br>
-$$<br>
-a=p_1p_2\cdots p_n,\quad p_1\le p_2\le p_n,\tag 1<br>
-$$<br>
-其中 $p_1,p_2,\dots,p_n$ 为质数,并且若<br>
-$$<br>
-a=q_1q_2\cdots q_m,\quad q_1\le q_2\le \dots \le q_m,\tag2<br>
-$$<br>
-其中 $q_1,q_2,\dots ,q_n$ 为质数,则 $m=n,p_i=q_i(i=1,2,\dots ,n)$.</p>
+<p><strong>定理</strong>(整数的唯一分解定理) 任一大于 1 的整数能表成质数的乘积,若质数从小到大排列,则表示方法是唯一的.即对于任一整数 <span class="math inline">\(a&gt;1\)</span> ,有 <span class="math display">\[
+a=p_1p_2\cdots p_n,\quad p_1\le p_2\le p_n,\tag 1
+\]</span> 其中 <span class="math inline">\(p_1,p_2,\dots,p_n\)</span> 为质数,并且若 <span class="math display">\[
+a=q_1q_2\cdots q_m,\quad q_1\le q_2\le \dots \le q_m,\tag2
+\]</span> 其中 <span class="math inline">\(q_1,q_2,\dots ,q_n\)</span> 为质数,则 <span class="math inline">\(m=n,p_i=q_i(i=1,2,\dots ,n)\)</span>.</p>
 <p><strong>证明</strong></p>
 <p>首先运用数学归纳法证明 (1) 式成立.</p>
-<p>当 $a=2$ 时, (1) 式成立.当 $a&gt;2$ 时,若 $a$ 是质数,(1) 式成立.若 $a$ 是合数,则有 2 个整数 $b,c$ 满足条件<br>
-$$<br>
-a=bc,\quad 1&lt;b\le c&lt;a,<br>
-$$<br>
-由归纳法假设,b 和 c 分别能表成质数的乘积,故 a 能表成质数的乘积.</p>
-<p>其次,证明唯一性.若对 a 同时有 (1),(2) 两式成立,则<br>
-$$<br>
-p_1p_2\cdots p_n=q_1q_2\cdots q_m.\tag 3<br>
-$$<br>
-由引理 (3) 知有 $p_k,q_j$ 使得 $p_1p_2\dots p_n\mid q_j$ , $q_1q_2\dots q_m\mid p_k$. 那么 $p_1\mid q_j$, $q_1\mid p_k$. 由于 $q_j,p_k$ 都是质数,所以 $p_1=q_j$ , $q_1=p_k$. 又 $p_1\le p_k,q_1\le q_j$, 故同时有 $p_1\le q_1, q_1\le p_1$ 成立,所以有 $p_1=q_1$.同理可得 $p_2=q_2,p_3=q_3$, 依次类推,最后得 $m=n,p_n=q_n$.</p>
-<p>说一下为什么可得到 $m=n$.</p>
-<p>假设 $m&gt;n$, 在得到 $p_1=q_1$ 后,将 (3) 式等号两边同时除以 $p_1$,可得 $p_2p_3\dots p_n=q_2q_3\dots q_m$. 同理,可消去 $p_1,p_2,\dots,p_{n-1}$, 此时有 $p_n=q_i,q_{i+1},\dots,q_m$,与 $p_n$ 为质数矛盾.同理,可证明 $n&gt;m$ 是不成立的.</p>
+<p>当 <span class="math inline">\(a=2\)</span> 时, (1) 式成立.当 <span class="math inline">\(a&gt;2\)</span> 时,若 <span class="math inline">\(a\)</span> 是质数,(1) 式成立.若 <span class="math inline">\(a\)</span> 是合数,则有 2 个整数 <span class="math inline">\(b,c\)</span> 满足条件 <span class="math display">\[
+a=bc,\quad 1&lt;b\le c&lt;a,
+\]</span> 由归纳法假设,b 和 c 分别能表成质数的乘积,故 a 能表成质数的乘积.</p>
+<p>其次,证明唯一性.若对 a 同时有 (1),(2) 两式成立,则 <span class="math display">\[
+p_1p_2\cdots p_n=q_1q_2\cdots q_m.\tag 3
+\]</span> 由引理 (3) 知有 <span class="math inline">\(p_k,q_j\)</span> 使得 <span class="math inline">\(p_1p_2\dots p_n\mid q_j\)</span> , <span class="math inline">\(q_1q_2\dots q_m\mid p_k\)</span>. 那么 <span class="math inline">\(p_1\mid q_j\)</span>, <span class="math inline">\(q_1\mid p_k\)</span>. 由于 <span class="math inline">\(q_j,p_k\)</span> 都是质数,所以 <span class="math inline">\(p_1=q_j\)</span> , <span class="math inline">\(q_1=p_k\)</span>. 又 <span class="math inline">\(p_1\le p_k,q_1\le q_j\)</span>, 故同时有 <span class="math inline">\(p_1\le q_1, q_1\le p_1\)</span> 成立,所以有 <span class="math inline">\(p_1=q_1\)</span>.同理可得 <span class="math inline">\(p_2=q_2,p_3=q_3\)</span>, 依次类推,最后得 <span class="math inline">\(m=n,p_n=q_n\)</span>.</p>
+<p>说一下为什么可得到 <span class="math inline">\(m=n\)</span>.</p>
+<p>假设 <span class="math inline">\(m&gt;n\)</span>, 在得到 <span class="math inline">\(p_1=q_1\)</span> 后,将 (3) 式等号两边同时除以 <span class="math inline">\(p_1\)</span>,可得 <span class="math inline">\(p_2p_3\dots p_n=q_2q_3\dots q_m\)</span>. 同理,可消去 <span class="math inline">\(p_1,p_2,\dots,p_{n-1}\)</span>, 此时有 <span class="math inline">\(p_n=q_i,q_{i+1},\dots,q_m\)</span>,与 <span class="math inline">\(p_n\)</span> 为质数矛盾.同理,可证明 <span class="math inline">\(n&gt;m\)</span> 是不成立的.</p>
 <p><em>证毕</em></p>
-<p>整数唯一分解定理又叫算数基本定理,它告诉我们任一大于 1 的整数都能唯一的写成<br>
-$$<br>
-a=p_1^{a_1}p_2^{a_2}\dots p_n^{a_n},\tag4<br>
-$$<br>
-其中 $p_i&lt;p_j(i&lt;j)$ 是质数.</p>
-<p>(4) 叫做 a 的<strong>标准分解式</strong>.</p>
-<p>如果 $d\mid a,d&gt;0$, 则由 (8) 和引理 3,d 可表成<br>
-$$<br>
-d=p_1^{b_1}p_2^{b_2}\dots p_n^{b_n},\quad a_i\ge b_i\ge 0(i=1,\dots,k)\tag5<br>
-$$<br>
-的形式.反之,如 d 可以表成 (5) 的形式,则必有 $d\mid a,d&gt;0$.</p>
-<p>设 $a&gt;0,b&gt;0$, 且<br>
-$$<br>
-a=p_1^{a_1}p_2^{a_2}\dots p_n^{a_n},\quad a_i\ge0(i=1,\dots,k),\<br>
-b=p_1^{b_1}p_2^{b_2}\dots p_n^{b_n},\quad b_i\ge 0(i=1,\dots,k),<br>
-$$<br>
-则<br>
-$$<br>
-(a,b)=p_1^{c_1}p_2^{c_2}\dots p_n^{c_n},\quad c_i=\min (a_i,b_i)\quad (i=1,\dots,k),\<br>
-[a,b]=p_1^{d_1}p_2^{d_2}\dots p_n^{d_n},\quad d_i=\max (a_i,b_i)\quad  (i=1,\dots,k).\tag6<br>
-$$</p>
-<p>由于<br>
-$$<br>
-ab=\max(a,b)\times \min (a,b),\<br>
-a+b=\max(a,b)+ \min (a,b),<br>
-$$<br>
-由 (6) 可以得到 $ab=(a,b)\times [a,b]$.</p>
-<h2 id="§5-素数筛法">§5 素数筛法</h2>
-<h3 id="§5-1-厄拉多塞筛法">§5.1 厄拉多塞筛法</h3>
-<p>古希腊数学家厄拉多塞(Eratosthenes)曾提出一个造出不超过 N 的素数表的方法,后来人们称之为<strong>厄拉多塞筛法</strong>. 我们在 §4 的引理 1处提到过,如果知道了所有小于等于 $\sqrt n$ 的质数,那么便可判断 $2$ 到 $n$ 范围的所有整数是不是质数.厄拉多塞筛法便是基于这一简单性质.</p>
-<p>厄拉多塞筛法的具体方法为:先列出不超过 $\sqrt N$ 的全体质数,再将它们小于等于 N 的倍数从数表中划掉.最后存留在数表中的数即为质数.</p>
-<p>当然,在编写程序时连不超过 $\sqrt N$ 的质数都不知道. 但只列出第一个质数 2 ,也可以筛出不超过 N 的素数.如果小于一个整数 $a$ 的所有素数都已筛过,且没有对 a 进行标记,那么 a 显然是素数.从 3 开始枚举 a ,每次 a 可以增加 1,直到 a 达到 $\sqrt N$, 我们就完成了筛选.代码如下:</p>
+<p>整数唯一分解定理又叫算数基本定理,它告诉我们任一大于 1 的整数都能唯一的写成 <span class="math display">\[
+a=p_1^{a_1}p_2^{a_2}\dots p_n^{a_n},\tag4
+\]</span> 其中 <span class="math inline">\(p_i&lt;p_j(i&lt;j)\)</span> 是质数.</p>
+<ol start="4" type="1">
+<li>叫做 a 的<strong>标准分解式</strong>.</li>
+</ol>
+<p>如果 <span class="math inline">\(d\mid a,d&gt;0\)</span>, 则由 (8) 和引理 3,d 可表成 <span class="math display">\[
+d=p_1^{b_1}p_2^{b_2}\dots p_n^{b_n},\quad a_i\ge b_i\ge 0(i=1,\dots,k)\tag5
+\]</span> 的形式.反之,如 d 可以表成 (5) 的形式,则必有 <span class="math inline">\(d\mid a,d&gt;0\)</span>.</p>
+<p>设 <span class="math inline">\(a&gt;0,b&gt;0\)</span>, 且 <span class="math display">\[
+a=p_1^{a_1}p_2^{a_2}\dots p_n^{a_n},\quad a_i\ge0(i=1,\dots,k),\\
+b=p_1^{b_1}p_2^{b_2}\dots p_n^{b_n},\quad b_i\ge 0(i=1,\dots,k),
+\]</span> 则 <span class="math display">\[
+(a,b)=p_1^{c_1}p_2^{c_2}\dots p_n^{c_n},\quad c_i=\min (a_i,b_i)\quad (i=1,\dots,k),\\
+[a,b]=p_1^{d_1}p_2^{d_2}\dots p_n^{d_n},\quad d_i=\max (a_i,b_i)\quad  (i=1,\dots,k).\tag6
+\]</span></p>
+<p>由于 <span class="math display">\[
+ab=\max(a,b)\times \min (a,b),\\
+a+b=\max(a,b)+ \min (a,b),
+\]</span> 由 (6) 可以得到 <span class="math inline">\(ab=(a,b)\times [a,b]\)</span>.</p>
+<h2 id="素数筛法">§5 素数筛法</h2>
+<h3 id="厄拉多塞筛法">§5.1 厄拉多塞筛法</h3>
+<p>古希腊数学家厄拉多塞(Eratosthenes)曾提出一个造出不超过 N 的素数表的方法,后来人们称之为<strong>厄拉多塞筛法</strong>. 我们在 §4 的引理 1处提到过,如果知道了所有小于等于 <span class="math inline">\(\sqrt n\)</span> 的质数,那么便可判断 <span class="math inline">\(2\)</span> 到 <span class="math inline">\(n\)</span> 范围的所有整数是不是质数.厄拉多塞筛法便是基于这一简单性质.</p>
+<p>厄拉多塞筛法的具体方法为:先列出不超过 <span class="math inline">\(\sqrt N\)</span> 的全体质数,再将它们小于等于 N 的倍数从数表中划掉.最后存留在数表中的数即为质数.</p>
+<p>当然,在编写程序时连不超过 <span class="math inline">\(\sqrt N\)</span> 的质数都不知道. 但只列出第一个质数 2 ,也可以筛出不超过 N 的素数.如果小于一个整数 <span class="math inline">\(a\)</span> 的所有素数都已筛过,且没有对 a 进行标记,那么 a 显然是素数.从 3 开始枚举 a ,每次 a 可以增加 1,直到 a 达到 <span class="math inline">\(\sqrt N\)</span>, 我们就完成了筛选.代码如下:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> pri[PN];</span><br><span class="line"><span class="keyword">bool</span> nok[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getPrime</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=SQN;i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(nok[i]) <span class="keyword">continue</span>;</span><br><span class="line">        pri[++cnt]=i;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=i*i;j&lt;=N;j+=i) nok[j]=<span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>若 $j=i\times q\quad (q&lt;i)$, 那么 <code>nok[j]​</code> 在 <code>i=q</code> 的时候已经被筛过.所以 j 可以从 <code>i*i</code> 开始枚举.</p>
-<h3 id="§5-2-线性筛法">§5.2 线性筛法</h3>
+<p>若 <span class="math inline">\(j=i\times q\quad (q&lt;i)\)</span>, 那么 <code>nok[j]​</code> 在 <code>i=q</code> 的时候已经被筛过.所以 j 可以从 <code>i*i</code> 开始枚举.</p>
+<h3 id="线性筛法">§5.2 线性筛法</h3>
 <p>线性筛法是一种在线性时间内筛出质数,数论积性函数值或约数个数,约数和的值的方法.</p>
 <p>在使用厄拉多塞筛法时,会进行标记合数的操作,但一个合数可能被多次标记.</p>
-<p>具体来说,使用厄拉多塞筛法一共需要标记<br>
-$$<br>
-\sum_{P\le N} \frac NP=N\sum_{P\le N}\frac 1P<br>
-$$<br>
-次,时间复杂度为 $O(n\log \log n)$.</p>
-<p>如果每个合数能够只被标记一次,那么时间复杂度可降至 $O(n)$ ,线性筛就是基于这一简单思想。</p>
-<p>用每个合数乘上比自己小的质数，一定能标记到所有的合数。但若 $prime(j)$ 是第一个能整除 $i$ 的质数，那么后序的标记可看作是 $i*prime(k)=prime(j)<em>a</em>prime(k)$，而 $prime(j)*a$ 在后面或前面一定会被枚举到。</p>
+<p>具体来说,使用厄拉多塞筛法一共需要标记 <span class="math display">\[
+\sum_{P\le N} \frac NP=N\sum_{P\le N}\frac 1P
+\]</span> 次,时间复杂度为 <span class="math inline">\(O(n\log \log n)\)</span>.</p>
+<p>如果每个合数能够只被标记一次,那么时间复杂度可降至 <span class="math inline">\(O(n)\)</span> ,线性筛就是基于这一简单思想。</p>
+<p>用每个合数乘上比自己小的质数，一定能标记到所有的合数。但若 <span class="math inline">\(prime(j)\)</span> 是第一个能整除 <span class="math inline">\(i\)</span> 的质数，那么后序的标记可看作是 <span class="math inline">\(i*prime(k)=prime(j)*a*prime(k)\)</span>，而 <span class="math inline">\(prime(j)*a\)</span> 在后面或前面一定会被枚举到。</p>
 <p>那么,我们只需要枚举整数 m ,再枚举质数 a ,即可筛出质数.</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getPrime</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(!nok[i]) pri[++cnt]=i;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=cnt&amp;&amp;pri[j]*i&lt;=n;j++) &#123;</span><br><span class="line">            nok[pri[j]*i]=<span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">if</span>(i%pri[j]==<span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在 i 达到 $\sqrt n$ 时,就已经判断出哪些是素数.但为了得到连续的素数表,需要继续枚举到 n.</p>
-<h2 id="§8-一次不定方程">§8 一次不定方程</h2>
-<p>二元一次不定方程是指<br>
-$$<br>
-a_1x+a_2y=n,\tag1<br>
-$$<br>
-其中 $a_1,a_2,n$ 被给定,且 $a_1,a_2\neq0$.</p>
-<p><strong>定理1</strong>	方程(1)有整数解 $x,y$ 的充分必要条件是<br>
-$$<br>
-(a_1,a_2)\mid n.\tag2<br>
-$$<br>
-<strong>证明</strong><br>
-假设(1)有解,那么(2)成立.<br>
-假设(1)无解,设 $(a_1,a_2)=d$. 并设 $a_1&gt;0,a_2&gt;0$, 不失一般.由 §2 的定理 (3) 知,存在整数 u,v, 使得 $a_1u+a_2v=d$. 那么, $x=\cfrac {nu} d,y=\cfrac {nv} d$ 就是原方程的一组解.<br>
-<em>证毕</em></p>
+<p>在 i 达到 <span class="math inline">\(\sqrt n\)</span> 时,就已经判断出哪些是素数.但为了得到连续的素数表,需要继续枚举到 n.</p>
+<h2 id="一次不定方程">§8 一次不定方程</h2>
+<p>二元一次不定方程是指 <span class="math display">\[
+a_1x+a_2y=n,\tag1
+\]</span> 其中 <span class="math inline">\(a_1,a_2,n\)</span> 被给定,且 <span class="math inline">\(a_1,a_2\neq0\)</span>.</p>
+<p><strong>定理1</strong> 方程(1)有整数解 <span class="math inline">\(x,y\)</span> 的充分必要条件是 <span class="math display">\[
+(a_1,a_2)\mid n.\tag2
+\]</span> <strong>证明</strong> 假设(1)有解,那么(2)成立. 假设(1)无解,设 <span class="math inline">\((a_1,a_2)=d\)</span>. 并设 <span class="math inline">\(a_1&gt;0,a_2&gt;0\)</span>, 不失一般.由 §2 的定理 (3) 知,存在整数 u,v, 使得 <span class="math inline">\(a_1u+a_2v=d\)</span>. 那么, <span class="math inline">\(x=\cfrac {nu} d,y=\cfrac {nv} d\)</span> 就是原方程的一组解. <em>证毕</em></p>
 <p>这个定理也叫做裴蜀定理.</p>
-<p><strong>定理 2</strong>	设 $(a_1,a_2)=d$, 则(1)的全部解可表示为<br>
-$$<br>
-x=x_0+\cfrac {a_2t} d,\quad y=y_0-\cfrac {a_1t} d,\tag3<br>
-$$<br>
-其中 $x_0,y_0$ 为 (1) 的一组解, $t$ 为 $d$ 的倍数.</p>
+<p><strong>定理 2</strong> 设 <span class="math inline">\((a_1,a_2)=d\)</span>, 则(1)的全部解可表示为 <span class="math display">\[
+x=x_0+\cfrac {a_2t} d,\quad y=y_0-\cfrac {a_1t} d,\tag3
+\]</span> 其中 <span class="math inline">\(x_0,y_0\)</span> 为 (1) 的一组解, <span class="math inline">\(t\)</span> 为 <span class="math inline">\(d\)</span> 的倍数.</p>
 <p><strong>证明</strong></p>
-<p>将(3)代入(1)得<br>
-$$<br>
-a_1(x_0+\cfrac {a_2t}d)+a_2(y_0-\cfrac {a_1t} d)=a_1x_0+a_2y_0=n.<br>
-$$<br>
-<em>证毕</em></p>
-<p>其实, $t\over d$ 可以换成任意数,但那样得到的 $a_1,a_2$ 就不是整数了.</p>
+<p>将(3)代入(1)得 <span class="math display">\[
+a_1(x_0+\cfrac {a_2t}d)+a_2(y_0-\cfrac {a_1t} d)=a_1x_0+a_2y_0=n.
+\]</span> <em>证毕</em></p>
+<p>其实, <span class="math inline">\(t\over d\)</span> 可以换成任意数,但那样得到的 <span class="math inline">\(a_1,a_2\)</span> 就不是整数了.</p>
 <h2 id="习题">习题</h2>
 <p>其实通过习题也可以得到很多有用的结论~</p>
-<h3 id="2">2.</h3>
-<p>任意 n 个连续整数中 ($n\ge1$), 有一个且仅有一个被 n 除尽.</p>
+<h3 id="section">2.</h3>
+<p>任意 n 个连续整数中 (<span class="math inline">\(n\ge1\)</span>), 有一个且仅有一个被 n 除尽.</p>
 <p><strong>证明</strong></p>
-<p>假设 n 个整数为 $s_1,s_2,\dots,s_n$, 且有使得 $s_1=x+1,s_2=x+2,\dots$ 的大于等于零的整数 $x$ .</p>
-<p>假设在 $s_1,s_2,\dots,s_n$ 中能被 n 除尽的最小的那个数为 $s_i$, 并设 $s_i=np$. 那么离 $s_i$ 最近的两个能被 n 除尽的整数为 $n(p-1),n(p+1)$. 由于 $s_i-s_1=i&lt; n,s_i-n(p-1)=n$, 则 $s_1&gt;n(p-1)$, 说明 $s_1,s_2,\dots,s_n$ 中任何一个数都不等于 $n(p-1)$. 用类似方法可证得也不等于 $n(p+1)$.</p>
+<p>假设 n 个整数为 <span class="math inline">\(s_1,s_2,\dots,s_n\)</span>, 且有使得 <span class="math inline">\(s_1=x+1,s_2=x+2,\dots\)</span> 的大于等于零的整数 <span class="math inline">\(x\)</span> .</p>
+<p>假设在 <span class="math inline">\(s_1,s_2,\dots,s_n\)</span> 中能被 n 除尽的最小的那个数为 <span class="math inline">\(s_i\)</span>, 并设 <span class="math inline">\(s_i=np\)</span>. 那么离 <span class="math inline">\(s_i\)</span> 最近的两个能被 n 除尽的整数为 <span class="math inline">\(n(p-1),n(p+1)\)</span>. 由于 <span class="math inline">\(s_i-s_1=i&lt; n,s_i-n(p-1)=n\)</span>, 则 <span class="math inline">\(s_1&gt;n(p-1)\)</span>, 说明 <span class="math inline">\(s_1,s_2,\dots,s_n\)</span> 中任何一个数都不等于 <span class="math inline">\(n(p-1)\)</span>. 用类似方法可证得也不等于 <span class="math inline">\(n(p+1)\)</span>.</p>
 <p>用反证法可以证得必有一个,懒得写了.</p>
 <p><em>证毕</em></p>
 <p>这玩意在解不定方程的时候证解的范围有点用.</p>
-</div><div class="article-licensing box"><div class="licensing-title"><p>【笔记】数论学习笔记</p><p><a href="https://huaruoji.github.io/2021/04/02/【笔记】数论学习笔记/">https://huaruoji.github.io/2021/04/02/【笔记】数论学习笔记/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>huaruoji</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2021-04-02</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2021-05-14</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="" rel="noopener" target="_blank" title="CC BY-SA 4.0" href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fab fa-creative-commons"></i> <i class="fab fa-creative-commons-by"></i> <i class="fab fa-creative-commons-sa"></i> CC BY-SA 4.0</a></p></div></div></div></div></div><hr style="height:1px;margin:1rem 0"><div class="level is-mobile is-flex"><div class="article-tags is-size-7 is-uppercase"><i class="fas fa-tags has-text-grey"></i> <a class="link-muted" rel="tag" href="/tags/%E6%95%B0%E5%AD%A6/">数学 </a></div></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2021/04/03/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91P1082%20%5BNOIP2012%20%E6%8F%90%E9%AB%98%E7%BB%84%5D%20%E5%90%8C%E4%BD%99%E6%96%B9%E7%A8%8B/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">【题解】P1082 [NOIP2012 提高组] 同余方程</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2021/04/02/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E3%80%8A%E4%BB%80%E4%B9%88%E6%98%AF%E6%95%B0%E5%AD%A6%E3%80%8B%E7%AC%94%E8%AE%B0/"><span class="level-item">【笔记】《什么是数学》笔记</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><script>var disqus_config = function () {
+</div><div class="article-licensing box"><div class="licensing-title"><p>【笔记】数论学习笔记</p><p><a href="https://huaruoji.github.io/2021/04/02/【笔记】数论学习笔记/">https://huaruoji.github.io/2021/04/02/【笔记】数论学习笔记/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>huaruoji</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2021-04-02</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2021-05-19</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="" rel="noopener" target="_blank" title="CC BY-SA 4.0" href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fab fa-creative-commons"></i> <i class="fab fa-creative-commons-by"></i> <i class="fab fa-creative-commons-sa"></i> CC BY-SA 4.0</a></p></div></div></div></div></div><hr style="height:1px;margin:1rem 0"><div class="level is-mobile is-flex"><div class="article-tags is-size-7 is-uppercase"><i class="fas fa-tags has-text-grey"></i> <a class="link-muted" rel="tag" href="/tags/%E6%95%B0%E5%AD%A6/">数学 </a></div></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2021/04/03/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91P1082%20%5BNOIP2012%20%E6%8F%90%E9%AB%98%E7%BB%84%5D%20%E5%90%8C%E4%BD%99%E6%96%B9%E7%A8%8B/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">【题解】P1082 [NOIP2012 提高组] 同余方程</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2021/04/02/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E3%80%8A%E4%BB%80%E4%B9%88%E6%98%AF%E6%95%B0%E5%AD%A6%E3%80%8B%E7%AC%94%E8%AE%B0/"><span class="level-item">【笔记】《什么是数学》笔记</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><script>var disqus_config = function () {
             this.page.url = 'https://huaruoji.github.io/2021/04/02/%E3%80%90%E7%AC%94%E8%AE%B0%E3%80%91%E6%95%B0%E8%AE%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/';
             this.page.identifier = '2021/04/02/【笔记】数论学习笔记/';
         };
@@ -345,7 +282,7 @@ $$<br>
             s.src = '//' + 'huaruoji' + '.disqus.com/embed.js';
             s.setAttribute('data-timestamp', +new Date());
             (d.head || d.body).appendChild(s);
-        })();</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level" style="margin-bottom:1rem"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-96x96 mx-auto mb-2"><img class="avatar is-rounded" src="https://www.gravatar.com/avatar/04bb1eeaf09cf88b5d30d135fd495eb9?s=96" alt="滑蒻稽"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">滑蒻稽</p><p class="is-size-6 is-block">这写的什么玩意,博主上过小学吗?</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Chengdu, China</span></p></div></div></nav><nav class="level menu-list is-mobile" style="margin-bottom:1rem"><a class="level-item has-text-centered is-marginless" href="/archives/"><div><p class="heading">文章</p><div><p class="title">164</p></div></div></a><a class="level-item has-text-centered is-marginless" href="/categories/"><div><p class="heading">分类</p><div><p class="title">147</p></div></div></a><a class="level-item has-text-centered is-marginless" href="/tags/"><div><p class="heading">标签</p><div><p class="title">114</p></div></div></a></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://www.github.com/huaruoji" target="_blank" rel="noopener"><i class="fab fa-github"></i>  关注我</a></div></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">1</span><span class="level-item">前言</span></span></a></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">2</span><span class="level-item">第一章 整数的唯一分解定理</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#§1-整除性"><span class="level-left"><span class="level-item">2.1</span><span class="level-item">§1 整除性</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#小结"><span class="level-left"><span class="level-item">2.1.1</span><span class="level-item">小结</span></span></a></li></ul></li><li><a class="level is-mobile" href="#§2-最大公因数与辗转相除法"><span class="level-left"><span class="level-item">2.2</span><span class="level-item">§2 最大公因数与辗转相除法</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#小结-2"><span class="level-left"><span class="level-item">2.2.1</span><span class="level-item">小结</span></span></a></li></ul></li><li><a class="level is-mobile" href="#§4-素数、整数的唯一分解定理"><span class="level-left"><span class="level-item">2.3</span><span class="level-item">§4 素数、整数的唯一分解定理</span></span></a></li><li><a class="level is-mobile" href="#§5-素数筛法"><span class="level-left"><span class="level-item">2.4</span><span class="level-item">§5 素数筛法</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#§5-1-厄拉多塞筛法"><span class="level-left"><span class="level-item">2.4.1</span><span class="level-item">§5.1 厄拉多塞筛法</span></span></a></li><li><a class="level is-mobile" href="#§5-2-线性筛法"><span class="level-left"><span class="level-item">2.4.2</span><span class="level-item">§5.2 线性筛法</span></span></a></li></ul></li><li><a class="level is-mobile" href="#§8-一次不定方程"><span class="level-left"><span class="level-item">2.5</span><span class="level-item">§8 一次不定方程</span></span></a></li><li><a class="level is-mobile" href="#习题"><span class="level-left"><span class="level-item">2.6</span><span class="level-item">习题</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#2"><span class="level-left"><span class="level-item">2.6.1</span><span class="level-item">2.</span></span></a></li></ul></li></ul></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="滑蒻稽的博客" height="28"></a><p class="is-size-7"><span>&copy; 2021 huaruoji</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="CC BY-SA 4.0" href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fab fa-creative-commons"></i> <i class="fab fa-creative-commons-by"></i> <i class="fab fa-creative-commons-sa"></i> </a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="huaruoji GitHub" href="https://www.github.com/huaruoji"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdnjs.loli.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+        })();</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level" style="margin-bottom:1rem"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-96x96 mx-auto mb-2"><img class="avatar is-rounded" src="https://www.gravatar.com/avatar/04bb1eeaf09cf88b5d30d135fd495eb9?s=96" alt="滑蒻稽"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">滑蒻稽</p><p class="is-size-6 is-block">这写的什么玩意,博主上过小学吗?</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Chengdu, China</span></p></div></div></nav><nav class="level menu-list is-mobile" style="margin-bottom:1rem"><a class="level-item has-text-centered is-marginless" href="/archives/"><div><p class="heading">文章</p><div><p class="title">167</p></div></div></a><a class="level-item has-text-centered is-marginless" href="/categories/"><div><p class="heading">分类</p><div><p class="title">146</p></div></div></a><a class="level-item has-text-centered is-marginless" href="/tags/"><div><p class="heading">标签</p><div><p class="title">117</p></div></div></a></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://www.github.com/huaruoji" target="_blank" rel="noopener"><i class="fab fa-github"></i>  关注我</a></div></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#前言"><span class="level-left"><span class="level-item">1</span><span class="level-item">前言</span></span></a></li><li><a class="level is-mobile" href="#第一章-整数的唯一分解定理"><span class="level-left"><span class="level-item">2</span><span class="level-item">第一章 整数的唯一分解定理</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#整除性"><span class="level-left"><span class="level-item">2.1</span><span class="level-item">§1 整除性</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#小结"><span class="level-left"><span class="level-item">2.1.1</span><span class="level-item">小结</span></span></a></li></ul></li><li><a class="level is-mobile" href="#最大公因数与辗转相除法"><span class="level-left"><span class="level-item">2.2</span><span class="level-item">§2 最大公因数与辗转相除法</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#小结-1"><span class="level-left"><span class="level-item">2.2.1</span><span class="level-item">小结</span></span></a></li></ul></li><li><a class="level is-mobile" href="#素数整数的唯一分解定理"><span class="level-left"><span class="level-item">2.3</span><span class="level-item">§4 素数、整数的唯一分解定理</span></span></a></li><li><a class="level is-mobile" href="#素数筛法"><span class="level-left"><span class="level-item">2.4</span><span class="level-item">§5 素数筛法</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#厄拉多塞筛法"><span class="level-left"><span class="level-item">2.4.1</span><span class="level-item">§5.1 厄拉多塞筛法</span></span></a></li><li><a class="level is-mobile" href="#线性筛法"><span class="level-left"><span class="level-item">2.4.2</span><span class="level-item">§5.2 线性筛法</span></span></a></li></ul></li><li><a class="level is-mobile" href="#一次不定方程"><span class="level-left"><span class="level-item">2.5</span><span class="level-item">§8 一次不定方程</span></span></a></li><li><a class="level is-mobile" href="#习题"><span class="level-left"><span class="level-item">2.6</span><span class="level-item">习题</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#section"><span class="level-left"><span class="level-item">2.6.1</span><span class="level-item">2.</span></span></a></li></ul></li></ul></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="滑蒻稽的博客" height="28"></a><p class="is-size-7"><span>&copy; 2021 huaruoji</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="CC BY-SA 4.0" href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fab fa-creative-commons"></i> <i class="fab fa-creative-commons-by"></i> <i class="fab fa-creative-commons-sa"></i> </a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="huaruoji GitHub" href="https://www.github.com/huaruoji"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdnjs.loli.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
             article: {
                 highlight: {
                     clipboard: true,
