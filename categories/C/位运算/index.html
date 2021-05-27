@@ -23,7 +23,7 @@
 <p>举个例子</p>
 <p>10101(21) | 11100(28) = 11101(29)</p>
 <p>通过对这两个运算的观察，我们可以发现一个规律</p>
-<p> </p>
+<p></p>
 <p>x &amp; y&lt;=xx | y&gt;=x</p>
 <p>根据二进制的性质很容易就可以得出这些结论吧</p>
 <p>“^”运算</p>
@@ -38,13 +38,13 @@
 <p>异或运算还是比较常用到的，简单举两个例子</p>
 <p>例题一</p>
 <p>给你 n 个数，其中只有一个数出现过一次，其余都成对出现，问只出现过一次的那个数是那个数。</p>
-<p>原题 P1469 找筷子（https://www.luogu.org/problemnew/show/P1469）</p>
+<p>原题 P1469 找筷子（<a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P1469%EF%BC%89">https://www.luogu.org/problemnew/show/P1469）</a></p>
 <p>利用异或的性质 x ^ x=0 ，将所有数异或起来，最后剩下来的那个数就是答案了。</p>
 <p>例题二</p>
 <p>计算 1 ^ 2 ^ 3 ^ 4 ^ … ^ n 的值</p>
-<p>原题 P3908 异或之和（https://www.luogu.org/problemnew/show/P3908）</p>
+<p>原题 P3908 异或之和（<a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P3908%EF%BC%89">https://www.luogu.org/problemnew/show/P3908）</a></p>
 <p>首先最开始是 1 ，根据异或的性质，我们可以知道 (2n) ^ 1 是等于 2n+1 的</p>
-<p><img src="https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=764149635,3213075024&amp;fm=173&amp;app=49&amp;f=JPEG?w=271&amp;h=107&amp;s=8031C7309F716C014E4C00D2010080B2"></p>
+<p><img src="https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=764149635,3213075024&amp;fm=173&amp;app=49&amp;f=JPEG?w=271&amp;h=107&amp;s=8031C7309F716C014E4C00D2010080B2" alt></p>
 <p>于是我们又回到了 1 ，所以可以得出答案是以 4 为周期循环的。</p>
 <p>------------</p>
 <p>接下来厉害的来了，这三种运算是可以互相转换的</p>
@@ -52,7 +52,7 @@
 <p>x &amp; y= ~ (( ~ x)|( ~ y))</p>
 <p>x ^ y=(x|y)-(x &amp; y)=x+y-((x &amp; y)&lt;&lt;1)</p>
 <p>但这东西似乎除了能让你感受到位运算的博大精深以外似乎什么用都没有</p>
-<p> </p>
+<p></p>
 <p>洛谷日报结束</p>
 <p>位运算大部分人都知道，看一道18年初赛题：</p>
 <p>14. 为了统计一个非负整数的二进制形式中 1 的个数，代码如下:</p>
@@ -72,7 +72,7 @@
 <p>C. x |= x &gt;&gt; 1</p>
 <p>D. x &lt;&lt;= 1</p>
 <p>答案为B</p>
-<p> </p>
+<p></p>
 <p>这种题思路就是先举1个数，再一个一个代入。</p>
 <p>如9</p>
 <p>二进制为 1001</p>

@@ -7,20 +7,28 @@
 <p><strong>题目描述：</strong></p>
 <p>n（n&lt;=200000)个数(1.5*10^9范围内)，输出重复的数（最多10000个）出现的次数</p>
 <p><strong>代码：</strong></p>
-<p>#include &lt;iostream&gt; #include &lt;map&gt; #include &lt;cstdio&gt;</p>
-<p>using namespace std; map&lt;int,int&gt; a; int n,t;</p>
-<p>int main() { freopen("count.in","r",stdin); //打开输入文件 freopen("count.out","w",stdout); //打开输出文件</p>
+<p>#include &lt;iostream&gt;<br>
+#include &lt;map&gt;<br>
+#include &lt;cstdio&gt;</p>
+<p>using namespace std;<br>
+map&lt;int,int&gt; a;<br>
+int n,t;</p>
+<p>int main()<br>
+{<br>
+freopen(“<a target="_blank" rel="noopener" href="http://count.in">count.in</a>”,“r”,stdin); //打开输入文件<br>
+freopen(“count.out”,“w”,stdout); //打开输出文件</p>
 <pre><code>cin&gt;&gt;n;
 for\(int i=1;i\&lt;=n;i++\)
 \&#123;
-    cin&gt;&gt;t;
-    a\[t\]++;   
+	cin&gt;&gt;t;
+	a\[t\]++;	
 \&#125; 
 for\(map\&lt;int,int&gt;::iterator it=a.begin\(\);it\!=a.end\(\);it++\)
-    cout\&lt;\&lt;it-&gt;first\&lt;\&lt;&quot; &quot;\&lt;\&lt;it-&gt;second\&lt;\&lt;&quot; &quot;\&lt;\&lt;endl;
-    
+	cout\&lt;\&lt;it-&gt;first\&lt;\&lt;&quot; &quot;\&lt;\&lt;it-&gt;second\&lt;\&lt;&quot; &quot;\&lt;\&lt;endl;
+	
 fclose\(stdin\);//关闭输入文件
-fclose\(stdout\);//关闭输出文件</code></pre>
+fclose\(stdout\);//关闭输出文件
+</code></pre>
 <p>}</p>
 <p>几个操作总结：</p>
 <p>1.定义map&lt;数据类型，数据类型&gt; 变量名;</p>

@@ -9,16 +9,16 @@
 <p>（它们合起来成为一般命题A）．假设a）通过某些数学论证证明了：如果r是任意正整数，且如果命题Ar已知是真的，则可推出命题Ar＋1也真；b）第一个命题A1已知是真的．那么，序列的所有命题必然都是真的，从而A得证．</p>
 </blockquote>
 <p>摘自《什么是数学》。</p>
-<h1 id="前言">前言</h1>
+<h1>前言</h1>
 <p>本文的大部分内容都受到《算法图解》的启发.</p>
-<h1 id="快速排序的正确性">快速排序的正确性</h1>
-<p><strong>基线条件:</strong>快速排序对只有一个元素或没有元素的数组管用(直接返回)</p>
+<h1>快速排序的正确性</h1>
+<p>**基线条件:**快速排序对只有一个元素或没有元素的数组管用(直接返回)</p>
 <p><strong>归纳条件:</strong></p>
 <ul>
 <li>快速排序对有2个元素的数组管用(会分成2个子数组,左边小于基准值,右边大于基准值).</li>
 <li>快速排序对有3个元素的数组管用(分成2个子数组,一个元素数量为2,一个元素数量为1).</li>
 <li>快速排序对有4个元素的数组管用(分成2个子数组,一个元素数量为2,另一个元素数量也为2).</li>
-<li>......</li>
+<li>…</li>
 <li>快速排序对有n个元素的数组管用.</li>
 </ul>
 <p><strong>基线条件+归纳条件,我们已经归纳证明了快速排序的正确性</strong>.</p></div><hr style="height:1px;margin:1rem 0"><div class="level is-mobile is-flex"><div class="article-tags is-size-7 is-uppercase"><i class="fas fa-tags has-text-grey"></i> <a class="link-muted" rel="tag" href="/tags/%E5%88%86%E6%B2%BB/">分治 </a></div><a class="article-more button is-small is-size-7" href="/2021/03/13/%E3%80%90%E4%B8%93%E9%A2%98%E3%80%91%E7%AE%97%E6%B3%95%E6%AD%A3%E7%A1%AE%E6%80%A7%E7%9A%84%E8%AF%81%E6%98%8E-%E5%88%86%E6%B2%BB/#more"><i class="fas fa-book-reader has-text-grey"></i>  阅读更多</a></div></article></div><div class="card"><article class="card-content article" role="article"><h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal"><a class="has-link-black-ter" href="/2021/02/22/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91UVA10810%20Ultra-QuickSort/"><i class="fas fa-angle-double-right"></i>【题解】UVA10810 Ultra-QuickSort</a></h1><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><i class="far fa-calendar-alt"> </i><time dateTime="${date_xml(page.date)}" title="${date_xml(page.date)}">2021-02-22</time></span><span class="level-item is-hidden-mobile"><i class="far fa-calendar-check"> </i><time dateTime="${date_xml(page.updated)}" title="${date_xml(page.updated)}">2021-04-25</time></span><span class="level-item"><i class="far fa-folder-open has-text-grey"></i> <a class="link-muted" href="/categories/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/">基础算法</a><span> / </span><a class="link-muted" href="/categories/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F/">排序</a><span> / </span><a class="link-muted" href="/categories/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%88%86%E6%B2%BB/">分治</a><span> / </span><a class="link-muted" href="/categories/%E9%A2%98%E8%A7%A3/">题解</a><span> / </span><a class="link-muted" href="/categories/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/">归并排序</a><span> / </span><a class="link-muted" href="/categories/%E9%A2%98%E8%A7%A3/%E6%B4%9B%E8%B0%B7/">洛谷</a><span> / </span><a class="link-muted" href="/categories/%E9%A2%98%E8%A7%A3/UVA/">UVA</a></span><span class="level-item"><i class="far fa-clock"></i> 3 分钟读完 (大约500个字)</span></div></div><div class="content"><p>一个元素想要到达正确的位置,前面的元素必须比它小.也就是说,该元素至少必须和前面比自己大的元素交换一次.这道题就转化成了求逆序对.</p>
